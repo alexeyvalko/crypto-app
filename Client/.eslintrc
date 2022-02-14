@@ -27,9 +27,11 @@
     "prettier"
   ],
   "rules": {
+  "@typescript-eslint/default-param-last": "off",
   "import/prefer-default-export": "off",
   "react/function-component-definition": "off",
   "react/react-in-jsx-scope": "off",
+  "react-hooks/exhaustive-deps": "warn",
   "no-use-before-define": [
     "error",
     { "functions": false, "classes": true, "variables": true }
