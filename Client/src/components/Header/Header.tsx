@@ -15,7 +15,7 @@ export const Header: FC = () => {
       align="center"
       h="14"
     >
-      <Button onClick={toggleColorMode} bg="transparent">
+      <Button onClick={toggleColorMode} variant='ghost'>
         {colorMode === 'light' ? <MoonIcon color="darkgray" /> : <SunIcon />}
       </Button>
     </Flex>

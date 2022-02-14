@@ -2,9 +2,10 @@ import './styles/main.css';
 import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
-import { About, Home } from './pages';
+import { Home } from './pages';
 import { theme } from './theme/theme';
-import { Dashboard } from './pages/Dashboard';
+import { About, Dashboard } from './components';
+
 
 export const App: FC = () => (
   <ChakraProvider theme={theme}>

@@ -1,8 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header } from '../components/Header/Header';
-import { Sidebar } from '../components/Sidebar/Sidebar';
+import { Header, Sidebar } from '../components';
 
 export const Home: FC = () => (
     <Box className="app">

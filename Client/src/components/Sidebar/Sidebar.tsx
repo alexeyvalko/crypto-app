@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import { Wrap, WrapItem, Box, Link } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Wrap, Box, WrapItem } from '@chakra-ui/react';
+import { routes } from '../../routes/routes';
+import { SidebarLink } from './SidebarLink';
 
 export const Sidebar: FC = () => (
   <Box
@@ -16,16 +17,11 @@ export const Sidebar: FC = () => (
   >
     <Box as="nav">
       <Wrap direction="column">
-        <WrapItem>
-          <Link as={RouterLink} to="/">
-            Dashboard
-          </Link>
-        </WrapItem>
-        <WrapItem>
-          <Link as={RouterLink} to="/about">
-            About
-          </Link>
-        </WrapItem>
+        {routes.map(({ path, name }) => (
+          <WrapItem>
+            <SidebarLink path={path} name={name} />
+          </WrapItem>
+        ))}
       </Wrap>
     </Box>
   </Box>
