@@ -34,7 +34,7 @@ export const HighlightCard: FC<Props> = ({
     </Stat>
 
     <Box width="20%">
-      <Image src={imageSrc} objectFit='cover' boxSize='100%' alt={coin} />
+      <Image src={imageSrc} objectFit="cover" boxSize="100%" alt={coin} />
     </Box>
   </Flex>
 );

@@ -8,9 +8,8 @@ type Props = {
 };
 
 export const SidebarLink: FC<Props> = ({ path, name }) => {
-
-  const bg = useColorModeValue('gray.200', 'gray.700')
-  const color = useColorModeValue('gray.800', 'whiteAlpha.900')
+  const bg = useColorModeValue('gray.200', 'gray.700');
+  const color = useColorModeValue('gray.800', 'whiteAlpha.900');
 
   const link = {
     px: 3,
@@ -25,8 +24,6 @@ export const SidebarLink: FC<Props> = ({ path, name }) => {
     bgColor: bg,
     fontWeight: 600,
   };
-
-
 
   return (
     <Link as={RouterLink} to={path} _activeLink={active} sx={link}>

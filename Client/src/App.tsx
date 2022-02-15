@@ -6,7 +6,6 @@ import { Home } from './pages';
 import { theme } from './theme/theme';
 import { About, Dashboard } from './components';
 
-
 export const App: FC = () => (
   <ChakraProvider theme={theme}>
     <Routes>

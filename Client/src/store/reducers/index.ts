@@ -1,9 +1,8 @@
-import { combineReducers } from "redux";
-import { CoinsReducer } from "./CoinsReducer";
-
+import { combineReducers } from 'redux';
+import { CoinsReducer } from './CoinsReducer';
 
 export const rootReducer = combineReducers({
-  coins: CoinsReducer
-})
+  coins: CoinsReducer,
+});
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof rootReducer>;
