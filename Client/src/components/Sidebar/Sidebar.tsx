@@ -16,10 +16,10 @@ export const Sidebar: FC = () => (
     h="calc(100vh - 3.5rem)"
   >
     <Box as="nav">
-      <Wrap direction="column">
+      <Wrap direction="column" spacing={3}>
         {routes.map(({ path, name }) => (
-          <WrapItem>
-            <SidebarLink path={path} name={name} />
+          <WrapItem w="full">
+            <SidebarLink path={path} name={name} key={path} />
           </WrapItem>
         ))}
       </Wrap>
