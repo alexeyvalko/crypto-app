@@ -15,7 +15,7 @@ export const SidebarLink: FC<Props> = ({ path, name }) => {
   const link = {
     px: 3,
     py: 2,
-    borderRadius: 'md',
+    borderRadius: 'lg',
     display: 'inline-block',
     width: 'full',
   };
@@ -23,6 +23,7 @@ export const SidebarLink: FC<Props> = ({ path, name }) => {
   const active = {
     color,
     bgColor: bg,
+    fontWeight: 600,
   };
 
 
