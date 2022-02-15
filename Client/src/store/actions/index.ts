@@ -1,6 +1,6 @@
-import * as userActions from './user';
+import * as CoinActions from './coin';
 
 
 export const AllActions = {
-  ...userActions
+  ...CoinActions
 }

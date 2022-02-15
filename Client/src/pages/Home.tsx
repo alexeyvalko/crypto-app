@@ -8,7 +8,7 @@ export const Home: FC = () => (
       <Header />
       <Flex as="main" w="full">
         <Sidebar />
-        <Box className="content" flex={1}>
+        <Box className="content" flex={1} overflow="hidden">
           <Outlet />
         </Box>
       </Flex>

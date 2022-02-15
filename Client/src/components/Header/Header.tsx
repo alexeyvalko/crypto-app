@@ -1,6 +1,6 @@
-import { Button, Flex, useColorMode } from "@chakra-ui/react";
+import { Button, Flex, useColorMode } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { FC } from "react";
+import { FC } from 'react';
 
 export const Header: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -15,7 +15,7 @@ export const Header: FC = () => {
       align="center"
       h="14"
     >
-      <Button onClick={toggleColorMode} variant='ghost'>
+      <Button onClick={toggleColorMode} variant="ghost">
         {colorMode === 'light' ? <MoonIcon color="darkgray" /> : <SunIcon />}
       </Button>
     </Flex>
