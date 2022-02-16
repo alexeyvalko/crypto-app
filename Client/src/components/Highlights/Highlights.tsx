@@ -41,7 +41,7 @@ export const Highlights: FC = () => {
   }
   return (
     <Box overflow="hidden" maxW="full">
-      <SimpleGrid columns={[1, 1, 2, 4]} spacing="24px" w="full">
+      <SimpleGrid columns={[1, 2, 2, 4]} spacing="24px" w="full">
         {highlightCoins.map(
           ({ name, price_change_percentage_24h, current_price, image }) => (
             <HighlightCard
