@@ -1,6 +1,7 @@
+
 export enum CoinsActionTypes {
   FETCH_COINS = 'FETCH_COINS',
-  FETCH_COINS_SUCCESS = 'FETCH_COINS_SUCCESS',
+  FETCH_COINS_HIGHLIGHT_SUCCESS = 'FETCH_COINS_HIGHLIGHT_SUCCESS',
   FETCH_COINS_ERROR = 'FETCH_COINS_ERROR',
 }
 
@@ -21,7 +22,7 @@ export interface FetchCoinAction {
   payload: boolean;
 }
 export interface FetchCoinSuccessAction {
-  type: CoinsActionTypes.FETCH_COINS_SUCCESS;
+  type: CoinsActionTypes.FETCH_COINS_HIGHLIGHT_SUCCESS;
   payload: ICoin[];
 }
 
@@ -36,12 +37,14 @@ export type CoinsAction =
   | FetchCoinErrorAction;
 
 export interface CoinsState {
+  highlightCoins: ICoin[],
   coinList: ICoin[];
   loading: boolean;
   error: null | string;
 }
 
 const InitialState: CoinsState = {
+  highlightCoins:[],
   coinList: [],
   loading: false,
   error: null,
@@ -54,8 +57,8 @@ export const CoinsReducer = (
   switch (action.type) {
     case CoinsActionTypes.FETCH_COINS:
       return { ...state, loading: true };
-    case CoinsActionTypes.FETCH_COINS_SUCCESS:
-      return { ...state, loading: false, coinList: action.payload };
+    case CoinsActionTypes.FETCH_COINS_HIGHLIGHT_SUCCESS:
+      return { ...state, loading: false, highlightCoins: action.payload };
     case CoinsActionTypes.FETCH_COINS_ERROR:
       return { ...state, error: action.payload };
     default:

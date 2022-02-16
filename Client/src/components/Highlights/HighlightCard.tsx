@@ -9,6 +9,7 @@ import {
   StatLabel,
   StatNumber,
 } from '@chakra-ui/react';
+import { Card } from '../Card/Card';
 
 type Props = {
   coin: string;
@@ -23,21 +24,23 @@ export const HighlightCard: FC<Props> = ({
   priceChange,
   imageSrc,
 }) => (
-  <Flex justifyContent="space-between" align="center">
-    <Stat width="80%">
-      <StatLabel>{coin}</StatLabel>
-      <StatNumber>{`$${price}`}</StatNumber>
-      <StatHelpText>
-        <StatArrow
-          type={priceChange > 0 ? 'increase' : 'decrease'}
-          color={priceChange > 0 ? 'green' : 'red'}
-        />
-        {`${priceChange.toFixed(2)}%`}
-      </StatHelpText>
-    </Stat>
+  <Card size="full">
+    <Flex justifyContent="space-between" align="center">
+      <Stat width="80%">
+        <StatLabel>{coin}</StatLabel>
+        <StatNumber>{`$${price}`}</StatNumber>
+        <StatHelpText>
+          <StatArrow
+            type={priceChange > 0 ? 'increase' : 'decrease'}
+            color={priceChange > 0 ? 'green' : 'red'}
+          />
+          {`${priceChange.toFixed(2)}%`}
+        </StatHelpText>
+      </Stat>
 
-    <Box width="20%">
-      <Image src={imageSrc} objectFit="cover" boxSize="100%" alt={coin} />
-    </Box>
-  </Flex>
+      <Box width="20%">
+        <Image src={imageSrc} objectFit="cover" boxSize="100%" alt={coin} />
+      </Box>
+    </Flex>
+  </Card>
 );

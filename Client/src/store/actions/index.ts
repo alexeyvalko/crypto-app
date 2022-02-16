@@ -1,4 +1,4 @@
-import * as CoinActions from './coin';
+import * as CoinActions from './coins';
 
 export const AllActions = {
   ...CoinActions,

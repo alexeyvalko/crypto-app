@@ -6,16 +6,16 @@ import { Card } from '../Card/Card';
 import { HighlightCard } from './HighlightCard';
 
 export const Highlights: FC = () => {
-  const { loading, coinList, error } = useTypedUseSelector(
+  const { loading, highlightCoins, error } = useTypedUseSelector(
     (state) => state.coins,
   );
-  const { fetchCoins } = useActions();
+  const { fetchHighlightCoins } = useActions();
 
   useEffect(() => {
-    fetchCoins()
+    fetchHighlightCoins();
   }, []);
 
-  if (loading && coinList.length === 0) {
+  if (loading && highlightCoins.length === 0) {
     return (
       <Box overflow="hidden" maxW="full">
         <SimpleGrid columns={[1, 1, 2, 4]} spacing="24px" w="full">
@@ -42,16 +42,15 @@ export const Highlights: FC = () => {
   return (
     <Box overflow="hidden" maxW="full">
       <SimpleGrid columns={[1, 1, 2, 4]} spacing="24px" w="full">
-        {coinList.map(
+        {highlightCoins.map(
           ({ name, price_change_percentage_24h, current_price, image }) => (
-            <Card size="full" key={name}>
-              <HighlightCard
-                price={current_price}
-                coin={name}
-                priceChange={price_change_percentage_24h}
-                imageSrc={image}
-              />
-            </Card>
+            <HighlightCard
+              key={name}
+              price={current_price}
+              coin={name}
+              priceChange={price_change_percentage_24h}
+              imageSrc={image}
+            />
           ),
         )}
       </SimpleGrid>
