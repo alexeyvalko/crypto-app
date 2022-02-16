@@ -40,7 +40,9 @@ export const CoinTable: FC<Props> = ({ items, size, minCelWidth }) => {
     background: {base: bg, lg:backgroundMode, xl:"transparent"},
     minWidth: minCelWidth,
     top: 0,
-    left: width,
+    left: {base: 0, sm: width},
+    paddingRight: "5px",
+    paddingLeft: "2px",
   });
 
   useEffect(() => {
@@ -52,7 +54,7 @@ export const CoinTable: FC<Props> = ({ items, size, minCelWidth }) => {
         <Table variant="unstyled" size={size}>
           <Thead>
             <Tr>
-              <Th sx={sticky('0')}>#</Th>
+              <Th sx={sticky('0')} display={{base: 'none', sm: "table-cell"}}>#</Th>
               <Th sx={sticky(minCelWidth)}>Name</Th>
               <Th textAlign="end">Current price</Th>
               <Th textAlign="end">24h</Th>
@@ -68,7 +70,7 @@ export const CoinTable: FC<Props> = ({ items, size, minCelWidth }) => {
                 _hover={hoverStyles}
                 key={coin.name}
               >
-                <Td sx={sticky('0')}> {index + 1}</Td>
+                <Td sx={sticky('0')} display={{base: 'none', sm: "table-cell"}}> {index + 1}</Td>
                 <Td display="flex" alignItems="center" sx={sticky(minCelWidth)}>
                   <Image
                     src={coin.image}
@@ -77,7 +79,7 @@ export const CoinTable: FC<Props> = ({ items, size, minCelWidth }) => {
                     mr="10px"
                     alt={coin.name}
                   />
-                  <Text as="span" pr="10px">
+                  <Text as="span" pr="15px">
                     {coin.name}
                   </Text>
                 </Td>

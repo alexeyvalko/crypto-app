@@ -4,7 +4,7 @@ import { CoinTable } from '../CoinTable/CoinTable';
 import { Highlights } from '../Highlights/Highlights';
 
 export const Dashboard: FC = () => (
-  <Box paddingRight="10" paddingLeft="10" paddingBottom="10">
+  <Box paddingRight={{base: 5, md: 10}} paddingLeft={{base: 5, md: 10}} paddingBottom={{base: 5, md: 10}}>
     <Highlights />
     <Box mt="24px" mb="24px">
       <Box ml="3" mb="3">
@@ -12,7 +12,7 @@ export const Dashboard: FC = () => (
           Top 10
         </Heading>
       </Box>
-      <CoinTable items={10} size="sm" minCelWidth="50px" />
+      <CoinTable items={10} size="sm" minCelWidth="25px" />
     </Box>
   </Box>
 );
