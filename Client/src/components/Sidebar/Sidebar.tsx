@@ -18,8 +18,8 @@ export const Sidebar: FC = () => (
     <Box as="nav">
       <Wrap direction="column" spacing={3}>
         {routes.map(({ path, name }) => (
-          <WrapItem>
-            <SidebarLink path={path} name={name} key={path} />
+          <WrapItem key={path}>
+            <SidebarLink path={path} name={name} />
           </WrapItem>
         ))}
       </Wrap>

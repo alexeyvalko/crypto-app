@@ -28,7 +28,10 @@ export const HighlightCard: FC<Props> = ({
       <StatLabel>{coin}</StatLabel>
       <StatNumber>{`$${price}`}</StatNumber>
       <StatHelpText>
-        <StatArrow type={priceChange > 0 ? 'increase' : 'decrease'} />
+        <StatArrow
+          type={priceChange > 0 ? 'increase' : 'decrease'}
+          color={priceChange > 0 ? 'green' : 'red'}
+        />
         {`${priceChange.toFixed(2)}%`}
       </StatHelpText>
     </Stat>

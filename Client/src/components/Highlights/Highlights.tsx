@@ -12,10 +12,10 @@ export const Highlights: FC = () => {
   const { fetchCoins } = useActions();
 
   useEffect(() => {
-    fetchCoins();
+    fetchCoins()
   }, []);
 
-  if (loading) {
+  if (loading && coinList.length === 0) {
     return (
       <Box overflow="hidden" maxW="full">
         <SimpleGrid columns={[1, 1, 2, 4]} spacing="24px" w="full">
@@ -44,7 +44,7 @@ export const Highlights: FC = () => {
       <SimpleGrid columns={[1, 1, 2, 4]} spacing="24px" w="full">
         {coinList.map(
           ({ name, price_change_percentage_24h, current_price, image }) => (
-            <Card size="full">
+            <Card size="full" key={name}>
               <HighlightCard
                 price={current_price}
                 coin={name}
