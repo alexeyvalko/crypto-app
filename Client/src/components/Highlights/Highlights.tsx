@@ -6,7 +6,7 @@ import { Card } from '../Card/Card';
 import { HighlightCard } from './HighlightCard';
 
 export const Highlights: FC = () => {
-  const { loading, highlightCoins, error } = useTypedUseSelector(
+  const { loadingHighlight, highlightCoins, error } = useTypedUseSelector(
     (state) => state.coins,
   );
   const { fetchHighlightCoins } = useActions();
@@ -15,7 +15,7 @@ export const Highlights: FC = () => {
     fetchHighlightCoins();
   }, []);
 
-  if (loading && highlightCoins.length === 0) {
+  if ( loadingHighlight && highlightCoins.length === 0) {
     return (
       <Box overflow="hidden" maxW="full">
         <SimpleGrid columns={[1, 1, 2, 4]} spacing="24px" w="full">

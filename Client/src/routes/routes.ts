@@ -9,6 +9,10 @@ export const routes: IRoutes[] = [
     name: 'Dashboard',
   },
   {
+    path: '/top',
+    name: 'Top 100',
+  },
+  {
     path: '/about',
     name: 'About',
   },
