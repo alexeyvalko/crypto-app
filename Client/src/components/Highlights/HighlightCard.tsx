@@ -28,7 +28,7 @@ export const HighlightCard: FC<Props> = ({
     <Flex justifyContent="space-between" align="center">
       <Stat width="80%">
         <StatLabel>{coin}</StatLabel>
-        <StatNumber>{`$${price}`}</StatNumber>
+        <StatNumber fontSize={{base: "1rem", md: "1.5rem"}}>{`$${price}`}</StatNumber>
         <StatHelpText>
           <StatArrow
             type={priceChange > 0 ? 'increase' : 'decrease'}

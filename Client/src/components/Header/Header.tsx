@@ -10,8 +10,8 @@ export const Header: FC = () => {
       color="white"
       w="full"
       justify="flex-end"
-      pr="10"
-      pl="10"
+      paddingRight={{ base: 5, md: 10 }}
+      paddingLeft={{ base: 5, md: 10 }}
       align="center"
       h="14"
     >

@@ -12,7 +12,7 @@ export const Dashboard: FC = () => (
           Top 10
         </Heading>
       </Box>
-      <CoinTable items={10} size="sm" minCelWidth="25px" />
+      <CoinTable items={10} size="sm" minCelWidth="25px" page={0} />
     </Box>
   </Box>
 );

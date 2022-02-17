@@ -1,27 +1,12 @@
+import { ICoin } from "../../types/coins";
 
 export enum CoinsActionTypes {
   FETCH_COINS_HIGHLIGHT = 'FETCH_COINS_HIGHLIGHT',
   FETCH_COINS_COINLIST = 'FETCH_COINS_COINLIST',
   FETCH_COINS_HIGHLIGHT_SUCCESS = 'FETCH_COINS_HIGHLIGHT_SUCCESS',
   FETCH_COINS_ERROR = 'FETCH_COINS_ERROR',
-  FETCH_COINLIST_SUCCESS = 'FETCH_COINLIST_SUCCESS'
-}
-
-export interface ICoin {
-  id: string;
-  symbol: string;
-  name: string;
-  market_cap: string,
-  image: string;
-  current_price: number;
-  high_24h: number;
-  low_24h: number;
-  price_change_24h: number;
-  price_change_percentage_24h: number;
-  price_change_percentage_7d_in_currency: number;
-  sparkline_in_7d: {
-    price: number[]
-  }
+  FETCH_COINLIST_SUCCESS = 'FETCH_COINLIST_SUCCESS',
+  FETCH_COIN_BY_ID_SUCCESS = 'FETCH_COIN_BY_ID_SUCCESS'
 }
 
 export interface FetchCoinListAction {
