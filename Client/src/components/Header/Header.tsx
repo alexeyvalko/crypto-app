@@ -3,6 +3,7 @@ import {
   Icon,
   IconButton,
   useColorMode,
+  useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
 import { CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
@@ -13,6 +14,7 @@ import { MobileMenu } from './MobileMenu';
 export const Header: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const bgIcon = useColorModeValue('gray.500', 'gray.200');
 
   const toggleMenu = () => {
     if (isOpen) {
@@ -44,7 +46,7 @@ export const Header: FC = () => {
           isOpen ? (
             <CloseIcon color="gray.200" />
           ) : (
-            <Icon as={CgMenuGridO} w="24px" h="24px" />
+            <Icon as={CgMenuGridO} w="24px" h="24px" color={bgIcon} />
           )
         }
       />
@@ -54,7 +56,7 @@ export const Header: FC = () => {
         variant="ghost"
         aria-label="Color mode"
         icon={
-          colorMode === 'light' ? <MoonIcon color="darkgray" /> : <SunIcon />
+          colorMode === 'light' ? <MoonIcon color={bgIcon} /> : <SunIcon color={bgIcon}/>
         }
       />
 
