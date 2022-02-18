@@ -49,7 +49,7 @@ export const Coin = () => {
       </Grid>
 
       <Section>
-        <Grid templateColumns={{ base: '1fr', sm: '3fr 2fr' }} gap="24px">
+        <Grid templateColumns={{ base: '1fr', sm: '3fr minmax(max-content, 2fr)' }} gap="24px">
           <PriceChange coin={coin} />
           <MarketData coin={coin} />
         </Grid>

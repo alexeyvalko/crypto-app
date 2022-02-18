@@ -26,19 +26,19 @@ export const MarketData: FC<Props> = ({
       </Tag>
     </Flex>
     <Flex justify="space-between" wrap="wrap">
-      <Text as="span" minWidth="max-content">
-        Market cap:{' '}
+      <Text as="span" minWidth="max-content" pr="10px">
+        Market cap:
       </Text>
       <Text as="span" fontWeight={500}>
         ${Number(market_cap.toFixed(0)).toLocaleString()}
       </Text>
     </Flex>
     <Flex justify="space-between" wrap="wrap">
-      <Text as="span" minWidth="max-content">
-        Market cap change 24h:{' '}
+      <Text as="span" minWidth="max-content" pr="10px">
+        Market cap change 24h:
       </Text>
       <Text as="span" fontWeight={500}>
-        ${Number(market_cap_change_24h.toFixed(0)).toLocaleString()}
+      ${Number(market_cap_change_24h.toFixed(0)).toLocaleString()}
       </Text>
     </Flex>
   </Card>
