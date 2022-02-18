@@ -1,4 +1,4 @@
-import { Button, Flex, useColorMode } from '@chakra-ui/react';
+import { Flex, IconButton, useColorMode } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { FC } from 'react';
 
@@ -15,9 +15,14 @@ export const Header: FC = () => {
       align="center"
       h="14"
     >
-      <Button onClick={toggleColorMode} variant="ghost">
-        {colorMode === 'light' ? <MoonIcon color="darkgray" /> : <SunIcon />}
-      </Button>
+      <IconButton
+        onClick={toggleColorMode}
+        variant="ghost"
+        aria-label="Color mode"
+        icon={
+          colorMode === 'light' ? <MoonIcon color="darkgray" /> : <SunIcon />
+        }
+      />
     </Flex>
   );
 };

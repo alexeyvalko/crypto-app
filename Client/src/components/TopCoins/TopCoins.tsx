@@ -34,7 +34,7 @@ export const TopCoins: FC = () => {
           <Button
             variant={currentPage === item ? 'solid' : 'outline'}
             key={item}
-            size="md"
+            size="sm"
             onClick={() => {
               setCurrentPage(item);
             }}

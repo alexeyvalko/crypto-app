@@ -87,6 +87,7 @@ export const CoinTable: FC<Props> = ({ items, size, minCelWidth, page = 0 }) => 
                   <Image
                     src={coin.image}
                     objectFit="contain"
+                    borderRadius="50%"
                     boxSize="20px"
                     mr="10px"
                     alt={coin.name}
@@ -95,7 +96,7 @@ export const CoinTable: FC<Props> = ({ items, size, minCelWidth, page = 0 }) => 
                     {coin.name}
                   </Link>
                 </Td>
-                <Td textAlign="end">{`$${coin.current_price}`}</Td>
+                <Td textAlign="end">{`$${coin.current_price.toLocaleString()}`}</Td>
                 <Td
                   color={
                     coin.price_change_percentage_24h > 0
@@ -114,7 +115,7 @@ export const CoinTable: FC<Props> = ({ items, size, minCelWidth, page = 0 }) => 
                 >{`${coin.price_change_percentage_7d_in_currency.toFixed(
                   2,
                 )}%`}</Td>
-                <Td textAlign="end">{`$${coin.market_cap}`}</Td>
+                <Td textAlign="end">{`$${coin.market_cap.toLocaleString()}`}</Td>
               </Tr>
             ))}
           </Tbody>

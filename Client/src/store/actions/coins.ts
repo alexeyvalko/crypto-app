@@ -31,7 +31,7 @@ export const fetchCoinList = () => async (dispatch: Dispatch<CoinsAction>) => {
   } catch {
     dispatch({
       type: CoinsActionTypes.FETCH_COINS_ERROR,
-      payload: 'error while fetch coinlist coins data',
+      payload: 'error while fetch coinlist data',
     });
   }
 };
