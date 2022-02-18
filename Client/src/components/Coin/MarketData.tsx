@@ -38,7 +38,7 @@ export const MarketData: FC<Props> = ({
         Market cap change 24h:
       </Text>
       <Text as="span" fontWeight={500}>
-      ${Number(market_cap_change_24h.toFixed(0)).toLocaleString()}
+        ${Number(market_cap_change_24h.toFixed(0)).toLocaleString()}
       </Text>
     </Flex>
   </Card>

@@ -24,7 +24,9 @@ export const CoinSupply: FC<Props> = ({
         Total supply:{' '}
       </Text>
       <Text as="span" fontWeight={500}>
-        {total_supply ? `${Number(total_supply.toFixed(0)).toLocaleString()}`: 'n/a'}
+        {total_supply
+          ? `${Number(total_supply.toFixed(0)).toLocaleString()}`
+          : 'n/a'}
       </Text>
     </Flex>
     <Flex justify="space-between" wrap="wrap">
@@ -32,7 +34,9 @@ export const CoinSupply: FC<Props> = ({
         Max supply:{' '}
       </Text>
       <Text as="span" fontWeight={500}>
-        {max_supply ? `${Number(max_supply.toFixed(0)).toLocaleString()}` : 'n/a'}
+        {max_supply
+          ? `${Number(max_supply.toFixed(0)).toLocaleString()}`
+          : 'n/a'}
       </Text>
     </Flex>
     <Flex justify="space-between" wrap="wrap">
@@ -40,7 +44,9 @@ export const CoinSupply: FC<Props> = ({
         Circulating supply:{' '}
       </Text>
       <Text as="span" fontWeight={500}>
-        {circulating_supply ? `${Number(circulating_supply.toFixed(0)).toLocaleString()}`: 'n/a'}
+        {circulating_supply
+          ? `${Number(circulating_supply.toFixed(0)).toLocaleString()}`
+          : 'n/a'}
       </Text>
     </Flex>
   </Card>

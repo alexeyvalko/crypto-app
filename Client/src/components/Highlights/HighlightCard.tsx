@@ -28,7 +28,9 @@ export const HighlightCard: FC<Props> = ({
     <Flex justifyContent="space-between" align="center">
       <Stat width="85%">
         <StatLabel>{coin}</StatLabel>
-        <StatNumber fontSize={{base: "1rem", md: "1.5rem"}}>{`$${price.toLocaleString()}`}</StatNumber>
+        <StatNumber
+          fontSize={{ base: '1rem', md: '1.5rem' }}
+        >{`$${price.toLocaleString()}`}</StatNumber>
         <StatHelpText>
           <StatArrow
             type={priceChange > 0 ? 'increase' : 'decrease'}
@@ -39,7 +41,13 @@ export const HighlightCard: FC<Props> = ({
       </Stat>
 
       <Box width="15%">
-        <Image src={imageSrc} objectFit="cover" boxSize="100%" alt={coin} borderRadius="50%" />
+        <Image
+          src={imageSrc}
+          objectFit="cover"
+          boxSize="100%"
+          alt={coin}
+          borderRadius="50%"
+        />
       </Box>
     </Flex>
   </Card>

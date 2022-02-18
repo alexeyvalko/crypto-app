@@ -20,17 +20,22 @@ export const TopCoins: FC = () => {
     <Box
       paddingRight={{ base: 5, md: 10 }}
       paddingLeft={{ base: 5, md: 10 }}
-      paddingBottom={{ base: 5, md: 10 }}
+      paddingBottom={{ base: 5, md: 5 }}
     >
       <Box ml="5" mb="5">
         <Heading as="h1" size="lg">
           Top 100 coins on market
         </Heading>
       </Box>
-      <CoinTable items={10} page={currentPage - 1} size="md" minCelWidth="60px" />
+      <CoinTable
+        items={10}
+        page={currentPage - 1}
+        size="md"
+        minCelWidth="60px"
+      />
 
       <Flex w="full" justify="center" wrap="wrap" gap="10px" mt="5">
-        {pages.map((item ) => (
+        {pages.map((item) => (
           <Button
             variant={currentPage === item ? 'solid' : 'outline'}
             key={item}

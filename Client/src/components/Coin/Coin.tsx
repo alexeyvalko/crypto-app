@@ -41,15 +41,18 @@ export const Coin = () => {
     <Box
       paddingRight={{ base: 5, md: 10 }}
       paddingLeft={{ base: 5, md: 10 }}
-      paddingBottom={{ base: 5, md: 10 }}
+      paddingBottom={{ base: 5, md: 5 }}
     >
       <Grid templateColumns={{ base: '1fr', sm: 'max-content 1fr' }} gap="24px">
-      <BaseCoinInfo coin={coin} />
-      <CoinSupply coin={coin} />
+        <BaseCoinInfo coin={coin} />
+        <CoinSupply coin={coin} />
       </Grid>
 
       <Section>
-        <Grid templateColumns={{ base: '1fr', sm: '3fr minmax(max-content, 2fr)' }} gap="24px">
+        <Grid
+          templateColumns={{ base: '1fr', sm: '3fr minmax(max-content, 2fr)' }}
+          gap="24px"
+        >
           <PriceChange coin={coin} />
           <MarketData coin={coin} />
         </Grid>

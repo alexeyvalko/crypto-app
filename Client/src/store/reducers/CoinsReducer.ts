@@ -1,4 +1,4 @@
-import { ICoin } from "../../types/coins";
+import { ICoin } from '../../types/coins';
 
 export enum CoinsActionTypes {
   FETCH_COINS_HIGHLIGHT = 'FETCH_COINS_HIGHLIGHT',
@@ -41,15 +41,15 @@ export type CoinsAction =
   | FetchCoinListAction;
 
 export interface CoinsState {
-  highlightCoins: ICoin[],
+  highlightCoins: ICoin[];
   coinList: ICoin[];
   loadingHighlight: boolean;
-  loadingCoinList: boolean,
+  loadingCoinList: boolean;
   error: null | string;
 }
 
 const InitialState: CoinsState = {
-  highlightCoins:[],
+  highlightCoins: [],
   coinList: [],
   loadingHighlight: false,
   loadingCoinList: false,
@@ -63,12 +63,16 @@ export const CoinsReducer = (
   switch (action.type) {
     case CoinsActionTypes.FETCH_COINS_HIGHLIGHT:
       return { ...state, loadingHighlight: true };
-      case CoinsActionTypes.FETCH_COINS_COINLIST:
-        return { ...state, loadingCoinList: true };
+    case CoinsActionTypes.FETCH_COINS_COINLIST:
+      return { ...state, loadingCoinList: true };
     case CoinsActionTypes.FETCH_COINS_HIGHLIGHT_SUCCESS:
-      return { ...state, loadingHighlight: false, highlightCoins: action.payload };
+      return {
+        ...state,
+        loadingHighlight: false,
+        highlightCoins: action.payload,
+      };
     case CoinsActionTypes.FETCH_COINLIST_SUCCESS:
-        return { ...state, loadingCoinList: false, coinList: action.payload };
+      return { ...state, loadingCoinList: false, coinList: action.payload };
     case CoinsActionTypes.FETCH_COINS_ERROR:
       return { ...state, error: action.payload };
     default:

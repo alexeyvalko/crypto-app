@@ -23,7 +23,12 @@ type Props = {
   page: number;
 };
 
-export const CoinTable: FC<Props> = ({ items, size, minCelWidth, page = 0 }) => {
+export const CoinTable: FC<Props> = ({
+  items,
+  size,
+  minCelWidth,
+  page = 0,
+}) => {
   const { coinList } = useTypedUseSelector((state) => state.coins);
   const { fetchCoinList } = useActions();
   const borderColor = useColorModeValue('gray.100', 'gray.600');
@@ -31,7 +36,7 @@ export const CoinTable: FC<Props> = ({ items, size, minCelWidth, page = 0 }) => 
 
   const tableStart = page * items;
 
-  const listToShow = coinList.slice(tableStart, items + (page * items));
+  const listToShow = coinList.slice(tableStart, items + page * items);
   const hoverStyles = {
     bgColor: borderColor,
   };
@@ -96,7 +101,11 @@ export const CoinTable: FC<Props> = ({ items, size, minCelWidth, page = 0 }) => 
                     {coin.name}
                   </Link>
                 </Td>
-                <Td textAlign="end">{`$${coin.current_price.toLocaleString()}`}</Td>
+                <Td textAlign="end">
+                  {coin.current_price >= 0.01
+                    ? `$${coin.current_price.toLocaleString()}`
+                    : `$${coin.current_price}`}
+                </Td>
                 <Td
                   color={
                     coin.price_change_percentage_24h > 0

@@ -1,4 +1,4 @@
-import { Link, useColorModeValue } from '@chakra-ui/react';
+import { Link, useColorModeValue, Text, Flex, Center } from '@chakra-ui/react';
 import { FC } from 'react';
 import { NavLink as RouterLink } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ type Props = {
   name: string;
 };
 
-export const SidebarLink: FC<Props> = ({ path, name }) => {
+export const SidebarLink: FC<Props> = ({ path, name, children }) => {
   const bg = useColorModeValue('gray.200', 'gray.700');
   const color = useColorModeValue('gray.800', 'whiteAlpha.900');
 
@@ -26,8 +26,19 @@ export const SidebarLink: FC<Props> = ({ path, name }) => {
   };
 
   return (
-    <Link as={RouterLink} to={path} _activeLink={active} sx={link}>
-      {name}
+    <Link
+      as={RouterLink}
+      to={path}
+      _activeLink={active}
+      sx={link}
+      _hover={active}
+    >
+      <Flex justify="flex-start" gap="10px" align="center">
+        <Center bgColor="teal.500" p="5px" borderRadius="full">
+          {children}
+        </Center>
+        <Text as="span">{name}</Text>
+      </Flex>
     </Link>
   );
 };
