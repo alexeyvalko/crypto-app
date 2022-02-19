@@ -2,6 +2,7 @@ import {
   Flex,
   Icon,
   IconButton,
+  Slide,
   useColorMode,
   useColorModeValue,
   useDisclosure,
@@ -56,11 +57,17 @@ export const Header: FC = () => {
         variant="ghost"
         aria-label="Color mode"
         icon={
-          colorMode === 'light' ? <MoonIcon color={bgIcon} /> : <SunIcon color={bgIcon}/>
+          colorMode === 'light' ? (
+            <MoonIcon color={bgIcon} />
+          ) : (
+            <SunIcon color={bgIcon} />
+          )
         }
       />
 
-      <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
+      <Slide direction="bottom" in={isOpen} style={{ zIndex: 100 }}>
+        <MobileMenu toggleMenu={toggleMenu} />
+      </Slide>
     </Flex>
   );
 };

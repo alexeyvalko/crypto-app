@@ -1,4 +1,4 @@
-import { Box, Grid } from '@chakra-ui/react';
+import { Box, Fade, Grid, useDisclosure } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
@@ -20,11 +20,16 @@ export const Coin = () => {
   );
   const { coinId } = useParams<PathParams>();
   const { fetchCoinList } = useActions();
+  const { isOpen, onToggle } = useDisclosure();
 
   useEffect(() => {
     if (coinList.length === 0) {
       fetchCoinList();
     }
+    onToggle();
+    return () => {
+      onToggle();
+    };
   }, []);
 
   if (loadingCoinList) {
@@ -38,25 +43,33 @@ export const Coin = () => {
   }
 
   return (
-    <Box
-      paddingRight={{ base: 5, md: 10 }}
-      paddingLeft={{ base: 5, md: 10 }}
-      paddingBottom={{ base: 5, md: 5 }}
-    >
-      <Grid templateColumns={{ base: '1fr', sm: 'max-content 1fr' }} gap="24px">
-        <BaseCoinInfo coin={coin} />
-        <CoinSupply coin={coin} />
-      </Grid>
-
-      <Section>
+    <Fade in={isOpen}>
+      <Box
+        paddingRight={{ base: 5, md: 10 }}
+        paddingLeft={{ base: 5, md: 10 }}
+        paddingBottom={{ base: 5, md: 5 }}
+      >
         <Grid
-          templateColumns={{ base: '1fr', sm: '3fr minmax(max-content, 2fr)' }}
+          templateColumns={{ base: '1fr', sm: 'max-content 1fr' }}
           gap="24px"
         >
-          <PriceChange coin={coin} />
-          <MarketData coin={coin} />
+          <BaseCoinInfo coin={coin} />
+          <CoinSupply coin={coin} />
         </Grid>
-      </Section>
-    </Box>
+
+        <Section>
+          <Grid
+            templateColumns={{
+              base: '1fr',
+              sm: '3fr minmax(max-content, 2fr)',
+            }}
+            gap="24px"
+          >
+            <PriceChange coin={coin} />
+            <MarketData coin={coin} />
+          </Grid>
+        </Section>
+      </Box>
+    </Fade>
   );
 };

@@ -1,5 +1,12 @@
-import { Box, Button, Flex, Heading } from '@chakra-ui/react';
-import { FC, useMemo, useState } from 'react';
+import {
+  Box,
+  Button,
+  Fade,
+  Flex,
+  Heading,
+  useDisclosure,
+} from '@chakra-ui/react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { useTypedUseSelector } from '../../hooks/useTypedUseSelector';
 import { CoinTable } from '../CoinTable/CoinTable';
 import { getPagesCount } from '../../utils/getPagesCount';
@@ -7,7 +14,8 @@ import { getPagesCount } from '../../utils/getPagesCount';
 export const TopCoins: FC = () => {
   const { coinList } = useTypedUseSelector((state) => state.coins);
   const [currentPage, setCurrentPage] = useState<number>(1);
-
+  const { isOpen, onToggle } = useDisclosure();
+  
   const pages = useMemo(
     () =>
       Array(getPagesCount(coinList.length, 10))
@@ -16,38 +24,47 @@ export const TopCoins: FC = () => {
     [coinList.length],
   );
 
-  return (
-    <Box
-      paddingRight={{ base: 5, md: 10 }}
-      paddingLeft={{ base: 5, md: 10 }}
-      paddingBottom={{ base: 5, md: 5 }}
-    >
-      <Box ml="5" mb="5">
-        <Heading as="h1" size="lg">
-          Top 100 coins on market
-        </Heading>
-      </Box>
-      <CoinTable
-        items={10}
-        page={currentPage - 1}
-        size="md"
-        minCelWidth="60px"
-      />
+  useEffect(() => {
+    onToggle();
+    return () => {
+      onToggle();
+    };
+  }, []);
 
-      <Flex w="full" justify="center" wrap="wrap" gap="10px" mt="5">
-        {pages.map((item) => (
-          <Button
-            variant={currentPage === item ? 'solid' : 'outline'}
-            key={item}
-            size="sm"
-            onClick={() => {
-              setCurrentPage(item);
-            }}
-          >
-            {item}
-          </Button>
-        ))}
-      </Flex>
-    </Box>
+  return (
+    <Fade in={isOpen}>
+      <Box
+        paddingRight={{ base: 5, md: 10 }}
+        paddingLeft={{ base: 5, md: 10 }}
+        paddingBottom={{ base: 5, md: 5 }}
+      >
+        <Box ml="5" mb="5">
+          <Heading as="h1" size="lg">
+            Top 100 coins on market
+          </Heading>
+        </Box>
+        <CoinTable
+          items={10}
+          page={currentPage - 1}
+          size="md"
+          minCelWidth="60px"
+        />
+
+        <Flex w="full" justify="center" wrap="wrap" gap="10px" mt="5">
+          {pages.map((item) => (
+            <Button
+              variant={currentPage === item ? 'solid' : 'outline'}
+              key={item}
+              size="sm"
+              onClick={() => {
+                setCurrentPage(item);
+              }}
+            >
+              {item}
+            </Button>
+          ))}
+        </Flex>
+      </Box>
+    </Fade>
   );
 };
