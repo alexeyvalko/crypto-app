@@ -8,12 +8,15 @@ type Props = {
 };
 
 export const MobileMenu: FC<Props> = ({ toggleMenu }) => {
-  const bg = useColorModeValue('whiteAlpha', 'gray.800');
+  const bg = useColorModeValue('gray.100', 'gray.900');
+  const color = useColorModeValue('gray.800', 'whiteAlpha.900');
 
   const menuStyles = {
     padding: '24px',
     borderRadius: '15px 15px 0 0',
+    color,
     zIndex: 'full',
+    boxShadow: '0px -1px 3px 0px rgba(0,0,0,0.1)',
   };
 
   return (

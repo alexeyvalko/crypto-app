@@ -45,7 +45,7 @@ export const Header: FC = () => {
         aria-label="Color mode"
         icon={
           isOpen ? (
-            <CloseIcon color="gray.200" />
+            <CloseIcon color={bgIcon}/>
           ) : (
             <Icon as={CgMenuGridO} w="24px" h="24px" color={bgIcon} />
           )
