@@ -40,10 +40,13 @@ export const HighlightCard: FC<Props> = ({
         </StatHelpText>
       </Stat>
 
-      <Box width="15%">
+      <Box
+        width={{ base: '0%', sm: '15%' }}
+        display={{ base: 'none', sm: 'inline-block' }}
+      >
         <Image
           src={imageSrc}
-          objectFit="cover"
+          objectFit="contain"
           boxSize="100%"
           alt={coin}
           borderRadius="50%"

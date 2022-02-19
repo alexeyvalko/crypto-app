@@ -18,7 +18,7 @@ export const Highlights: FC = () => {
   if (loadingHighlight && highlightCoins.length === 0) {
     return (
       <Box overflow="hidden" maxW="full">
-        <SimpleGrid columns={[1, 2, 2, 4]} spacing="24px" w="full">
+        <SimpleGrid columns={[2, 2, 2, 4]} spacing="24px" w="full">
           <Card size="full">
             <SkeletonText mt="4" noOfLines={3} spacing="5" />
           </Card>
@@ -42,7 +42,7 @@ export const Highlights: FC = () => {
   return (
     <Box overflow="hidden" maxW="full">
       <SimpleGrid
-        columns={[1, 2, 2, 4]}
+        columns={[2, 2, 2, 4]}
         spacing={{ base: '15px', md: '24px' }}
         w="full"
       >

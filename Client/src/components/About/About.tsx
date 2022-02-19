@@ -4,7 +4,6 @@ import { FC, useEffect } from 'react';
 import { Card } from '../Card/Card';
 
 export const About: FC = () => {
-
   const { isOpen, onToggle } = useDisclosure();
 
   useEffect(() => {
@@ -13,12 +12,12 @@ export const About: FC = () => {
       onToggle();
     };
   }, []);
-  
+
   return (
     <Fade in={isOpen}>
-    <Box paddingRight="10" paddingLeft="10">
-      <Card size="full">about page</Card>
-    </Box>
+      <Box paddingRight="10" paddingLeft="10">
+        <Card size="full">about page</Card>
+      </Box>
     </Fade>
-  )
+  );
 };

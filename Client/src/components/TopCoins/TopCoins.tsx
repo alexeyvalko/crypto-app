@@ -15,7 +15,7 @@ export const TopCoins: FC = () => {
   const { coinList } = useTypedUseSelector((state) => state.coins);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const { isOpen, onToggle } = useDisclosure();
-  
+
   const pages = useMemo(
     () =>
       Array(getPagesCount(coinList.length, 10))
