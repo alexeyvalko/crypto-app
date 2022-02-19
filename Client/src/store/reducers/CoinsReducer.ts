@@ -6,7 +6,17 @@ export enum CoinsActionTypes {
   FETCH_COINS_HIGHLIGHT_SUCCESS = 'FETCH_COINS_HIGHLIGHT_SUCCESS',
   FETCH_COINS_ERROR = 'FETCH_COINS_ERROR',
   FETCH_COINLIST_SUCCESS = 'FETCH_COINLIST_SUCCESS',
-  FETCH_COIN_BY_ID_SUCCESS = 'FETCH_COIN_BY_ID_SUCCESS',
+  FETCH_CHART_INFO_SUCCESS = 'FETCH_CHART_INFO_SUCCESS',
+  FETCH_CHART_INFO = 'FETCH_CHART_INFO',
+}
+
+export interface FetchChartInfoAction {
+  type: CoinsActionTypes.FETCH_CHART_INFO;
+  payload: boolean;
+}
+export interface FetchChartInfoSuccessAction {
+  type: CoinsActionTypes.FETCH_CHART_INFO_SUCCESS;
+  payload: [number[]];
 }
 
 export interface FetchCoinListAction {
@@ -38,14 +48,18 @@ export type CoinsAction =
   | FetchHighlightSuccessAction
   | FetchCoinErrorAction
   | FetchCoinListSuccessAction
-  | FetchCoinListAction;
+  | FetchCoinListAction
+  | FetchChartInfoAction
+  | FetchChartInfoSuccessAction;
 
 export interface CoinsState {
   highlightCoins: ICoin[];
   coinList: ICoin[];
   loadingHighlight: boolean;
   loadingCoinList: boolean;
+  loadingChart: boolean;
   error: null | string;
+  chart: [number[]];
 }
 
 const InitialState: CoinsState = {
@@ -53,7 +67,9 @@ const InitialState: CoinsState = {
   coinList: [],
   loadingHighlight: false,
   loadingCoinList: false,
+  loadingChart: false,
   error: null,
+  chart: [[]],
 };
 
 export const CoinsReducer = (
@@ -75,6 +91,10 @@ export const CoinsReducer = (
       return { ...state, loadingCoinList: false, coinList: action.payload };
     case CoinsActionTypes.FETCH_COINS_ERROR:
       return { ...state, error: action.payload };
+    case CoinsActionTypes.FETCH_CHART_INFO:
+      return { ...state, loadingChart: true };
+    case CoinsActionTypes.FETCH_CHART_INFO_SUCCESS:
+      return { ...state, loadingChart: false, chart: action.payload };
     default:
       return state;
   }

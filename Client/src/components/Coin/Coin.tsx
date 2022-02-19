@@ -1,10 +1,12 @@
 import { Box, Fade, Grid, useDisclosure } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import { useActions } from '../../hooks/useActions';
 import { useTypedUseSelector } from '../../hooks/useTypedUseSelector';
 import { Section } from '../Section/Section';
 import { BaseCoinInfo } from './BaseCoinInfo';
+import { CoinChart } from './CoinChart';
 import { CoinSupply } from './CoinSupply';
 import { LoadingInfo } from './LoadingInfo';
 import { MarketData } from './MarketData';
@@ -15,16 +17,20 @@ type PathParams = {
 };
 
 export const Coin = () => {
-  const { coinList, loadingCoinList, error } = useTypedUseSelector(
+  const { coinList, loadingCoinList, error, chart } = useTypedUseSelector(
     (state) => state.coins,
   );
   const { coinId } = useParams<PathParams>();
-  const { fetchCoinList } = useActions();
+  const { fetchCoinList, fetchChartInfo } = useActions();
   const { isOpen, onToggle } = useDisclosure();
+  const [days, setDays] = useState<number>(1);
 
   useEffect(() => {
     if (coinList.length === 0) {
       fetchCoinList();
+    }
+    if (coinId) {
+      fetchChartInfo(coinId, days);
     }
     onToggle();
     return () => {
@@ -68,6 +74,10 @@ export const Coin = () => {
             <PriceChange coin={coin} />
             <MarketData coin={coin} />
           </Grid>
+        </Section>
+
+        <Section>
+          <CoinChart chart={chart} name={coin.name} />
         </Section>
       </Box>
     </Fade>

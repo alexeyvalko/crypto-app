@@ -1,13 +1,13 @@
 import axios, { AxiosResponse } from 'axios';
 import { ICoin } from '../types/coins';
 
-const BASE_URL = 'https://api.coingecko.com/api/v3/coins/markets';
+const BASE_URL = 'https://api.coingecko.com/api/v3/coins';
 
 export const requestCoins = async (
   ids = '',
   per_page = 100,
 ): Promise<AxiosResponse<ICoin[]>> => {
-  const response = await axios.get<ICoin[]>(BASE_URL, {
+  const response = await axios.get<ICoin[]>(`${BASE_URL}/markets`, {
     params: {
       vs_currency: 'usd',
       ids,
@@ -21,3 +21,15 @@ export const requestCoins = async (
 
   return response;
 };
+
+
+export const requestChartData = async (coinId: string, days: number): Promise<AxiosResponse<[number[]]>> => {
+  const response = await axios.get<[number[]]>(`${BASE_URL}/${coinId}/ohlc`, {
+    params: {
+      vs_currency: 'usd',
+      days,
+    },
+  });
+
+  return response
+}

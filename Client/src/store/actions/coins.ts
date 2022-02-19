@@ -1,5 +1,5 @@
 import { Dispatch } from 'react';
-import { requestCoins } from '../../requests/coins';
+import { requestChartData, requestCoins } from '../../requests/coins';
 import { CoinsAction, CoinsActionTypes } from '../reducers/CoinsReducer';
 
 const HIGHLIGHT_COINS = 'bitcoin,litecoin,the-open-network,ethereum';
@@ -33,6 +33,22 @@ export const fetchCoinList = () => async (dispatch: Dispatch<CoinsAction>) => {
     dispatch({
       type: CoinsActionTypes.FETCH_COINS_ERROR,
       payload: 'error while fetch coinlist data',
+    });
+  }
+};
+
+export const fetchChartInfo = (coinId: string, days: number) => async (dispatch: Dispatch<CoinsAction>) => {
+  try {
+    dispatch({ type: CoinsActionTypes.FETCH_CHART_INFO, payload: true });
+    const response = await requestChartData(coinId, days);
+    dispatch({
+      type: CoinsActionTypes.FETCH_CHART_INFO_SUCCESS,
+      payload: response.data,
+    });
+  } catch {
+    dispatch({
+      type: CoinsActionTypes.FETCH_COINS_ERROR,
+      payload: 'error while fetch chart data',
     });
   }
 };
