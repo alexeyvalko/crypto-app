@@ -1,7 +1,6 @@
 import { Box, Fade, Grid, useDisclosure } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
 import { useActions } from '../../hooks/useActions';
 import { useTypedUseSelector } from '../../hooks/useTypedUseSelector';
 import { Section } from '../Section/Section';

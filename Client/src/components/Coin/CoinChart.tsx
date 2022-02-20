@@ -68,7 +68,7 @@ export const CoinChart: FC<Props> = ({ chart, name, days, setDays }) => {
         options={chartOptions}
         series={chartSeries}
         type="area"
-        height={350}
+        height={360}
       />
     </Card>
   );

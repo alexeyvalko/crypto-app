@@ -1,51 +1,94 @@
-import { ApexOptions } from "apexcharts";
+import { ApexOptions } from 'apexcharts';
+import millify from 'millify';
 
-export const getChartOptions  = (color: string, colorMode: string): ApexOptions => ({
-    chart: {
-      foreColor: color,
-      height: 350,
-      type: 'area',
-      zoom: {
-        enabled: false,
-      },
-      toolbar: {
-        show: false,
-      },
+export const getChartOptions = (
+  color: string,
+  colorMode: string,
+): ApexOptions => ({
+  chart: {
+    foreColor: color,
+    height: 350,
+    type: 'area',
+    dropShadow: {
+      enabled: true,
+      color,
+      top: -2,
+      left: 2,
+      blur: 5,
+      opacity: 0.06,
     },
-    grid: {
-      borderColor: colorMode === 'light' ? '#CBD5E0' : '#4A5568',
-      strokeDashArray: 4,
-    },
-    fill: {
-      type: 'gradient',
-      gradient: {
-        shadeIntensity: 1,
-        inverseColors: false,
-        opacityFrom: 0.5,
-        opacityTo: 0,
-        stops: [0, 90, 100],
-      },
-    },
-    tooltip: {
-      theme: colorMode,
-    },
-    dataLabels: {
+    zoom: {
       enabled: false,
     },
-    stroke: {
-      curve: 'smooth',
+    toolbar: {
+      show: false,
     },
-    markers: {
-      colors: '#E53E3E',
+  },
+  grid: {
+    borderColor: colorMode === 'light' ? '#CBD5E0' : '#4A5568',
+    strokeDashArray: 4,
+    padding: {
+      left: -30,
+      right: 5,
     },
-    xaxis: {
-      type: 'datetime',
+  },
+  fill: {
+    type: 'gradient',
+    gradient: {
+      shadeIntensity: 1,
+      inverseColors: false,
+      opacityFrom: 0.5,
+      opacityTo: 0,
+      stops: [0, 90, 100],
     },
-    yaxis: {
-      forceNiceScale: true,
-      labels: {
-        minWidth: 0,
-        maxWidth: 80,
+  },
+  tooltip: {
+    theme: colorMode,
+    custom({ series, seriesIndex, dataPointIndex }) {
+      return `<div style="display: flex; gap: 5px; font-weight: 600; padding: 10px; border-radius: 15px; box-shadow: none;">
+        <span>$${series[seriesIndex][dataPointIndex].toLocaleString()}</span>
+        </div>`;
+    },
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    curve: 'smooth',
+    width: 2,
+  },
+  markers: {
+    colors: '#E53E3E',
+  },
+  xaxis: {
+    type: 'datetime',
+  },
+  yaxis: {
+    forceNiceScale: true,
+    tickAmount: 6,
+    labels: {
+      minWidth: 0,
+      offsetY: -5,
+      maxWidth: 100,
+      style: {
+        fontWeight: 500,
+      },
+      align: 'left',
+      formatter: (value) => {
+        if (value >= 1000) {
+          return millify(value);
+        }
+        if (value >= 10) {
+          return value.toFixed(2);
+        }
+        if (value === 0) {
+          return value.toFixed(0);
+        }
+        if (value <= 0.01) {
+          return value.toFixed(6);
+        }
+        return value.toFixed(4);
       },
     },
-  });
+  },
+});
