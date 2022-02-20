@@ -16,7 +16,6 @@ export const MobileMenu: FC<Props> = ({ toggleMenu }) => {
     borderRadius: '15px 15px 0 0',
     color,
     zIndex: 'full',
-    boxShadow: '0px -1px 3px 0px rgba(0,0,0,0.1)',
   };
 
   return (

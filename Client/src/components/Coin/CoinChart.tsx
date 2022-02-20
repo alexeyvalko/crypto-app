@@ -1,71 +1,29 @@
 import Chart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import {
-  Box,
+  Button,
+  Flex,
   Heading,
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { FC } from 'react';
 import { Card } from '../Card/Card';
+import { getChartOptions } from '../../utils/getChartOptions';
+import { chartButtons, DaysType } from './chartButtons';
 
 type Props = {
   chart: [number[]];
   name: string;
+  days: number | string;
+  setDays(value: DaysType): void;
 };
 
-export const CoinChart: FC<Props> = ({ chart, name }) => {
+export const CoinChart: FC<Props> = ({ chart, name, days, setDays }) => {
   const { colorMode } = useColorMode();
   const color = useColorModeValue('#1A202C', 'rgba(255,255,255,0.9)');
-  
-  const chartOptions: ApexOptions = {
-    chart: {
-      foreColor: color,
-      height: 350,
-      type: 'area',
-      stacked: false,
-      zoom: {
-        enabled: false,
-      },
-      toolbar: {
-        show: false,
-      },
-    },
-    grid: {
-      borderColor: colorMode === 'light' ? '#CBD5E0' : '#4A5568',
-      strokeDashArray: 4,
-
-    },
-    fill: {
-      type: 'gradient',
-      gradient: {
-        shadeIntensity: 1,
-        inverseColors: false,
-        opacityFrom: 0.5,
-        opacityTo: 0,
-        stops: [0, 90, 100],
-      },
-    },
-    tooltip: {
-      theme: colorMode,
-  },
-    dataLabels: {
-      enabled: false,
-    },
-    stroke: {
-      curve: 'smooth',
-    },
-    markers: {
-      colors: '#E53E3E',
-    },
-    xaxis: {
-      type: 'datetime',
-    },
-    yaxis: {
-      forceNiceScale: true,
-    },
-  };
-
+  const buttonsBg = useColorModeValue('gray.300', 'gray.600'); 
+  const chartOptions: ApexOptions = getChartOptions(color, colorMode);
   const chartData: [number, number][] = chart.map((data) => [data[0], data[4]]);
 
   const chartSeries: ApexAxisChartSeries = [
@@ -77,11 +35,35 @@ export const CoinChart: FC<Props> = ({ chart, name }) => {
 
   return (
     <Card size="full">
-      <Box ml="5">
+      <Flex justify={{base: "center" , sm: "space-between"}} wrap="wrap" gap="10px">
         <Heading as="h2" fontSize={{ base: '1.2rem', md: '1.5rem' }} pb="5px">
           {`${name} to USD Chart`}
         </Heading>
-      </Box>
+        <Flex
+          justify="space-between"
+          align="center"
+          padding="5px"
+          gap={{base: "2px", sm: "5px"}}
+          bgColor={buttonsBg}
+          borderRadius="10px"
+        >
+          {chartButtons.map((item) => (
+            <Button
+              key={item.name}
+              variant={days === item.value ? 'solid' : 'ghost'}
+              pl="10px"
+              pr="10px"
+              size="sm"
+              fontSize={{base: '12px', sm: "14px"}}
+              onClick={() => {
+                setDays(item.value);
+              }}
+            >
+              {item.name}
+            </Button>
+          ))}
+        </Flex>
+      </Flex>
       <Chart
         options={chartOptions}
         series={chartSeries}

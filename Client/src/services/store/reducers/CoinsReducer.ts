@@ -1,4 +1,4 @@
-import { ICoin } from '../../types/coins';
+import { ICoin } from '../../../types/coins';
 
 export enum CoinsActionTypes {
   FETCH_COINS_HIGHLIGHT = 'FETCH_COINS_HIGHLIGHT',

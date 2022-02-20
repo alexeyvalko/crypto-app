@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
-import { ICoin } from '../types/coins';
+import { DaysType } from '../../components/Coin/chartButtons';
+import { ICoin } from '../../types/coins';
 
 const BASE_URL = 'https://api.coingecko.com/api/v3/coins';
 
@@ -23,7 +24,7 @@ export const requestCoins = async (
 };
 
 
-export const requestChartData = async (coinId: string, days: number): Promise<AxiosResponse<[number[]]>> => {
+export const requestChartData = async (coinId: string, days: DaysType): Promise<AxiosResponse<[number[]]>> => {
   const response = await axios.get<[number[]]>(`${BASE_URL}/${coinId}/ohlc`, {
     params: {
       vs_currency: 'usd',

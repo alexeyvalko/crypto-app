@@ -25,7 +25,7 @@ export const Dashboard: FC = () => {
         <Highlights />
         <Section>
           <Box ml="3" mb="3">
-            <Heading as="h2" size="md">
+            <Heading as="h2" size="lg">
               Top 10
             </Heading>
           </Box>

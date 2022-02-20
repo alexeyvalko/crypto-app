@@ -1,4 +1,5 @@
 import { Dispatch } from 'react';
+import { DaysType } from '../../../components/Coin/chartButtons';
 import { requestChartData, requestCoins } from '../../requests/coins';
 import { CoinsAction, CoinsActionTypes } from '../reducers/CoinsReducer';
 
@@ -37,7 +38,7 @@ export const fetchCoinList = () => async (dispatch: Dispatch<CoinsAction>) => {
   }
 };
 
-export const fetchChartInfo = (coinId: string, days: number) => async (dispatch: Dispatch<CoinsAction>) => {
+export const fetchChartInfo = (coinId: string, days: DaysType) => async (dispatch: Dispatch<CoinsAction>) => {
   try {
     dispatch({ type: CoinsActionTypes.FETCH_CHART_INFO, payload: true });
     const response = await requestChartData(coinId, days);

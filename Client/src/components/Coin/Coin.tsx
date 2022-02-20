@@ -6,6 +6,7 @@ import { useActions } from '../../hooks/useActions';
 import { useTypedUseSelector } from '../../hooks/useTypedUseSelector';
 import { Section } from '../Section/Section';
 import { BaseCoinInfo } from './BaseCoinInfo';
+import { DaysType } from './chartButtons';
 import { CoinChart } from './CoinChart';
 import { CoinSupply } from './CoinSupply';
 import { LoadingInfo } from './LoadingInfo';
@@ -16,14 +17,16 @@ type PathParams = {
   coinId: string;
 };
 
+
+
 export const Coin = () => {
   const { coinList, loadingCoinList, error, chart } = useTypedUseSelector(
     (state) => state.coins,
   );
   const { coinId } = useParams<PathParams>();
   const { fetchCoinList, fetchChartInfo } = useActions();
-  const { isOpen, onToggle } = useDisclosure();
-  const [days] = useState<number>(365);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [days, setDays] = useState<DaysType>(1);
 
   useEffect(() => {
     if (coinList.length === 0) {
@@ -32,11 +35,11 @@ export const Coin = () => {
     if (coinId) {
       fetchChartInfo(coinId, days);
     }
-    onToggle();
+    onOpen();
     return () => {
-      onToggle();
+      onClose();
     };
-  }, []);
+  }, [days]);
 
   if (loadingCoinList) {
     return <LoadingInfo info="Loading..." />;
@@ -77,7 +80,7 @@ export const Coin = () => {
         </Section>
 
         <Section>
-          <CoinChart chart={chart} name={coin.name} />
+          <CoinChart chart={chart} name={coin.name} days={days} setDays={setDays} />
         </Section>
       </Box>
     </Fade>

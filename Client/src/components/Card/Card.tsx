@@ -13,7 +13,7 @@ export const Card: FC<Props> = ({ size, children }) => {
     bgColor: bg,
     borderRadius: '15px',
     padding: { base: '18px', md: '22px' },
-    fontSize: { base: 'sm', md: 'md' },
+    fontSize: { base: 'sm', md: 'md',},
   };
 
   return <Box sx={style}>{children}</Box>;
