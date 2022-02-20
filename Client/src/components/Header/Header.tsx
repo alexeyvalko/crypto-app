@@ -8,9 +8,9 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { CgMenuGridO } from 'react-icons/cg';
 import { FC } from 'react';
 import { MobileMenu } from './MobileMenu';
+import { CgMenuGridO } from '../../icons';
 
 export const Header: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();

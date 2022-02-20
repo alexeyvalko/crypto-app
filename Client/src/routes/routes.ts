@@ -1,4 +1,4 @@
-import { MdSpaceDashboard, MdTableChart, MdInfo } from 'react-icons/md';
+import { MdSpaceDashboard, MdTableChart, MdInfo } from '../icons';
 
 interface IRoutes {
   path: string;

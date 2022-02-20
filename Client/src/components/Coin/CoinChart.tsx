@@ -17,7 +17,7 @@ type Props = {
 export const CoinChart: FC<Props> = ({ chart, name }) => {
   const { colorMode } = useColorMode();
   const color = useColorModeValue('#1A202C', 'rgba(255,255,255,0.9)');
-
+  
   const chartOptions: ApexOptions = {
     chart: {
       foreColor: color,
@@ -33,6 +33,8 @@ export const CoinChart: FC<Props> = ({ chart, name }) => {
     },
     grid: {
       borderColor: colorMode === 'light' ? '#CBD5E0' : '#4A5568',
+      strokeDashArray: 4,
+
     },
     fill: {
       type: 'gradient',
@@ -46,7 +48,7 @@ export const CoinChart: FC<Props> = ({ chart, name }) => {
     },
     tooltip: {
       theme: colorMode,
-    },
+  },
     dataLabels: {
       enabled: false,
     },
@@ -72,6 +74,7 @@ export const CoinChart: FC<Props> = ({ chart, name }) => {
       data: chartData,
     },
   ];
+
   return (
     <Card size="full">
       <Box ml="5">

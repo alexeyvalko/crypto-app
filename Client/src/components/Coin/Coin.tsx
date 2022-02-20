@@ -23,7 +23,7 @@ export const Coin = () => {
   const { coinId } = useParams<PathParams>();
   const { fetchCoinList, fetchChartInfo } = useActions();
   const { isOpen, onToggle } = useDisclosure();
-  const [days, setDays] = useState<number>(1);
+  const [days] = useState<number>(365);
 
   useEffect(() => {
     if (coinList.length === 0) {
