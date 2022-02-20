@@ -8,7 +8,8 @@ export const Sidebar: FC = () => (
     display={{ base: 'none', lg: 'block' }}
     as="aside"
     pos="sticky"
-    top="2"
+    top="64px"
+    overscrollBehavior="contain"
     flexShrink={0}
     pl="10"
     pr="10"
