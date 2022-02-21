@@ -17,11 +17,7 @@ export const Dashboard: FC = () => {
 
   return (
     <Fade in={isOpen}>
-      <Box
-        paddingRight={{ base: 5, md: 10 }}
-        paddingLeft={{ base: 5, md: 10 }}
-        paddingBottom={{ base: 5, md: 5 }}
-      >
+      <Box>
         <Highlights />
         <Section>
           <Box ml="3" mb="3">

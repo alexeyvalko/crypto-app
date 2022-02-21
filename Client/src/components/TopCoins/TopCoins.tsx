@@ -3,7 +3,7 @@ import { FC, useEffect, useMemo, useState } from 'react';
 import { useTypedUseSelector } from '../../hooks/useTypedUseSelector';
 import { CoinTable } from '../CoinTable/CoinTable';
 import { getPagesCount } from '../../utils/getPagesCount';
-import { Pagination } from './pagination';
+import { Pagination } from './Pagination';
 
 export const TopCoins: FC = () => {
   const { coinList } = useTypedUseSelector((state) => state.coins);
@@ -27,11 +27,7 @@ export const TopCoins: FC = () => {
 
   return (
     <Fade in={isOpen}>
-      <Box
-        paddingRight={{ base: 5, md: 10 }}
-        paddingLeft={{ base: 5, md: 10 }}
-        paddingBottom={{ base: 5, md: 5 }}
-      >
+      <Box>
         <Box ml="5" mb="5">
           <Heading as="h1" size="lg">
             Top 100 coins on market

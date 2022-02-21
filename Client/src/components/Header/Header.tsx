@@ -31,8 +31,6 @@ export const Header: FC = () => {
       color="white"
       w="full"
       justify={{ base: 'space-between', lg: 'flex-end' }}
-      paddingRight={{ base: 5, md: 10 }}
-      paddingLeft={{ base: 5, md: 10 }}
       align="center"
       h="16"
     >

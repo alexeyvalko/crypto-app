@@ -11,10 +11,9 @@ export const Sidebar: FC = () => (
     top="64px"
     overscrollBehavior="contain"
     flexShrink={0}
-    pl="10"
     pr="10"
     w={{ base: 'full', lg: '280px' }}
-    h="calc(100vh - 5rem)"
+    h="calc(100vh - 128px)"
   >
     <Box as="nav">
       <Wrap direction="column" spacing={3}>

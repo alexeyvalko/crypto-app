@@ -23,11 +23,7 @@ export const About: FC = () => {
 
   return (
     <Fade in={isOpen}>
-      <Box
-        paddingRight={{ base: 5, md: 10 }}
-        paddingLeft={{ base: 5, md: 10 }}
-        paddingBottom={{ base: 5, md: 5 }}
-      >
+      <Box>
         <Card size="full">
           <Heading as="h2" fontSize="24px" pb="10px">
             Used resources
