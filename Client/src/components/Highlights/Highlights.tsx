@@ -1,9 +1,9 @@
-import { Box, SimpleGrid, SkeletonText } from '@chakra-ui/react';
+import { Box, SimpleGrid } from '@chakra-ui/react';
 import { FC, useEffect } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedUseSelector } from '../../hooks/useTypedUseSelector';
-import { Card } from '../Card/Card';
 import { HighlightCard } from './HighlightCard';
+import { HighlightCardSkeleton } from './HighlightCardSkeleton';
 
 export const Highlights: FC = () => {
   const { loadingHighlight, highlightCoins, error } = useTypedUseSelector(
@@ -16,24 +16,7 @@ export const Highlights: FC = () => {
   }, []);
 
   if (loadingHighlight && highlightCoins.length === 0) {
-    return (
-      <Box overflow="hidden" maxW="full">
-        <SimpleGrid columns={[2, 2, 2, 4]} spacing="24px" w="full">
-          <Card size="full">
-            <SkeletonText mt="4" noOfLines={3} spacing="5" />
-          </Card>
-          <Card size="full">
-            <SkeletonText mt="4" noOfLines={3} spacing="5" />
-          </Card>
-          <Card size="full">
-            <SkeletonText mt="4" noOfLines={3} spacing="5" />
-          </Card>
-          <Card size="full">
-            <SkeletonText mt="4" noOfLines={3} spacing="5" />
-          </Card>
-        </SimpleGrid>
-      </Box>
-    );
+    return <HighlightCardSkeleton />;
   }
 
   if (error !== null) {
