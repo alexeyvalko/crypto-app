@@ -28,8 +28,8 @@ export const getChartOptions = (
     borderColor: colorMode === 'light' ? '#CBD5E0' : '#4A5568',
     strokeDashArray: 4,
     padding: {
-      left: -30,
-      right: 5,
+      left: -45,
+      right: -5,
     },
   },
   fill: {
@@ -68,7 +68,8 @@ export const getChartOptions = (
     tickAmount: 6,
     labels: {
       minWidth: 0,
-      offsetY: -5,
+      offsetY: -8,
+      offsetX: -15,
       maxWidth: 100,
       style: {
         fontWeight: 500,
