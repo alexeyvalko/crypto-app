@@ -8,7 +8,10 @@ import {
   StatHelpText,
   StatLabel,
   StatNumber,
+  LinkBox,
+  LinkOverlay,
 } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 import { Card } from '../Card/Card';
 
 type Props = {
@@ -16,6 +19,7 @@ type Props = {
   price: string | number;
   priceChange: number;
   imageSrc: string;
+  id: string;
 };
 
 export const HighlightCard: FC<Props> = ({
@@ -23,11 +27,13 @@ export const HighlightCard: FC<Props> = ({
   price,
   priceChange,
   imageSrc,
+  id
 }) => (
+  <LinkBox >
   <Card size="full">
     <Flex justifyContent="space-between" align="center">
       <Stat width="85%">
-        <StatLabel fontWeight={{base: "400", sm: "500"}} opacity={{base: 0.8}}>{coin}</StatLabel>
+        <StatLabel fontWeight={{base: "400", sm: "500"}} opacity={{base: 0.8}}><LinkOverlay as={RouterLink} to={`/coins/${id}`}>{coin}</LinkOverlay></StatLabel>
         <StatNumber
           fontSize={{ base: '1.1rem', md: '1.5rem' }}
         >{`$${price.toLocaleString()}`}</StatNumber>
@@ -54,4 +60,5 @@ export const HighlightCard: FC<Props> = ({
       </Box>
     </Flex>
   </Card>
+  </LinkBox>
 );

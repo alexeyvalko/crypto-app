@@ -19,7 +19,7 @@ type PathParams = {
 
 
 export const Coin = () => {
-  const { coinList, loadingCoinList, error, chart } = useTypedUseSelector(
+  const { coinList, loadingCoinList, error, chart, highlightCoins } = useTypedUseSelector(
     (state) => state.coins,
   );
   const { coinId } = useParams<PathParams>();
@@ -44,7 +44,7 @@ export const Coin = () => {
     return <LoadingInfo info="Loading..." />;
   }
 
-  const coin = coinList.find((item) => item.id === coinId);
+  const coin = coinList.find((item) => item.id === coinId) || highlightCoins.find((item) => item.id === coinId);
 
   if (coin === undefined || error) {
     return <LoadingInfo info={error || 'Data Not found'} />;

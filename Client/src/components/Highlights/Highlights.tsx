@@ -30,11 +30,12 @@ export const Highlights: FC = () => {
         w="full"
       >
         {highlightCoins.map(
-          ({ name, price_change_percentage_24h, current_price, image }) => (
+          ({ name, price_change_percentage_24h, current_price, image, id }) => (
             <HighlightCard
               key={name}
               price={current_price}
               coin={name}
+              id={id}
               priceChange={price_change_percentage_24h}
               imageSrc={image}
             />
