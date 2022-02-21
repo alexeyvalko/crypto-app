@@ -46,7 +46,7 @@ module.exports = {
       safe: true,
     }),
     new CopyPlugin({
-      patterns: [{ from: './src/favicon.ico', to: '.' }]
+      patterns: [{ from: './public/', to: '.' },]
     }),
   ],
   optimization: {
