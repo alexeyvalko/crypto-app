@@ -25,7 +25,7 @@ export const BaseCoinInfo: FC<Props> = ({
 }) => (
   <Card size="full">
     <Flex justify="flex-start" gap="10px" align="center" mb="2">
-      <Image src={image} boxSize={8} borderRadius="full" />
+      <Image src={image} boxSize={8} borderRadius="full" alt={name}/>
       <Heading as="h1" size="lg">
         {`${name} (${symbol.toUpperCase()})`}
       </Heading>
