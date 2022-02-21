@@ -27,11 +27,11 @@ export const HighlightCard: FC<Props> = ({
   <Card size="full">
     <Flex justifyContent="space-between" align="center">
       <Stat width="85%">
-        <StatLabel>{coin}</StatLabel>
+        <StatLabel fontWeight={{base: "400", sm: "500"}} opacity={{base: 0.8}}>{coin}</StatLabel>
         <StatNumber
-          fontSize={{ base: '1rem', md: '1.5rem' }}
+          fontSize={{ base: '1.1rem', md: '1.5rem' }}
         >{`$${price.toLocaleString()}`}</StatNumber>
-        <StatHelpText>
+        <StatHelpText mb="0">
           <StatArrow
             type={priceChange > 0 ? 'increase' : 'decrease'}
             color={priceChange > 0 ? 'green' : 'red'}
