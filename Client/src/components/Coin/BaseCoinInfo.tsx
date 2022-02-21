@@ -34,7 +34,7 @@ export const BaseCoinInfo: FC<Props> = ({
       <Tag
         colorScheme="telegram"
         variant="solid"
-      >{`Rank #${market_cap_rank}`}</Tag>
+      >{`Rank #${market_cap_rank || 'n/a'}`}</Tag>
     </Box>
     <Box width="max-content">
       <Flex gap="10px" align="center">

@@ -23,13 +23,14 @@ export const Coin = () => {
     (state) => state.coins,
   );
   const { coinId } = useParams<PathParams>();
-  const { fetchCoinList, fetchChartInfo } = useActions();
+  const { fetchCoinList, fetchChartInfo, fetchHighlightCoins } = useActions();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [days, setDays] = useState<DaysType>(1);
 
   useEffect(() => {
     if (coinList.length === 0) {
       fetchCoinList();
+      fetchHighlightCoins();
     }
     if (coinId) {
       fetchChartInfo(coinId, days);
