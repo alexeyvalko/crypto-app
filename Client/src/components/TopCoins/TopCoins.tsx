@@ -1,15 +1,9 @@
-import {
-  Box,
-  Button,
-  Fade,
-  Flex,
-  Heading,
-  useDisclosure,
-} from '@chakra-ui/react';
+import { Box, Fade, Heading, useDisclosure } from '@chakra-ui/react';
 import { FC, useEffect, useMemo, useState } from 'react';
 import { useTypedUseSelector } from '../../hooks/useTypedUseSelector';
 import { CoinTable } from '../CoinTable/CoinTable';
 import { getPagesCount } from '../../utils/getPagesCount';
+import { Pagination } from './pagination';
 
 export const TopCoins: FC = () => {
   const { coinList } = useTypedUseSelector((state) => state.coins);
@@ -50,20 +44,13 @@ export const TopCoins: FC = () => {
           minCelWidth="60px"
         />
 
-        <Flex w="full" justify="center" wrap="wrap" gap="10px" mt="5">
-          {pages.map((item) => (
-            <Button
-              variant={currentPage === item ? 'solid' : 'outline'}
-              key={item}
-              size="sm"
-              onClick={() => {
-                setCurrentPage(item);
-              }}
-            >
-              {item}
-            </Button>
-          ))}
-        </Flex>
+        <Pagination
+          pages={pages}
+          currentPage={currentPage}
+          onClick={(page: number) => {
+            setCurrentPage(page);
+          }}
+        />
       </Box>
     </Fade>
   );

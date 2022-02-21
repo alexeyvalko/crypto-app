@@ -72,7 +72,7 @@ export const getChartOptions = (
       offsetX: -15,
       maxWidth: 100,
       style: {
-        fontWeight: 500,
+        fontWeight: 400,
       },
       align: 'left',
       formatter: (value) => {

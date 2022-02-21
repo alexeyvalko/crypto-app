@@ -35,8 +35,8 @@ export const CoinChart: FC<Props> = ({ chart, name, days, setDays }) => {
 
   return (
     <Card size="full">
-      <Flex justify={{base: "center" , sm: "space-between"}} wrap="wrap" gap="10px">
-        <Heading as="h2" fontSize={{ base: '1.2rem', md: '1.5rem' }} pb="5px">
+      <Flex justify={{base: "center" , sm: "space-between"}} wrap="wrap" gap="10px" align="center">
+        <Heading as="h2" fontSize={{ base: '1.2rem', md: '1.5rem' }}>
           {`${name} to USD Chart`}
         </Heading>
         <Flex
@@ -68,7 +68,7 @@ export const CoinChart: FC<Props> = ({ chart, name, days, setDays }) => {
         options={chartOptions}
         series={chartSeries}
         type="area"
-        height={360}
+        height={350}
       />
     </Card>
   );
