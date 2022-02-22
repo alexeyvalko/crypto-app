@@ -3,6 +3,7 @@ import { FC, useEffect } from 'react';
 
 import { CoinTable } from '../CoinTable/CoinTable';
 import { Highlights } from '../Highlights/Highlights';
+import { News } from '../News/News';
 import { Section } from '../Section/Section';
 
 export const Dashboard: FC = () => {
@@ -19,6 +20,14 @@ export const Dashboard: FC = () => {
     <Fade in={isOpen}>
       <Box>
         <Highlights />
+        <Section>
+          <Box ml="3" mb="3">
+            <Heading as="h2" size="lg">
+              News
+            </Heading>
+          </Box>
+          <News />
+        </Section>
         <Section>
           <Box ml="3" mb="3">
             <Heading as="h2" size="lg">

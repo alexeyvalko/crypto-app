@@ -3,7 +3,7 @@ import { FC, useEffect, useMemo, useState } from 'react';
 import { useTypedUseSelector } from '../../hooks/useTypedUseSelector';
 import { CoinTable } from '../CoinTable/CoinTable';
 import { getPagesCount } from '../../utils/getPagesCount';
-import { Pagination } from './Pagination';
+import { Pagination } from '../Pagination/Pagination';
 
 export const TopCoins: FC = () => {
   const { coinList } = useTypedUseSelector((state) => state.coins);

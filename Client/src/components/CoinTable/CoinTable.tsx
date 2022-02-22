@@ -15,6 +15,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
 import { useTypedUseSelector } from '../../hooks/useTypedUseSelector';
 import { Card } from '../Card/Card';
+import { TableSkeleton } from './TableSkeleton';
 
 type Props = {
   items: number;
@@ -29,18 +30,17 @@ export const CoinTable: FC<Props> = ({
   minCelWidth,
   page = 0,
 }) => {
-  const { coinList } = useTypedUseSelector((state) => state.coins);
+  const { coinList, loadingCoinList } = useTypedUseSelector(
+    (state) => state.coins,
+  );
   const { fetchCoinList } = useActions();
   const borderColor = useColorModeValue('gray.100', 'gray.600');
   const bg = useColorModeValue('gray.200', 'gray.700');
-
-  const tableStart = page * items;
-
-  const listToShow = coinList.slice(tableStart, items + page * items);
   const hoverStyles = {
     bgColor: borderColor,
   };
-
+  const tableStart = page * items;
+  const listToShow = coinList.slice(tableStart, items + page * items);
   const overflowMode = size === 'sm' ? 'visible' : 'scroll';
   const backgroundMode = size === 'sm' ? 'transparent' : bg;
   const sticky = (width: string) => ({
@@ -57,6 +57,12 @@ export const CoinTable: FC<Props> = ({
   useEffect(() => {
     fetchCoinList();
   }, []);
+
+  if (loadingCoinList && coinList.length === 0) {
+    return (
+      <TableSkeleton />
+    );
+  }
 
   return (
     <Card size="full">

@@ -16,6 +16,7 @@ export const Header: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bgIcon = useColorModeValue('gray.500', 'gray.200');
+  const bg = useColorModeValue('white', 'gray.800');
 
   const toggleMenu = () => {
     if (isOpen) {
@@ -33,6 +34,12 @@ export const Header: FC = () => {
       justify={{ base: 'space-between', lg: 'flex-end' }}
       align="center"
       h="16"
+      position="sticky"
+      top={0}
+      left={0}
+      zIndex={100}
+      bgColor={bg}
+      mb="10px"
     >
       <IconButton
         display={{ base: 'flex', lg: 'none' }}

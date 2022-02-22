@@ -69,12 +69,12 @@ export const getChartOptions = (
     labels: {
       minWidth: 0,
       offsetY: -8,
-      offsetX: -15,
+      offsetX: -5,
       maxWidth: 100,
       style: {
         fontWeight: 400,
       },
-      align: 'left',
+      align: 'right',
       formatter: (value) => {
         if (value >= 1000) {
           return millify(value);
