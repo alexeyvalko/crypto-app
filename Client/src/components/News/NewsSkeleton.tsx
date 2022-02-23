@@ -2,7 +2,7 @@ import { Grid, GridItem, Skeleton } from '@chakra-ui/react';
 
 export const NewsSkeleton = () => (
   <Grid
-    minH="400px"
+    minH="500px"
     templateRows={{ base: 'repeat(3, 1fr)', md: 'repeat(2, 1fr)' }}
     templateColumns={{ base: '1fr', md: 'repeat(7, 1fr)' }}
     gap="24px"

@@ -1,4 +1,11 @@
-import { Box, Fade, Grid, useDisclosure } from '@chakra-ui/react';
+import {
+  Box,
+  Center,
+  Fade,
+  Grid,
+  Spinner,
+  useDisclosure,
+} from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
@@ -39,7 +46,11 @@ export const Coin = () => {
   }, [days]);
 
   if (loadingCoinList) {
-    return <LoadingInfo info="Loading..." />;
+    return (
+      <Center h="calc(100vh - 138px)" w="100%">
+        <Spinner size="xl" color="blue.600" />
+      </Center>
+    );
   }
 
   const coin =
@@ -47,7 +58,7 @@ export const Coin = () => {
     highlightCoins.find((item) => item.id === coinId);
 
   if (coin === undefined || error) {
-    return <LoadingInfo info={error || 'Data Not found'} />;
+    return <Center h="calc(100vh - 138px)" w="100%"><LoadingInfo info={error || 'Data Not found'} /></Center>;
   }
 
   return (
