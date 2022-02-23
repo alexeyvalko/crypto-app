@@ -1,20 +1,29 @@
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Box, Grid, GridItem } from '@chakra-ui/react';
 import { FC, useEffect } from 'react';
 
 import { useActions } from '../../hooks/useActions';
 import { useTypedUseSelector } from '../../hooks/useTypedUseSelector';
 import { NewsCard } from './NewsCard';
+import { NewsSkeleton } from './NewsSkeleton';
 
 export const News: FC = () => {
   const { fetchNews } = useActions();
-  const { news } = useTypedUseSelector((state) => state.news);
+  const { news, loadingNews, error } = useTypedUseSelector((state) => state.news);
   useEffect(() => {
     if (news.length === 0) {
       fetchNews();
     }
   }, []);
 
-  const newsToShow = news.slice(0, 3);
+  if(loadingNews) {
+    return <NewsSkeleton />
+  }
+  
+  if(error) {
+    return <Box> {error} </Box>
+  }
+
+  const newsToShow = news?.slice(0, 3);
   return (
     <Grid
       minH="400px"

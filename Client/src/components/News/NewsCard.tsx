@@ -52,7 +52,7 @@ export const NewsCard: FC<Props> = ({
       </Heading>
       <Text fontSize="sm" fontWeight="normal" w={{ lg: '92%' }}>
         {description.length > 100
-          ? `${description.slice(0, 120)}...`
+          ? `${description.slice(0, 110)}...`
           : description}
       </Text>
       <Spacer />
@@ -81,7 +81,7 @@ export const NewsCard: FC<Props> = ({
           </Link>
         </Box>
         <Text as="span" fontSize="sm">
-          {moment(published_at).startOf('s').fromNow()}
+          {moment(published_at).startOf('seconds').fromNow()}
         </Text>
       </Flex>
     </Flex>
