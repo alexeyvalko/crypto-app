@@ -38,18 +38,20 @@ export const fetchCoinList = () => async (dispatch: Dispatch<CoinsAction>) => {
   }
 };
 
-export const fetchChartInfo = (coinId: string, days: DaysType) => async (dispatch: Dispatch<CoinsAction>) => {
-  try {
-    dispatch({ type: CoinsActionTypes.FETCH_CHART_INFO, payload: true });
-    const response = await requestChartData(coinId, days);
-    dispatch({
-      type: CoinsActionTypes.FETCH_CHART_INFO_SUCCESS,
-      payload: response.data,
-    });
-  } catch {
-    dispatch({
-      type: CoinsActionTypes.FETCH_COINS_ERROR,
-      payload: 'error while fetch chart data',
-    });
-  }
-};
+export const fetchChartInfo =
+  (coinId: string, days: DaysType) =>
+  async (dispatch: Dispatch<CoinsAction>) => {
+    try {
+      dispatch({ type: CoinsActionTypes.FETCH_CHART_INFO, payload: true });
+      const response = await requestChartData(coinId, days);
+      dispatch({
+        type: CoinsActionTypes.FETCH_CHART_INFO_SUCCESS,
+        payload: response.data,
+      });
+    } catch {
+      dispatch({
+        type: CoinsActionTypes.FETCH_COINS_ERROR,
+        payload: 'error while fetch chart data',
+      });
+    }
+  };

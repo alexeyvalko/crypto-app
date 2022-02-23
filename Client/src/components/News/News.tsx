@@ -14,27 +14,32 @@ export const News: FC = () => {
     }
   }, []);
 
-
-  const newsToShow = news.slice(0, 3)
+  const newsToShow = news.slice(0, 3);
   return (
     <Grid
       minH="400px"
-      templateRows={{base: "repeat(3, 1fr)", md: "repeat(2, 1fr)"}}
-      templateColumns={{base: '1fr', md: "repeat(7, 1fr)"}}
+      templateRows={{ base: 'repeat(3, 1fr)', md: 'repeat(2, 1fr)' }}
+      templateColumns={{ base: '1fr', md: 'repeat(7, 1fr)' }}
       gap="24px"
       w="full"
     >
-      {newsToShow.map(({ title, image_url, url, description }, index) => (
-        <GridItem rowSpan={{base: 1, md: index === 0 ? 2 : 1}} colSpan={{base: 1, md: index === 0 ? 4 : 3}}>
-          <NewsCard
-            key={title}
-            title={title}
-            imgSrc={image_url}
-            url={url}
-            description={description}
-          />
-        </GridItem>
-      ))}
+      {newsToShow.map(
+        ({ title, image_url, url, description, uuid, published_at }, index) => (
+          <GridItem
+            rowSpan={{ base: 1, md: index === 0 ? 2 : 1 }}
+            colSpan={{ base: 1, md: index === 0 ? 4 : 3 }}
+            key={uuid}
+          >
+            <NewsCard
+              published_at={published_at}
+              title={title}
+              imgSrc={image_url}
+              url={url}
+              description={description}
+            />
+          </GridItem>
+        ),
+      )}
     </Grid>
   );
 };

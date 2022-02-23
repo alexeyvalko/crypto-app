@@ -5,7 +5,6 @@ import { SidebarLink } from './SidebarLink';
 
 export const Sidebar: FC = () => (
   <Box
-    
     display={{ base: 'none', lg: 'block' }}
     as="aside"
     pos="sticky"

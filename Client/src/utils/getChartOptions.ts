@@ -46,7 +46,11 @@ export const getChartOptions = (
     theme: colorMode,
     custom({ series, seriesIndex, dataPointIndex }) {
       return `<div style="display: flex; gap: 5px; font-weight: 600; padding: 10px; border-radius: 15px; box-shadow: none;">
-        <span>$${series[seriesIndex][dataPointIndex] >= 10 ? series[seriesIndex][dataPointIndex].toLocaleString() : series[seriesIndex][dataPointIndex]}</span>
+        <span>$${
+          series[seriesIndex][dataPointIndex] >= 10
+            ? series[seriesIndex][dataPointIndex].toLocaleString()
+            : series[seriesIndex][dataPointIndex]
+        }</span>
         </div>`;
     },
   },

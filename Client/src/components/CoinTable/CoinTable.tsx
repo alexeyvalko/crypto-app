@@ -59,9 +59,7 @@ export const CoinTable: FC<Props> = ({
   }, []);
 
   if (loadingCoinList && coinList.length === 0) {
-    return (
-      <TableSkeleton />
-    );
+    return <TableSkeleton />;
   }
 
   return (
@@ -91,10 +89,16 @@ export const CoinTable: FC<Props> = ({
                 <Td
                   sx={sticky('0')}
                   display={{ base: 'none', sm: 'table-cell' }}
+                  fontSize={{ base: 'sm', md: 'md' }}
                 >
                   {index + 1 + tableStart}
                 </Td>
-                <Td display="flex" alignItems="center" sx={sticky(minCelWidth)}>
+                <Td
+                  display="flex"
+                  alignItems="center"
+                  sx={sticky(minCelWidth)}
+                  fontSize={{ base: 'sm', md: 'md' }}
+                >
                   <Image
                     src={coin.image}
                     objectFit="contain"
@@ -107,7 +111,7 @@ export const CoinTable: FC<Props> = ({
                     {coin.name}
                   </Link>
                 </Td>
-                <Td textAlign="end">
+                <Td textAlign="end" fontSize={{ base: 'sm', md: 'md' }}>
                   {coin.current_price >= 0.01
                     ? `$${coin.current_price.toLocaleString()}`
                     : `$${coin.current_price}`}
@@ -119,7 +123,11 @@ export const CoinTable: FC<Props> = ({
                       : 'red.500'
                   }
                   textAlign="end"
-                >{`${coin.price_change_percentage_24h.toFixed(2)}%`}</Td>
+                  fontSize={{ base: 'sm', md: 'md' }}
+                >
+                  {coin.price_change_percentage_24h &&
+                    `${coin.price_change_percentage_24h?.toFixed(2)}%`}
+                </Td>
                 <Td
                   color={
                     coin.price_change_percentage_7d_in_currency > 0
@@ -127,10 +135,17 @@ export const CoinTable: FC<Props> = ({
                       : 'red.500'
                   }
                   textAlign="end"
-                >{`${coin.price_change_percentage_7d_in_currency.toFixed(
-                  2,
-                )}%`}</Td>
-                <Td textAlign="end">{`$${coin.market_cap.toLocaleString()}`}</Td>
+                  fontSize={{ base: 'sm', md: 'md' }}
+                >
+                  {coin.price_change_percentage_7d_in_currency &&
+                    `${coin.price_change_percentage_7d_in_currency?.toFixed(
+                      2,
+                    )}%`}
+                </Td>
+                <Td
+                  textAlign="end"
+                  fontSize={{ base: 'sm', md: 'md' }}
+                >{`$${coin.market_cap.toLocaleString()}`}</Td>
               </Tr>
             ))}
           </Tbody>

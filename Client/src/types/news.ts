@@ -21,10 +21,8 @@ export interface INewsResponse {
     page: number;
   };
   error?: {
-    code: string,
-    message: string,
-  },
+    code: string;
+    message: string;
+  };
   data: INews[];
 }
-
-

@@ -17,13 +17,13 @@ export const SidebarLink: FC<Props> = ({ path, name, children }) => {
     borderRadius: 'lg',
     display: 'inline-block',
     width: 'full',
-    opacity: 0.85
+    opacity: 0.85,
   };
 
   const active = {
     color,
     bgColor: bg,
-    opacity: 1
+    opacity: 1,
   };
 
   return (

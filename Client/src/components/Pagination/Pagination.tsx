@@ -15,7 +15,7 @@ export const Pagination: FC<Props> = ({ pages, currentPage, onClick }) => {
       {currentPage >= 3 && (
         <Flex gap="10px">
           <Button
-            variant='outline'
+            variant="outline"
             size="sm"
             onClick={() => {
               onClick(1);
@@ -23,7 +23,7 @@ export const Pagination: FC<Props> = ({ pages, currentPage, onClick }) => {
           >
             1
           </Button>
-          {currentPage>=4 && <Box>...</Box>}
+          {currentPage >= 4 && <Box>...</Box>}
         </Flex>
       )}
       {pages
@@ -49,7 +49,7 @@ export const Pagination: FC<Props> = ({ pages, currentPage, onClick }) => {
         <Flex gap="10px">
           {currentPage <= pages.length - 3 && <Box>...</Box>}
           <Button
-            variant='outline'
+            variant="outline"
             size="sm"
             onClick={() => {
               onClick(pages.length);
