@@ -3,6 +3,7 @@ import {
   Button,
   Flex,
   Heading,
+  Skeleton,
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
@@ -70,7 +71,7 @@ export const CoinChart: FC<Props> = ({ chart, name, days, setDays }) => {
           ))}
         </Flex>
       </Flex>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Skeleton height="100px" />}>
         <Chart
           options={chartOptions}
           series={chartSeries}

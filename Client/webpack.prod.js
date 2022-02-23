@@ -4,6 +4,7 @@ const common = require('./webpack.common.js');
 const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -39,6 +40,9 @@ module.exports = merge(common, {
       new CssMinimizerPlugin({
         test: /\.css$/i,
       }),
+      new MomentLocalesPlugin({
+        localesToKeep: ['es-us', 'ru'],
+    }),
     ],
   },
 

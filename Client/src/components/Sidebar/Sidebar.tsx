@@ -8,12 +8,12 @@ export const Sidebar: FC = () => (
     display={{ base: 'none', lg: 'block' }}
     as="aside"
     pos="sticky"
-    top="64px"
+    top="74px"
     overscrollBehavior="contain"
     flexShrink={0}
     pr="10"
     w={{ base: 'full', lg: '280px' }}
-    h="calc(100vh - 128px)"
+    h="calc(100vh - 138px)"
   >
     <Box as="nav">
       <Wrap direction="column" spacing={3}>

@@ -16,12 +16,9 @@ type PathParams = {
   coinId: string;
 };
 
-
-
 export const Coin = () => {
-  const { coinList, loadingCoinList, error, chart, highlightCoins } = useTypedUseSelector(
-    (state) => state.coins,
-  );
+  const { coinList, loadingCoinList, error, chart, highlightCoins } =
+    useTypedUseSelector((state) => state.coins);
   const { coinId } = useParams<PathParams>();
   const { fetchCoinList, fetchChartInfo, fetchHighlightCoins } = useActions();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -45,7 +42,9 @@ export const Coin = () => {
     return <LoadingInfo info="Loading..." />;
   }
 
-  const coin = coinList.find((item) => item.id === coinId) || highlightCoins.find((item) => item.id === coinId);
+  const coin =
+    coinList.find((item) => item.id === coinId) ||
+    highlightCoins.find((item) => item.id === coinId);
 
   if (coin === undefined || error) {
     return <LoadingInfo info={error || 'Data Not found'} />;
@@ -53,7 +52,7 @@ export const Coin = () => {
 
   return (
     <Fade in={isOpen}>
-      <Box >
+      <Box>
         <Grid
           templateColumns={{ base: '1fr', sm: 'max-content 1fr' }}
           gap="24px"
@@ -76,7 +75,12 @@ export const Coin = () => {
         </Section>
 
         <Section>
-          <CoinChart chart={chart} name={coin.name} days={days} setDays={setDays} />
+          <CoinChart
+            chart={chart}
+            name={coin.name}
+            days={days}
+            setDays={setDays}
+          />
         </Section>
       </Box>
     </Fade>

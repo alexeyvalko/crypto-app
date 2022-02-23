@@ -6,14 +6,14 @@ type Props = {
 };
 
 export const Card: FC<Props> = ({ size, children }) => {
-  const bg = useColorModeValue('gray.200', 'gray.700');
+  const bgColor = useColorModeValue('gray.200', 'gray.700');
 
   const style = {
-    width: { base: 'full', sm: size },
-    bgColor: bg,
+    width: { base: 'full', md: size },
+    bgColor,
     borderRadius: '15px',
     padding: { base: '18px', md: '22px' },
-    fontSize: { base: 'sm', md: 'md',},
+    fontSize: { base: 'sm', md: 'md' },
   };
 
   return <Box sx={style}>{children}</Box>;

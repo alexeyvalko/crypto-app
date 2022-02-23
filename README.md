@@ -7,7 +7,8 @@
 
 Also you can try online [DEMO](https://alexeyvalko-crypto.netlify.app/) 
 
-![6bbCTpNFEeyPUQJCrBEAAg](https://user-images.githubusercontent.com/60567379/155011270-45a8d377-b2a5-405d-8bf3-cb0b5d5edd2b.png)
+![image](https://user-images.githubusercontent.com/60567379/155338074-a410f283-2820-444a-8e06-50a8409f2782.png)
+
 
 
 ## Used resources
@@ -15,3 +16,4 @@ Also you can try online [DEMO](https://alexeyvalko-crypto.netlify.app/)
 2. [ApexCharts.js](https://apexcharts.com/)  - Modern & Interactive Open-source charts
 3. [ReactJS](https://reactjs.org/)  - A popular JavaScript library for building user interfaces
 4. [Coingecko API](https://www.coingecko.com/en/api/documentation)  - The largest source of cryptocurrency data.
+5. [TheNewsAPI](https://www.thenewsapi.com)  - Worldwide news and top stories from over 40,000 sources in 50+ countries.

@@ -15,7 +15,7 @@ export const Home: FC = () => (
     <Flex as="main" w="full">
       <Sidebar />
       <Box className="content" flex={1} overflow="hidden">
-        <Box minH='calc(100vh - 128px)'>
+        <Box minH="calc(100vh - 128px)">
           <Outlet />
         </Box>
         <Footer />

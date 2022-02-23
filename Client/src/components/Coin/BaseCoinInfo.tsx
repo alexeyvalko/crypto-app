@@ -25,16 +25,15 @@ export const BaseCoinInfo: FC<Props> = ({
 }) => (
   <Card size="full">
     <Flex justify="flex-start" gap="10px" align="center" mb="2">
-      <Image src={image} boxSize={8} borderRadius="full" alt={name}/>
+      <Image src={image} boxSize={8} borderRadius="full" alt={name} />
       <Heading as="h1" size="lg">
         {`${name} (${symbol.toUpperCase()})`}
       </Heading>
     </Flex>
     <Box>
-      <Tag
-        colorScheme="telegram"
-        variant="solid"
-      >{`Rank #${market_cap_rank || 'n/a'}`}</Tag>
+      <Tag colorScheme="telegram" variant="solid">{`Rank #${
+        market_cap_rank || 'n/a'
+      }`}</Tag>
     </Box>
     <Box width="max-content">
       <Flex gap="10px" align="center">

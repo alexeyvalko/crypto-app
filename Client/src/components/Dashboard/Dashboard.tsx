@@ -1,9 +1,11 @@
-import { Box, Fade, Heading, useDisclosure } from '@chakra-ui/react';
+import { Box, Fade,  useDisclosure } from '@chakra-ui/react';
 import { FC, useEffect } from 'react';
 
 import { CoinTable } from '../CoinTable/CoinTable';
 import { Highlights } from '../Highlights/Highlights';
+import { News } from '../News/News';
 import { Section } from '../Section/Section';
+import { HeadTitle } from './HeadTitle';
 
 export const Dashboard: FC = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -18,13 +20,14 @@ export const Dashboard: FC = () => {
   return (
     <Fade in={isOpen}>
       <Box>
+        <HeadTitle>Trending</HeadTitle>
         <Highlights />
         <Section>
-          <Box ml="3" mb="3">
-            <Heading as="h2" size="lg">
-              Top 10
-            </Heading>
-          </Box>
+        <HeadTitle>News</HeadTitle>
+          <News />
+        </Section>
+        <Section>
+        <HeadTitle>Top 10</HeadTitle>
           <CoinTable items={10} size="sm" minCelWidth="25px" page={0} />
         </Section>
       </Box>

@@ -61,6 +61,16 @@ export const About: FC = () => {
               </Link>{' '}
               - The largest source of cryptocurrency data.
             </ListItem>
+            <ListItem>
+              <Link
+                href="https://www.thenewsapi.com/"
+                isExternal
+                color="blue.500"
+              >
+                TheNewsAPI
+              </Link>{' '}
+              - Worldwide news and top stories from over 40,000 sources in 50+ countries.
+            </ListItem>
           </OrderedList>
         </Card>
       </Box>

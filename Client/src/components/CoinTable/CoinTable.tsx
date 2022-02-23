@@ -15,6 +15,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
 import { useTypedUseSelector } from '../../hooks/useTypedUseSelector';
 import { Card } from '../Card/Card';
+import { TableSkeleton } from './TableSkeleton';
 
 type Props = {
   items: number;
@@ -29,18 +30,17 @@ export const CoinTable: FC<Props> = ({
   minCelWidth,
   page = 0,
 }) => {
-  const { coinList } = useTypedUseSelector((state) => state.coins);
+  const { coinList, loadingCoinList } = useTypedUseSelector(
+    (state) => state.coins,
+  );
   const { fetchCoinList } = useActions();
   const borderColor = useColorModeValue('gray.100', 'gray.600');
   const bg = useColorModeValue('gray.200', 'gray.700');
-
-  const tableStart = page * items;
-
-  const listToShow = coinList.slice(tableStart, items + page * items);
   const hoverStyles = {
     bgColor: borderColor,
   };
-
+  const tableStart = page * items;
+  const listToShow = coinList.slice(tableStart, items + page * items);
   const overflowMode = size === 'sm' ? 'visible' : 'scroll';
   const backgroundMode = size === 'sm' ? 'transparent' : bg;
   const sticky = (width: string) => ({
@@ -57,6 +57,10 @@ export const CoinTable: FC<Props> = ({
   useEffect(() => {
     fetchCoinList();
   }, []);
+
+  if (loadingCoinList && coinList.length === 0) {
+    return <TableSkeleton />;
+  }
 
   return (
     <Card size="full">
@@ -85,10 +89,16 @@ export const CoinTable: FC<Props> = ({
                 <Td
                   sx={sticky('0')}
                   display={{ base: 'none', sm: 'table-cell' }}
+                  fontSize={{ base: 'sm', md: 'md' }}
                 >
                   {index + 1 + tableStart}
                 </Td>
-                <Td display="flex" alignItems="center" sx={sticky(minCelWidth)}>
+                <Td
+                  display="flex"
+                  alignItems="center"
+                  sx={sticky(minCelWidth)}
+                  fontSize={{ base: 'sm', md: 'md' }}
+                >
                   <Image
                     src={coin.image}
                     objectFit="contain"
@@ -101,7 +111,7 @@ export const CoinTable: FC<Props> = ({
                     {coin.name}
                   </Link>
                 </Td>
-                <Td textAlign="end">
+                <Td textAlign="end" fontSize={{ base: 'sm', md: 'md' }}>
                   {coin.current_price >= 0.01
                     ? `$${coin.current_price.toLocaleString()}`
                     : `$${coin.current_price}`}
@@ -113,7 +123,11 @@ export const CoinTable: FC<Props> = ({
                       : 'red.500'
                   }
                   textAlign="end"
-                >{`${coin.price_change_percentage_24h.toFixed(2)}%`}</Td>
+                  fontSize={{ base: 'sm', md: 'md' }}
+                >
+                  {coin.price_change_percentage_24h &&
+                    `${coin.price_change_percentage_24h?.toFixed(2)}%`}
+                </Td>
                 <Td
                   color={
                     coin.price_change_percentage_7d_in_currency > 0
@@ -121,10 +135,17 @@ export const CoinTable: FC<Props> = ({
                       : 'red.500'
                   }
                   textAlign="end"
-                >{`${coin.price_change_percentage_7d_in_currency.toFixed(
-                  2,
-                )}%`}</Td>
-                <Td textAlign="end">{`$${coin.market_cap.toLocaleString()}`}</Td>
+                  fontSize={{ base: 'sm', md: 'md' }}
+                >
+                  {coin.price_change_percentage_7d_in_currency &&
+                    `${coin.price_change_percentage_7d_in_currency?.toFixed(
+                      2,
+                    )}%`}
+                </Td>
+                <Td
+                  textAlign="end"
+                  fontSize={{ base: 'sm', md: 'md' }}
+                >{`$${coin.market_cap.toLocaleString()}`}</Td>
               </Tr>
             ))}
           </Tbody>
