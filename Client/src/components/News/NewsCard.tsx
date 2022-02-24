@@ -46,7 +46,7 @@ export const NewsCard: FC<Props> = ({
         fontWeight="bold"
         pb=".3rem"
       >
-        {title.length > 100 ? `${title.slice(0, 80)} ...` : title}
+        {title.length > 90 ? `${title.slice(0, 80)} ...` : title}
       </Heading>
       <Text fontSize="sm" fontWeight="normal" w={{ lg: '92%' }}>
         {description.length > 100
