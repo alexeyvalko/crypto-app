@@ -27,7 +27,7 @@ export const NewsCard: FC<Props> = ({
     w="100%"
     h="full"
     minH={{ base: '300px', md: '200px' }}
-    bgSize="102%"
+    bgSize="cover"
     position="relative"
   >
     <Flex
