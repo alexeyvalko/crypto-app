@@ -34,7 +34,7 @@ export const HighlightCard: FC<Props> = ({
       <Flex justifyContent="space-between" align="center">
         <Stat width="85%">
           <StatLabel
-            fontWeight={{ base: '400', sm: '500' }}
+            fontWeight={{ base: '500', sm: '700' }}
             opacity={{ base: 0.8 }}
           >
             <LinkOverlay as={RouterLink} to={`/coins/${id}`}>
@@ -42,7 +42,8 @@ export const HighlightCard: FC<Props> = ({
             </LinkOverlay>
           </StatLabel>
           <StatNumber
-            fontSize={{ base: '1.1rem', md: '1.5rem' }}
+          fontWeight={{ base: '700', sm: '700' }}
+            fontSize={{ base: '1.1rem', md: '1.6rem' }}
           >{`$${price.toLocaleString()}`}</StatNumber>
           <StatHelpText mb="0">
             <StatArrow

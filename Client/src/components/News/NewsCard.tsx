@@ -19,7 +19,7 @@ export const NewsCard: FC<Props> = ({
   published_at,
 }) => (
   <Box
-    overflow="hidden"
+  borderRadius="16px"
     minW="200px"
     backgroundImage={imgSrc}
     bgPosition="center"
@@ -27,16 +27,14 @@ export const NewsCard: FC<Props> = ({
     w="100%"
     h="full"
     minH={{ base: '300px', md: '200px' }}
-    bgSize="cover"
+    bgSize="102%"
     position="relative"
-    borderRadius="15px"
   >
     <Flex
       bg="linear-gradient(360deg, rgba(49, 56, 96, 0.2) 0%, rgba(21, 25, 40, 0.9) 100%)"
       w="100%"
       position="absolute"
       h="full"
-      borderRadius="inherit"
       flexDirection="column"
       color="white"
       p="1.5rem 1.2rem 1.5rem 1.2rem"

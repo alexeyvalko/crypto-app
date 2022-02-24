@@ -28,6 +28,7 @@ export const SidebarLink: FC<Props> = ({ path, name, children }) => {
 
   return (
     <Link
+      transition="all 0.3s ease"
       as={RouterLink}
       to={path}
       _activeLink={active}

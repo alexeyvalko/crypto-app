@@ -7,7 +7,7 @@ type Props = {
 
 export const HeadTitle = memo((props: Props) => (
   <Box ml="3" mb="3">
-    <Heading as="h2" size="lg">
+    <Heading as="h2" size="lg" >
       {props.children}
     </Heading>
   </Box>
