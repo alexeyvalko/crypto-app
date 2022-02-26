@@ -69,7 +69,8 @@ export const About: FC = () => {
               >
                 TheNewsAPI
               </Link>{' '}
-              - Worldwide news and top stories from over 40,000 sources in 50+ countries.
+              - Worldwide news and top stories from over 40,000 sources in 50+
+              countries.
             </ListItem>
           </OrderedList>
         </Card>

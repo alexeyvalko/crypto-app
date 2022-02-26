@@ -9,13 +9,13 @@ export const NewsSkeleton = () => (
     w="full"
   >
     <GridItem rowSpan={{ base: 1, md: 2 }} colSpan={{ base: 1, md: 4 }}>
-    <Skeleton height='100%' borderRadius="15px"/>
+      <Skeleton height="100%" borderRadius="15px" />
     </GridItem>
     <GridItem rowSpan={{ base: 1, md: 1 }} colSpan={{ base: 1, md: 3 }}>
-    <Skeleton height='100%' borderRadius="15px"/>
+      <Skeleton height="100%" borderRadius="15px" />
     </GridItem>
     <GridItem rowSpan={{ base: 1, md: 1 }} colSpan={{ base: 1, md: 3 }}>
-    <Skeleton height='100%' borderRadius="15px"/>
+      <Skeleton height="100%" borderRadius="15px" />
     </GridItem>
   </Grid>
 );

@@ -58,7 +58,11 @@ export const Coin = () => {
     highlightCoins.find((item) => item.id === coinId);
 
   if (coin === undefined || error) {
-    return <Center h="calc(100vh - 138px)" w="100%"><LoadingInfo info={error || 'Data Not found'} /></Center>;
+    return (
+      <Center h="calc(100vh - 138px)" w="100%">
+        <LoadingInfo info={error || 'Data Not found'} />
+      </Center>
+    );
   }
 
   return (
