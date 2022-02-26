@@ -37,6 +37,7 @@ export const News: FC = () => {
       {newsToShow.map(
         ({ title, image_url, url, description, uuid, published_at }, index) => (
           <GridItem
+          position="relative"
           overflow="hidden"
           borderRadius="15px"
             rowSpan={{ base: 1, md: index === 0 ? 2 : 1 }}
