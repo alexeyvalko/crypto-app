@@ -6,11 +6,13 @@ import {
   useColorMode,
   useColorModeValue,
   useDisclosure,
+  Portal,
 } from '@chakra-ui/react';
 import { CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { FC } from 'react';
 import { MobileMenu } from './MobileMenu';
 import { CgMenuGridO } from '../../icons';
+import { Search } from './Search';
 
 export const Header: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -37,9 +39,10 @@ export const Header: FC = () => {
       position="sticky"
       top={0}
       left={0}
-      zIndex={100}
+      zIndex={10}
       bgColor={bg}
       mb="10px"
+      gap="50px"
     >
       <IconButton
         display={{ base: 'flex', lg: 'none' }}
@@ -57,6 +60,7 @@ export const Header: FC = () => {
         }
       />
 
+      <Search />
       <IconButton
         onClick={toggleColorMode}
         variant="ghost"
@@ -69,10 +73,11 @@ export const Header: FC = () => {
           )
         }
       />
-
-      <Slide direction="bottom" in={isOpen} style={{ zIndex: 100 }}>
-        <MobileMenu toggleMenu={toggleMenu} />
-      </Slide>
+      <Portal>
+        <Slide direction="bottom" in={isOpen} style={{ zIndex: 100 }}>
+          <MobileMenu toggleMenu={toggleMenu} />
+        </Slide>
+      </Portal>
     </Flex>
   );
 };

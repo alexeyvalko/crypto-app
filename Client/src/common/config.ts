@@ -1,5 +1,5 @@
 export const NEWS_API_URL = 'https://api.thenewsapi.com/v1/news';
-export const COIN_API_URL = 'https://api.coingecko.com/api/v3/coins';
+export const COIN_API_URL = 'https://api.coingecko.com/api/v3';
 export const NEWS_SEARCH_PHRASE =
   'cryptocurrency|bitcoin|ethereum|blockchain|crypto';
 export const NEWS_SEARCH_DOMAINS =
