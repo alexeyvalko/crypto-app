@@ -43,6 +43,7 @@ export const Header: FC = () => {
       bgColor={bg}
       mb="10px"
       gap="50px"
+      borderBottom='1px solid rgba(160, 174, 192, 0.3)'
     >
       <IconButton
         display={{ base: 'flex', lg: 'none' }}

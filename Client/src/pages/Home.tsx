@@ -12,10 +12,10 @@ export const Home: FC = () => (
     paddingLeft={{ base: 5, md: 10 }}
   >
     <Header />
-    <Flex as="main" w="full">
+    <Flex as="main" w="full" mt="24px">
       <Sidebar />
       <Box className="content" flex={1} overflow="hidden">
-        <Box minH="calc(100vh - 138px)">
+        <Box minH="calc(100vh - 162px)">
           <Outlet />
         </Box>
         <Footer />

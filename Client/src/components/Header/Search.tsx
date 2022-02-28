@@ -22,7 +22,7 @@ export const Search: FC = () => {
   const { isOpen, onToggle } = useDisclosure();
   const [searchResult, setSearchResult] = useState<ISearch[]>();
   const [searchTimeOut, setSearchTimeOut] = useState<NodeJS.Timeout>();
-  const bgColor = useColorModeValue('gray.200', 'gray.800');
+  const bgColor = useColorModeValue('white', 'gray.800');
   const inputColor = useColorModeValue('gray.800', 'gray.200');
   const bgColorHover = useColorModeValue('gray.300', 'gray.700');
   const handleFocus = () => {
@@ -34,7 +34,7 @@ export const Search: FC = () => {
     setTimeout(() => {
       onToggle();
       setIsOpenSearch('none');
-    }, 200);
+    }, 300);
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -60,18 +60,18 @@ export const Search: FC = () => {
     justifyContent: 'flex-start',
     gap: '10px',
     position: 'fixed',
-    top: '62px',
+    top: '58px',
     right: { base: `50%`, md: `0` },
     transform: { base: `translateX(50%)`, md: `translateX(-130px)` },
     width: '320px',
     bgColor,
     padding: '0',
-    borderRadius: '10px',
+    borderRadius: 'md',
     maxHeight: '500px',
     overflow: 'hidden',
     overflowY: searchResult && searchResult?.length > 5 ? 'scroll' : 'hidden',
     border: '1px solid rgba(160, 174, 192, 0.3)',
-    zIndex: isOpen ? 11 : -9999,
+    zIndex: 11,
   };
 
   return (

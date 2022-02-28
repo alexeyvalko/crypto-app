@@ -42,9 +42,11 @@ export const BaseCoinInfo: FC<Props> = ({
           fontSize={{ base: '1.8rem', md: '2rem' }}
           fontWeight="700"
         >
-          {current_price >= 0.01
-            ? `$${current_price.toLocaleString()}`
-            : `$${current_price}`}
+          {new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'USD',
+            maximumSignificantDigits: 4,
+          }).format(current_price)}
         </Text>
         <Tag
           colorScheme={price_change_percentage_24h >= 0 ? 'green' : 'red'}

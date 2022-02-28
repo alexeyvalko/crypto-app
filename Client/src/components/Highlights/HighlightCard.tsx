@@ -44,7 +44,11 @@ export const HighlightCard: FC<Props> = ({
           <StatNumber
             fontWeight={{ base: '700', sm: '700' }}
             fontSize={{ base: '1.1rem', md: '1.6rem' }}
-          >{`$${price.toLocaleString()}`}</StatNumber>
+          >{new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'USD',
+            maximumSignificantDigits: 6,
+          }).format(+price)}</StatNumber>
           <StatHelpText mb="0">
             <StatArrow
               type={priceChange > 0 ? 'increase' : 'decrease'}
