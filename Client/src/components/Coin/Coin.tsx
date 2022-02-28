@@ -24,28 +24,25 @@ type PathParams = {
 };
 
 export const Coin = () => {
-  const { coinList, loadingCoinList, error, chart, highlightCoins } =
+  const { loadingCoin, error, chart, coin } =
     useTypedUseSelector((state) => state.coins);
   const { coinId } = useParams<PathParams>();
-  const { fetchCoinList, fetchChartInfo, fetchHighlightCoins } = useActions();
+  const { fetchChartInfo, fetchCoin } = useActions();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [days, setDays] = useState<DaysType>(1);
 
-  useEffect(() => {
-    if (coinList.length === 0) {
-      fetchCoinList();
-      fetchHighlightCoins();
-    }
+  useEffect(() => { 
     if (coinId) {
+      fetchCoin(coinId)
       fetchChartInfo(coinId, days);
     }
     onOpen();
     return () => {
       onClose();
     };
-  }, [days]);
+  }, [days, coinId]);
 
-  if (loadingCoinList) {
+  if (loadingCoin) {
     return (
       <Center h="calc(100vh - 138px)" w="100%">
         <Spinner size="xl" color="blue.600" />
@@ -53,11 +50,9 @@ export const Coin = () => {
     );
   }
 
-  const coin =
-    coinList.find((item) => item.id === coinId) ||
-    highlightCoins.find((item) => item.id === coinId);
+  const coinData = coin
 
-  if (coin === undefined || error) {
+  if (!coinData || error) {
     return (
       <Center h="calc(100vh - 138px)" w="100%">
         <LoadingInfo info={error || 'Data Not found'} />
@@ -72,8 +67,8 @@ export const Coin = () => {
           templateColumns={{ base: '1fr', sm: 'max-content 1fr' }}
           gap="24px"
         >
-          <BaseCoinInfo coin={coin} />
-          <CoinSupply coin={coin} />
+          <BaseCoinInfo coin={coinData} />
+          <CoinSupply coin={coinData} />
         </Grid>
 
         <Section>
@@ -84,15 +79,15 @@ export const Coin = () => {
             }}
             gap="24px"
           >
-            <PriceChange coin={coin} />
-            <MarketData coin={coin} />
+            <PriceChange coin={coinData} />
+            <MarketData coin={coinData} />
           </Grid>
         </Section>
 
         <Section>
           <CoinChart
             chart={chart}
-            name={coin.name}
+            name={coinData.name}
             days={days}
             setDays={setDays}
           />

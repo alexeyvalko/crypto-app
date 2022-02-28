@@ -22,10 +22,10 @@ export const fetchHighlightCoins =
     }
   };
 
-export const fetchCoinList = () => async (dispatch: Dispatch<CoinsAction>) => {
+export const fetchCoinList = (id?: string) => async (dispatch: Dispatch<CoinsAction>) => {
   try {
     dispatch({ type: CoinsActionTypes.FETCH_COINS_COINLIST, payload: true });
-    const response = await requestCoins();
+    const response = await requestCoins(id);
     dispatch({
       type: CoinsActionTypes.FETCH_COINLIST_SUCCESS,
       payload: response.data,
@@ -34,6 +34,22 @@ export const fetchCoinList = () => async (dispatch: Dispatch<CoinsAction>) => {
     dispatch({
       type: CoinsActionTypes.FETCH_COINS_ERROR,
       payload: 'error while fetch coinlist data',
+    });
+  }
+};
+
+export const fetchCoin = (id: string) => async (dispatch: Dispatch<CoinsAction>) => {
+  try {
+    dispatch({ type: CoinsActionTypes.FETCH_COIN, payload: true });
+    const response = await requestCoins(id);
+    dispatch({
+      type: CoinsActionTypes.FETCH_COIN_SUCCESS,
+      payload: response.data[0],
+    });
+  } catch {
+    dispatch({
+      type: CoinsActionTypes.FETCH_COINS_ERROR,
+      payload: 'error while fetch coin data',
     });
   }
 };

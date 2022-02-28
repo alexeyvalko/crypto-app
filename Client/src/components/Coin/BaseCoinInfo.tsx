@@ -50,7 +50,7 @@ export const BaseCoinInfo: FC<Props> = ({
           colorScheme={price_change_percentage_24h >= 0 ? 'green' : 'red'}
           variant="solid"
           size="md"
-        >{`${price_change_percentage_24h.toFixed(2)}%`}</Tag>
+        >{`${price_change_percentage_24h?.toFixed(2)}%`}</Tag>
       </Flex>
     </Box>
   </Card>
