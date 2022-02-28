@@ -24,22 +24,28 @@ type PathParams = {
 };
 
 export const Coin = () => {
-  const { loadingCoin, error, chart, coin } =
-    useTypedUseSelector((state) => state.coins);
+  const { loadingCoin, error, chart, coin } = useTypedUseSelector(
+    (state) => state.coins,
+  );
   const { coinId } = useParams<PathParams>();
   const { fetchChartInfo, fetchCoin } = useActions();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [days, setDays] = useState<DaysType>(1);
 
-  useEffect(() => { 
+  useEffect(() => {
     if (coinId) {
-      fetchCoin(coinId)
-      fetchChartInfo(coinId, days);
+      fetchCoin(coinId);
     }
     onOpen();
     return () => {
       onClose();
     };
+  }, [coinId]);
+
+  useEffect(() => {
+    if (coinId) {
+      fetchChartInfo(coinId, days);
+    }
   }, [days, coinId]);
 
   if (loadingCoin) {
@@ -50,7 +56,7 @@ export const Coin = () => {
     );
   }
 
-  const coinData = coin
+  const coinData = coin;
 
   if (!coinData || error) {
     return (
