@@ -35,8 +35,8 @@ export const BaseCoinInfo: FC<Props> = ({
         market_cap_rank || 'n/a'
       }`}</Tag>
     </Box>
-    <Box width="max-content">
-      <Flex gap="10px" align="center">
+    <Box width="100%">
+      <Flex gap="10px" align="center" wrap="wrap">
         <Text
           as="span"
           fontSize={{ base: '1.8rem', md: '2rem' }}
