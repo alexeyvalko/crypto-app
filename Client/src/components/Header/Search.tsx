@@ -5,12 +5,17 @@ import { ISearch } from '../../types/coins';
 import { SearchInput } from './SearchInput';
 import { SearchWindow } from './SearchWindow';
 
-export const Search: FC = () => {
+type Props = {
+  setDisplayItem(bool: boolean): void
+};
+
+export const Search: FC<Props> = ({setDisplayItem }) => {
   const [displaySearch, setDisplaySearch] = useState<'none' | 'flex'>('none');
   const { isOpen, onToggle } = useDisclosure();
   const [searchResult, setSearchResult] = useState<ISearch[]>([]);
   const [searchTimeOut, setSearchTimeOut] = useState<NodeJS.Timeout>();
   const [inputValue, setInputValue] = useState<string>('');
+
 
   const handleFocus = () => {
     onToggle();
@@ -20,10 +25,11 @@ export const Search: FC = () => {
   const handleBlur = () => {
     setTimeout(() => {
       onToggle();
+      setDisplayItem(true)
       setDisplaySearch('none');
     }, 300);
   };
-
+  
   useEffect(() => {
     if (inputValue.length >= 2) {
       if (searchTimeOut) clearTimeout(searchTimeOut);
@@ -42,20 +48,19 @@ export const Search: FC = () => {
 
   return (
     <>
+
       <SearchInput
+        setDisplayItem={setDisplayItem}
         handleBlur={handleBlur}
         handleChange={handleChange}
-        handleFocus={handleFocus}
-      />
-      <Portal>
+        handleFocus={handleFocus} />
+    <Portal>
         <Fade in={isOpen}>
           <SearchWindow
             inputValue={inputValue}
             displaySearch={displaySearch}
-            searchResult={searchResult}
-          />
+            searchResult={searchResult} />
         </Fade>
-      </Portal>
-    </>
+      </Portal></>
   );
 };

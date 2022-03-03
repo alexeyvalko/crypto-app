@@ -29,7 +29,7 @@ export const SearchWindow: FC<Props> = ({
     top: '58px',
     right: { base: `50%`, lg: '130px' },
     transform: { base: `translateX(50%)`, lg: `translateX(0)` },
-    width: '320px',
+    width: {base: "90%", lg: '320px'},
     bgColor,
     padding: '0',
     borderRadius: 'md',
@@ -61,7 +61,7 @@ export const SearchWindow: FC<Props> = ({
             <Box w="70%" fontWeight={700}>
               {name}
             </Box>
-            <Box width={{ base: '20%', sm: '20%' }} display="inline-block">
+            <Box width={{ base: '20%', sm: '15%' }} display="inline-block">
               <Image
                 src={large}
                 objectFit="contain"

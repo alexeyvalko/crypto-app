@@ -7,9 +7,10 @@ import {
   useColorModeValue,
   useDisclosure,
   Portal,
+  Box,
 } from '@chakra-ui/react';
-import { CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { FC } from 'react';
+import { CloseIcon, MoonIcon, SearchIcon, SunIcon } from '@chakra-ui/icons';
+import { FC, useEffect, useState } from 'react';
 import { MobileMenu } from './MobileMenu';
 import { CgMenuGridO } from '../../icons';
 import { Search } from './Search';
@@ -17,8 +18,14 @@ import { Search } from './Search';
 export const Header: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [displayItem, setDisplayItem] = useState<boolean>(true);
+  const [displaySearch, setDisplaySearch] = useState<'none' | 'flex'>('none');
   const bgIcon = useColorModeValue('gray.500', 'gray.200');
   const bg = useColorModeValue('white', 'gray.800');
+
+  useEffect(() => {
+    setDisplaySearch(displayItem ? 'none' : 'flex');
+  }, [displayItem]);
 
   const toggleMenu = () => {
     if (isOpen) {
@@ -26,6 +33,10 @@ export const Header: FC = () => {
     } else {
       onOpen();
     }
+  };
+
+  const handleClick = () => {
+    setDisplayItem(false);
   };
 
   return (
@@ -43,10 +54,9 @@ export const Header: FC = () => {
       bgColor={bg}
       mb="10px"
       gap="50px"
-      borderBottom='1px solid rgba(160, 174, 192, 0.3)'
     >
       <IconButton
-        display={{ base: 'flex', lg: 'none' }}
+        display={{ base: displayItem ? 'flex' : 'none', lg: 'none' }}
         alignItems="center"
         justifyContent="center"
         onClick={toggleMenu}
@@ -60,20 +70,43 @@ export const Header: FC = () => {
           )
         }
       />
+      <Box
+        display={{ base: displaySearch, lg: 'flex' }}
+        width={{ base: '100%', lg: '320px' }}
+      >
+        <Search
+          setDisplayItem={(bool: boolean) => {
+            setDisplayItem(bool);
+          }}
+        />
+      </Box>
 
-      <Search />
-      <IconButton
-        onClick={toggleColorMode}
-        variant="ghost"
-        aria-label="Color mode"
-        icon={
-          colorMode === 'light' ? (
-            <MoonIcon color={bgIcon} />
-          ) : (
-            <SunIcon color={bgIcon} />
-          )
-        }
-      />
+      <Flex
+        justifyContent="flex-end"
+        gap="10px"
+        display={displayItem ? 'flex' : 'none'}
+      >
+        <IconButton
+          onClick={handleClick}
+          display={{ base: 'inline-flex', lg: 'none' }}
+          variant="ghost"
+          aria-label="Search"
+          icon={<SearchIcon color={bgIcon} />}
+        />
+        <IconButton
+          onClick={toggleColorMode}
+          variant="ghost"
+          aria-label="Color mode"
+          icon={
+            colorMode === 'light' ? (
+              <MoonIcon color={bgIcon} />
+            ) : (
+              <SunIcon color={bgIcon} />
+            )
+          }
+        />
+      </Flex>
+
       <Portal>
         <Slide direction="bottom" in={isOpen} style={{ zIndex: 100 }}>
           <MobileMenu toggleMenu={toggleMenu} />
