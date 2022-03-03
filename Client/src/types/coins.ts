@@ -1,3 +1,16 @@
+export  interface ISearch {
+  id: string,
+  name: string,
+  symbol: string,
+  market_cap_rank: number,
+  thumb: string,
+  large: string
+}
+
+export  interface ISearchResponse {
+ coins: ISearch[]
+}
+
 export interface ICoin {
   id: string;
   symbol: string;

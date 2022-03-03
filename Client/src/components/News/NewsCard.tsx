@@ -1,4 +1,12 @@
-import { Box, Flex, Heading, Link, Spacer, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Heading,
+  Link,
+  Spacer,
+  Text,
+  Tooltip,
+} from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { FC } from 'react';
 import moment from 'moment';
@@ -19,9 +27,8 @@ export const NewsCard: FC<Props> = ({
   published_at,
 }) => (
   <Box
-    overflow="hidden"
+    borderRadius="16px"
     minW="200px"
-    backgroundImage={imgSrc}
     bgPosition="center"
     bgRepeat="no-repeat"
     w="100%"
@@ -29,30 +36,31 @@ export const NewsCard: FC<Props> = ({
     minH={{ base: '300px', md: '200px' }}
     bgSize="cover"
     position="relative"
-    borderRadius="15px"
+    background={`url('${imgSrc}')`}
   >
     <Flex
       bg="linear-gradient(360deg, rgba(49, 56, 96, 0.2) 0%, rgba(21, 25, 40, 0.9) 100%)"
       w="100%"
       position="absolute"
       h="full"
-      borderRadius="inherit"
       flexDirection="column"
       color="white"
       p="1.5rem 1.2rem 1.5rem 1.2rem"
       lineHeight="1.6"
     >
-      <Heading
-        as="h3"
-        fontSize={{ base: 'md', md: 'xl' }}
-        fontWeight="bold"
-        pb=".3rem"
-      >
-        {title.length > 100 ? `${title.slice(0, 80)} ...` : title}
-      </Heading>
+      <Tooltip label={title} borderRadius="md">
+        <Heading
+          as="h3"
+          fontSize={{ base: 'md', md: 'xl' }}
+          fontWeight="bold"
+          pb=".3rem"
+        >
+          {title.length > 70 ? `${title.slice(0, 70)} ...` : title}
+        </Heading>
+      </Tooltip>
       <Text fontSize="sm" fontWeight="normal" w={{ lg: '92%' }}>
-        {description.length > 100
-          ? `${description.slice(0, 110)}...`
+        {description.length > 70
+          ? `${description.slice(0, 70)}...`
           : description}
       </Text>
       <Spacer />

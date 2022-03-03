@@ -8,8 +8,18 @@ export enum CoinsActionTypes {
   FETCH_COINLIST_SUCCESS = 'FETCH_COINLIST_SUCCESS',
   FETCH_CHART_INFO_SUCCESS = 'FETCH_CHART_INFO_SUCCESS',
   FETCH_CHART_INFO = 'FETCH_CHART_INFO',
+  FETCH_COIN = 'FETCH_COIN',
+  FETCH_COIN_SUCCESS = 'FETCH_COIN_SUCCESS',
 }
 
+export interface FetchCoin {
+  type: CoinsActionTypes.FETCH_COIN;
+  payload: boolean;
+}
+export interface FetchCoinSuccess {
+  type: CoinsActionTypes.FETCH_COIN_SUCCESS;
+  payload: ICoin;
+}
 export interface FetchChartInfoAction {
   type: CoinsActionTypes.FETCH_CHART_INFO;
   payload: boolean;
@@ -50,11 +60,15 @@ export type CoinsAction =
   | FetchCoinListSuccessAction
   | FetchCoinListAction
   | FetchChartInfoAction
-  | FetchChartInfoSuccessAction;
+  | FetchChartInfoSuccessAction
+  | FetchCoinSuccess
+  | FetchCoin;
 
 export interface CoinsState {
   highlightCoins: ICoin[];
   coinList: ICoin[];
+  coin: ICoin | null;
+  loadingCoin: boolean;
   loadingHighlight: boolean;
   loadingCoinList: boolean;
   loadingChart: boolean;
@@ -65,6 +79,8 @@ export interface CoinsState {
 const InitialState: CoinsState = {
   highlightCoins: [],
   coinList: [],
+  coin: null,
+  loadingCoin: false,
   loadingHighlight: false,
   loadingCoinList: false,
   loadingChart: false,
@@ -77,6 +93,10 @@ export const CoinsReducer = (
   action: CoinsAction,
 ): CoinsState => {
   switch (action.type) {
+    case CoinsActionTypes.FETCH_COIN:
+      return { ...state, loadingCoin: true };
+    case CoinsActionTypes.FETCH_COIN_SUCCESS:
+      return { ...state, loadingCoin: false, coin: action.payload };
     case CoinsActionTypes.FETCH_COINS_HIGHLIGHT:
       return { ...state, loadingHighlight: true };
     case CoinsActionTypes.FETCH_COINS_COINLIST:

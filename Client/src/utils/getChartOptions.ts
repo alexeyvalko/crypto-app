@@ -46,10 +46,13 @@ export const getChartOptions = (
     theme: colorMode,
     custom({ series, seriesIndex, dataPointIndex }) {
       return `<div style="display: flex; gap: 5px; font-weight: 600; padding: 10px; border-radius: 15px; box-shadow: none;">
-        <span>$${
-          series[seriesIndex][dataPointIndex] >= 10
-            ? series[seriesIndex][dataPointIndex].toLocaleString()
-            : series[seriesIndex][dataPointIndex]
+        <span>${
+          new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'USD',
+            maximumSignificantDigits: 4,
+          }).format(series[seriesIndex][dataPointIndex])
+          
         }</span>
         </div>`;
     },
@@ -83,16 +86,9 @@ export const getChartOptions = (
         if (value >= 1000) {
           return millify(value);
         }
-        if (value >= 10) {
-          return value.toFixed(2);
-        }
-        if (value === 0) {
-          return value.toFixed(0);
-        }
-        if (value <= 0.01) {
-          return value.toFixed(6);
-        }
-        return value.toFixed(4);
+        return new Intl.NumberFormat('en-IN', {
+          maximumSignificantDigits: 4,
+        }).format(value);
       },
     },
   },

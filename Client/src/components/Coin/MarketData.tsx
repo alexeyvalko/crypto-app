@@ -22,7 +22,7 @@ export const MarketData: FC<Props> = ({
         variant="solid"
         size="md"
       >
-        {market_cap_change_percentage_24h.toFixed(2)}%
+        {market_cap_change_percentage_24h && market_cap_change_percentage_24h.toFixed(2)}%
       </Tag>
     </Flex>
     <Flex justify="space-between" wrap="wrap">
@@ -30,7 +30,7 @@ export const MarketData: FC<Props> = ({
         Market cap:
       </Text>
       <Text as="span" fontWeight={500}>
-        ${Number(market_cap.toFixed(0)).toLocaleString()}
+        ${market_cap && Number(market_cap?.toFixed(0)).toLocaleString()}
       </Text>
     </Flex>
     <Flex justify="space-between" wrap="wrap">
@@ -38,7 +38,7 @@ export const MarketData: FC<Props> = ({
         Market cap change 24h:
       </Text>
       <Text as="span" fontWeight={500}>
-        ${Number(market_cap_change_24h.toFixed(0)).toLocaleString()}
+       ${market_cap_change_24h && Number(market_cap_change_24h.toFixed(0)).toLocaleString()}
       </Text>
     </Flex>
   </Card>

@@ -8,19 +8,21 @@ import { NewsSkeleton } from './NewsSkeleton';
 
 export const News: FC = () => {
   const { fetchNews } = useActions();
-  const { news, loadingNews, error } = useTypedUseSelector((state) => state.news);
+  const { news, loadingNews, error } = useTypedUseSelector(
+    (state) => state.news,
+  );
   useEffect(() => {
     if (news.length === 0) {
       fetchNews();
     }
   }, []);
 
-  if(loadingNews) {
-    return <NewsSkeleton />
+  if (loadingNews) {
+    return <NewsSkeleton />;
   }
-  
-  if(error) {
-    return <Box> {error} </Box>
+
+  if (error) {
+    return <Box> {error} </Box>;
   }
 
   const newsToShow = news?.slice(0, 3);
@@ -35,6 +37,9 @@ export const News: FC = () => {
       {newsToShow.map(
         ({ title, image_url, url, description, uuid, published_at }, index) => (
           <GridItem
+            position="relative"
+            overflow="hidden"
+            borderRadius="15px"
             rowSpan={{ base: 1, md: index === 0 ? 2 : 1 }}
             colSpan={{ base: 1, md: index === 0 ? 4 : 3 }}
             key={uuid}

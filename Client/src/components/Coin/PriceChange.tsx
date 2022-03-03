@@ -25,9 +25,17 @@ export const PriceChange: FC<Props> = ({
         Price change last 24 hours
       </Heading>
       <Flex justifyContent="space-between" fontWeight={500} pb="5px">
-        <Box>{`$${low_24h}`}</Box>
+        <Box>{new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'USD',
+            maximumSignificantDigits: 4,
+          }).format(low_24h)}</Box>
         <Box>24h</Box>
-        <Box>{`$${high_24h}`}</Box>
+        <Box>{new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'USD',
+            maximumSignificantDigits: 4,
+          }).format(high_24h)}</Box>
       </Flex>
       <Progress
         value={rangePercentage > 0 ? rangePercentage : 0}

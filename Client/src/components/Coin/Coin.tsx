@@ -1,4 +1,11 @@
-import { Box, Fade, Grid, useDisclosure } from '@chakra-ui/react';
+import {
+  Box,
+  Center,
+  Fade,
+  Grid,
+  Spinner,
+  useDisclosure,
+} from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
@@ -17,37 +24,46 @@ type PathParams = {
 };
 
 export const Coin = () => {
-  const { coinList, loadingCoinList, error, chart, highlightCoins } =
-    useTypedUseSelector((state) => state.coins);
+  const { loadingCoin, error, chart, coin } = useTypedUseSelector(
+    (state) => state.coins,
+  );
   const { coinId } = useParams<PathParams>();
-  const { fetchCoinList, fetchChartInfo, fetchHighlightCoins } = useActions();
+  const { fetchChartInfo, fetchCoin } = useActions();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [days, setDays] = useState<DaysType>(1);
 
   useEffect(() => {
-    if (coinList.length === 0) {
-      fetchCoinList();
-      fetchHighlightCoins();
-    }
     if (coinId) {
-      fetchChartInfo(coinId, days);
+      fetchCoin(coinId);
     }
     onOpen();
     return () => {
       onClose();
     };
-  }, [days]);
+  }, [coinId]);
 
-  if (loadingCoinList) {
-    return <LoadingInfo info="Loading..." />;
+  useEffect(() => {
+    if (coinId) {
+      fetchChartInfo(coinId, days);
+    }
+  }, [days, coinId]);
+
+  if (loadingCoin) {
+    return (
+      <Center h="calc(100vh - 138px)" w="100%">
+        <Spinner size="xl" color="blue.600" />
+      </Center>
+    );
   }
 
-  const coin =
-    coinList.find((item) => item.id === coinId) ||
-    highlightCoins.find((item) => item.id === coinId);
+  const coinData = coin;
 
-  if (coin === undefined || error) {
-    return <LoadingInfo info={error || 'Data Not found'} />;
+  if (!coinData || error) {
+    return (
+      <Center h="calc(100vh - 138px)" w="100%">
+        <LoadingInfo info={error || 'Data Not found'} />
+      </Center>
+    );
   }
 
   return (
@@ -57,8 +73,8 @@ export const Coin = () => {
           templateColumns={{ base: '1fr', sm: 'max-content 1fr' }}
           gap="24px"
         >
-          <BaseCoinInfo coin={coin} />
-          <CoinSupply coin={coin} />
+          <BaseCoinInfo coin={coinData} />
+          <CoinSupply coin={coinData} />
         </Grid>
 
         <Section>
@@ -69,15 +85,15 @@ export const Coin = () => {
             }}
             gap="24px"
           >
-            <PriceChange coin={coin} />
-            <MarketData coin={coin} />
+            <PriceChange coin={coinData} />
+            <MarketData coin={coinData} />
           </Grid>
         </Section>
 
         <Section>
           <CoinChart
             chart={chart}
-            name={coin.name}
+            name={coinData.name}
             days={days}
             setDays={setDays}
           />

@@ -1,5 +1,11 @@
-import { Heading, Text, Flex } from '@chakra-ui/react';
+import { QuestionIcon } from '@chakra-ui/icons';
+import { Heading, Text, Flex, Tooltip } from '@chakra-ui/react';
 import { FC } from 'react';
+import {
+  CIRCULATING_SUPPLY,
+  MAX_SUPPLY,
+  TOTAL_SUPPLY,
+} from '../../common/texts';
 import { Card } from '../Card/Card';
 
 type Props = {
@@ -21,7 +27,10 @@ export const CoinSupply: FC<Props> = ({
     </Flex>
     <Flex justify="space-between" wrap="wrap">
       <Text as="span" minWidth="max-content">
-        Total supply:{' '}
+        Total supply{' '}
+        <Tooltip label={TOTAL_SUPPLY} borderRadius="md">
+          <QuestionIcon w={3} h={3} opacity={0.5} />
+        </Tooltip>
       </Text>
       <Text as="span" fontWeight={500}>
         {total_supply
@@ -31,7 +40,10 @@ export const CoinSupply: FC<Props> = ({
     </Flex>
     <Flex justify="space-between" wrap="wrap">
       <Text as="span" minWidth="max-content">
-        Max supply:{' '}
+        Max supply{' '}
+        <Tooltip label={MAX_SUPPLY} borderRadius="md">
+          <QuestionIcon w={3} h={3} opacity={0.5} />
+        </Tooltip>
       </Text>
       <Text as="span" fontWeight={500}>
         {max_supply
@@ -41,7 +53,10 @@ export const CoinSupply: FC<Props> = ({
     </Flex>
     <Flex justify="space-between" wrap="wrap">
       <Text as="span" minWidth="max-content">
-        Circulating supply:{' '}
+        Circulating supply{' '}
+        <Tooltip label={CIRCULATING_SUPPLY} borderRadius="md">
+          <QuestionIcon w={3} h={3} opacity={0.5} />
+        </Tooltip>
       </Text>
       <Text as="span" fontWeight={500}>
         {circulating_supply

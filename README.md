@@ -7,8 +7,7 @@
 
 Also you can try online [DEMO](https://alexeyvalko-crypto.netlify.app/) 
 
-![image](https://user-images.githubusercontent.com/60567379/155338074-a410f283-2820-444a-8e06-50a8409f2782.png)
-
+![image](https://user-images.githubusercontent.com/60567379/156615392-4b961d28-1a93-4d45-9683-cfdfed3c129b.png)
 
 
 ## Used resources
