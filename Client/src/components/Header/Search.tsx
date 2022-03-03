@@ -11,20 +11,20 @@ type Props = {
 
 export const Search: FC<Props> = ({setDisplayItem }) => {
   const [displaySearch, setDisplaySearch] = useState<'none' | 'flex'>('none');
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchResult, setSearchResult] = useState<ISearch[]>([]);
   const [searchTimeOut, setSearchTimeOut] = useState<NodeJS.Timeout>();
   const [inputValue, setInputValue] = useState<string>('');
 
 
   const handleFocus = () => {
-    onToggle();
+    onOpen();
     setDisplaySearch('flex');
   };
 
   const handleBlur = () => {
     setTimeout(() => {
-      onToggle();
+      onClose();
       setDisplayItem(true)
       setDisplaySearch('none');
     }, 300);
