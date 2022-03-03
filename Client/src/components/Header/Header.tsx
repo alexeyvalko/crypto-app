@@ -84,7 +84,7 @@ export const Header: FC = () => {
       <Flex
         justifyContent="flex-end"
         gap="10px"
-        display={displayItem ? 'flex' : 'none'}
+        display={{base: displayItem ? 'flex' : 'none', lg: "flex"}}
       >
         <IconButton
           onClick={handleClick}
