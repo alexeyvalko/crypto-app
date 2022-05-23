@@ -14,7 +14,7 @@ export const Home: FC = () => (
     <Header />
     <Flex as="main" w="full" mt="24px">
       <Sidebar />
-      <Box className="content" flex={1} overflow="hidden">
+      <Box className="content" flex={1} overflow="hidden" margin="auto" maxW="1400px">
         <Box minH="calc(100vh - 162px)">
           <Outlet />
         </Box>
