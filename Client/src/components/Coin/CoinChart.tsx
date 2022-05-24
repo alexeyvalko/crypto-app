@@ -74,7 +74,7 @@ export const CoinChart: FC<Props> = ({ chart, name, days, setDays }) => {
       </Flex>
       <Suspense
         fallback={
-          <Stack>
+          <Stack mt="20px">
             <Skeleton height="20px" />
             <Skeleton height="20px" />
             <Skeleton height="20px" />

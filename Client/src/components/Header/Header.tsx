@@ -27,6 +27,11 @@ export const Header: FC = () => {
     setDisplaySearch(displayItem ? 'none' : 'flex');
   }, [displayItem]);
 
+  const handleCloseSearch = (bool:boolean) => {
+    setDisplaySearch(bool ? 'none' : 'flex');
+    setDisplayItem(bool);
+  }
+
   const toggleMenu = () => {
     if (isOpen) {
       setTimeout(() => onClose(), 500);
@@ -76,7 +81,7 @@ export const Header: FC = () => {
       >
         <Search
           setDisplayItem={(bool: boolean) => {
-            setDisplayItem(bool);
+            handleCloseSearch(bool);
           }}
         />
       </Box>
