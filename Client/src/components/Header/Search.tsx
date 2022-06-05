@@ -10,33 +10,33 @@ type Props = {
 };
 
 export const Search: FC<Props> = ({ setDisplayItem }) => {
-  const [displaySearch, setDisplaySearch] = useState<'none' | 'flex'>('none');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchResult, setSearchResult] = useState<ISearch[]>([]);
-  const [searchTimeOut, setSearchTimeOut] = useState<NodeJS.Timeout>();
+  const [searchTimeId, setSearchTimeId] = useState<NodeJS.Timeout>();
   const [inputValue, setInputValue] = useState<string>('');
+  const SEARCH_TIMEOUT = 1000;;
+  const INPUT_LENGTH_MIN = 2;
 
   const handleFocus = () => {
     onOpen();
-    setDisplaySearch('flex');
   };
 
   const handleBlur = () => {
-    setTimeout(() => {
-      onClose();
-      setDisplaySearch('none');
-      setDisplayItem(true);
-    }, 300);
+    onClose();
   };
 
+  const searchCoins = (value: string)=> {
+    if (searchTimeId) clearTimeout(searchTimeId);
+    const timeoutId = setTimeout(async () => {
+      const response = await requestSearch(value);
+      setSearchResult(response.data.coins);
+    }, SEARCH_TIMEOUT);
+    setSearchTimeId(timeoutId)
+  }
+
   useEffect(() => {
-    if (inputValue.length >= 2) {
-      if (searchTimeOut) clearTimeout(searchTimeOut);
-      const timeoutId = setTimeout(async () => {
-        const response = await requestSearch(inputValue);
-        setSearchResult(response.data.coins);
-      }, 1000);
-      setSearchTimeOut(timeoutId);
+    if (inputValue.length >= INPUT_LENGTH_MIN) {
+      searchCoins(inputValue);
     }
   }, [inputValue]);
 
@@ -57,7 +57,6 @@ export const Search: FC<Props> = ({ setDisplayItem }) => {
         <Fade in={isOpen}>
           <SearchWindow
             inputValue={inputValue}
-            displaySearch={displaySearch}
             searchResult={searchResult}
           />
         </Fade>

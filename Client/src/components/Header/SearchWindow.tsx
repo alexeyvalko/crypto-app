@@ -5,13 +5,11 @@ import { ISearch } from '../../types/coins';
 
 type Props = {
   inputValue: string;
-  displaySearch: string;
   searchResult: ISearch[];
 };
 
 export const SearchWindow: FC<Props> = ({
   inputValue,
-  displaySearch,
   searchResult,
 }) => {
   const bgColorHover = useColorModeValue('gray.300', 'gray.700');
@@ -21,7 +19,7 @@ export const SearchWindow: FC<Props> = ({
   };
 
   const searchBoxStyles = {
-    display: displaySearch,
+    display: "flex",
     flexDirection: 'column',
     justifyContent: 'flex-start',
     gap: '10px',
@@ -68,6 +66,8 @@ export const SearchWindow: FC<Props> = ({
                 boxSize="100%"
                 alt={name}
                 borderRadius="50%"
+                width="40px"
+                height="40px"
               />
             </Box>
           </Flex>

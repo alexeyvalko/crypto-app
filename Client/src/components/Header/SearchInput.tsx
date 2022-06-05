@@ -42,8 +42,9 @@ export const SearchInput: FC<Props> = ({
         onFocus={handleFocus}
         onBlur={handleBlur}
         onChange={handleChange}
+        paddingEnd="10px"
       />
-      <InputRightElement width="4.5rem">
+      <InputRightElement width={{ base: '4.5rem', lg: 0 }}>
         <IconButton
           onClick={handleClick}
           size="sm"

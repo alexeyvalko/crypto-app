@@ -10,7 +10,7 @@ import {
   Box,
 } from '@chakra-ui/react';
 import { CloseIcon, MoonIcon, SearchIcon, SunIcon } from '@chakra-ui/icons';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { MobileMenu } from './MobileMenu';
 import { CgMenuGridO } from '../../icons';
 import { Search } from './Search';
@@ -22,19 +22,19 @@ export const Header: FC = () => {
   const [displaySearch, setDisplaySearch] = useState<'none' | 'flex'>('none');
   const bgIcon = useColorModeValue('gray.500', 'gray.200');
   const bg = useColorModeValue('white', 'gray.800');
+  const SHOW = 'flex';
+  const HIDE = 'none';
+  const CLOSE_MENU_DELAY = 300;
 
-  useEffect(() => {
-    setDisplaySearch(displayItem ? 'none' : 'flex');
-  }, [displayItem]);
 
   const handleCloseSearch = (bool:boolean) => {
-    setDisplaySearch(bool ? 'none' : 'flex');
+    setDisplaySearch(bool ? HIDE : SHOW);
     setDisplayItem(bool);
   }
 
   const toggleMenu = () => {
     if (isOpen) {
-      setTimeout(() => onClose(), 500);
+      setTimeout(() => onClose(), CLOSE_MENU_DELAY);
     } else {
       onOpen();
     }
@@ -42,6 +42,7 @@ export const Header: FC = () => {
 
   const handleClick = () => {
     setDisplayItem(false);
+    setDisplaySearch(SHOW);
   };
 
   return (
@@ -80,9 +81,7 @@ export const Header: FC = () => {
         width={{ base: '100%', lg: '320px' }}
       >
         <Search
-          setDisplayItem={(bool: boolean) => {
-            handleCloseSearch(bool);
-          }}
+          setDisplayItem={handleCloseSearch}
         />
       </Box>
 
