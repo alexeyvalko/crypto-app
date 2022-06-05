@@ -81,9 +81,7 @@ export const Header: FC = () => {
         width={{ base: '100%', lg: '320px' }}
       >
         <Search
-          setDisplayItem={(bool: boolean) => {
-            handleCloseSearch(bool);
-          }}
+          setDisplayItem={handleCloseSearch}
         />
       </Box>
 
