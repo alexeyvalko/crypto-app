@@ -54,7 +54,7 @@ export const Search: FC<Props> = ({ setDisplayItem }) => {
         handleFocus={handleFocus}
       />
       <Portal>
-        <Fade in={isOpen}>
+        <Fade in={isOpen} style={{ display: isOpen ? 'inherit' : 'none' }}>
           <SearchWindow
             inputValue={inputValue}
             searchResult={searchResult}
