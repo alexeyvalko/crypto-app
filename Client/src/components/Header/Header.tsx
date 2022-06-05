@@ -10,7 +10,7 @@ import {
   Box,
 } from '@chakra-ui/react';
 import { CloseIcon, MoonIcon, SearchIcon, SunIcon } from '@chakra-ui/icons';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { MobileMenu } from './MobileMenu';
 import { CgMenuGridO } from '../../icons';
 import { Search } from './Search';
@@ -24,10 +24,8 @@ export const Header: FC = () => {
   const bg = useColorModeValue('white', 'gray.800');
   const SHOW = 'flex';
   const HIDE = 'none';
+  const CLOSE_MENU_DELAY = 300;
 
-  useEffect(() => {
-    setDisplaySearch(displayItem ? HIDE : SHOW);
-  }, [displayItem]);
 
   const handleCloseSearch = (bool:boolean) => {
     setDisplaySearch(bool ? HIDE : SHOW);
@@ -36,7 +34,7 @@ export const Header: FC = () => {
 
   const toggleMenu = () => {
     if (isOpen) {
-      setTimeout(() => onClose(), 500);
+      setTimeout(() => onClose(), CLOSE_MENU_DELAY);
     } else {
       onOpen();
     }
@@ -44,6 +42,7 @@ export const Header: FC = () => {
 
   const handleClick = () => {
     setDisplayItem(false);
+    setDisplaySearch(SHOW);
   };
 
   return (

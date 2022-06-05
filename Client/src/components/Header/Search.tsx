@@ -10,27 +10,19 @@ type Props = {
 };
 
 export const Search: FC<Props> = ({ setDisplayItem }) => {
-  const [displaySearch, setDisplaySearch] = useState<'none' | 'flex'>('none');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchResult, setSearchResult] = useState<ISearch[]>([]);
   const [searchTimeId, setSearchTimeId] = useState<NodeJS.Timeout>();
   const [inputValue, setInputValue] = useState<string>('');
-  const SEARCH_TIMEOUT = 1000;
-  const SHOW = 'flex';
-  const HIDE = 'none';
+  const SEARCH_TIMEOUT = 1000;;
   const INPUT_LENGTH_MIN = 2;
 
   const handleFocus = () => {
     onOpen();
-    setDisplaySearch(SHOW);
   };
 
   const handleBlur = () => {
-    setTimeout(() => {
-      onClose();
-      setDisplaySearch(HIDE);
-      setDisplayItem(true);
-    }, 300);
+    onClose();
   };
 
   const searchCoins = (value: string)=> {
@@ -65,7 +57,6 @@ export const Search: FC<Props> = ({ setDisplayItem }) => {
         <Fade in={isOpen}>
           <SearchWindow
             inputValue={inputValue}
-            displaySearch={displaySearch}
             searchResult={searchResult}
           />
         </Fade>
