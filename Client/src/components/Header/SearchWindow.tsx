@@ -68,6 +68,8 @@ export const SearchWindow: FC<Props> = ({
                 boxSize="100%"
                 alt={name}
                 borderRadius="50%"
+                width="40px"
+                height="40px"
               />
             </Box>
           </Flex>

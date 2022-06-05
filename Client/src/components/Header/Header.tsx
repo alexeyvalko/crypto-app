@@ -22,13 +22,15 @@ export const Header: FC = () => {
   const [displaySearch, setDisplaySearch] = useState<'none' | 'flex'>('none');
   const bgIcon = useColorModeValue('gray.500', 'gray.200');
   const bg = useColorModeValue('white', 'gray.800');
+  const SHOW = 'flex';
+  const HIDE = 'none';
 
   useEffect(() => {
-    setDisplaySearch(displayItem ? 'none' : 'flex');
+    setDisplaySearch(displayItem ? HIDE : SHOW);
   }, [displayItem]);
 
   const handleCloseSearch = (bool:boolean) => {
-    setDisplaySearch(bool ? 'none' : 'flex');
+    setDisplaySearch(bool ? HIDE : SHOW);
     setDisplayItem(bool);
   }
 
