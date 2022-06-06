@@ -22,7 +22,9 @@ export const Search: FC<Props> = ({ setDisplayItem }) => {
   };
 
   const handleBlur = () => {
-    onClose();
+    setTimeout(() => {
+      onClose();
+    }, 200)
   };
 
   const searchCoins = (value: string)=> {
