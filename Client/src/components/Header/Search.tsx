@@ -22,7 +22,9 @@ export const Search: FC<Props> = ({ setDisplayItem }) => {
   };
 
   const handleBlur = () => {
-    onClose();
+    setTimeout(() => {
+      onClose();
+    }, 200)
   };
 
   const searchCoins = (value: string)=> {
@@ -54,7 +56,7 @@ export const Search: FC<Props> = ({ setDisplayItem }) => {
         handleFocus={handleFocus}
       />
       <Portal>
-        <Fade in={isOpen}>
+        <Fade in={isOpen} style={{ display: isOpen ? 'inherit' : 'none' }}>
           <SearchWindow
             inputValue={inputValue}
             searchResult={searchResult}
