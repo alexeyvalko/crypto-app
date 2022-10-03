@@ -36,7 +36,8 @@ export const NewsCard: FC<Props> = ({
     minH={{ base: '300px', md: '200px' }}
     bgSize="cover"
     position="relative"
-    background={`url('${imgSrc}')`}
+    bgPos="center"
+    backgroundImage={`url('${imgSrc}')`}
   >
     <Flex
       bg="linear-gradient(360deg, rgba(49, 56, 96, 0.2) 0%, rgba(21, 25, 40, 0.9) 100%)"
