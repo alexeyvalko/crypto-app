@@ -14,6 +14,7 @@ import { FC, useState } from 'react';
 import { MobileMenu } from './MobileMenu';
 import { CgMenuGridO } from '../../icons';
 import { Search } from './Search';
+import { Overlay } from './Overlay';
 
 export const Header: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -110,8 +111,8 @@ export const Header: FC = () => {
           }
         />
       </Flex>
-
       <Portal>
+        {isOpen && <Overlay toggleMenu={toggleMenu}/>}
         <Slide direction="bottom" in={isOpen} style={{ zIndex: 100 }}>
           <MobileMenu toggleMenu={toggleMenu} />
         </Slide>
