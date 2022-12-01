@@ -2,18 +2,16 @@ import {
   Flex,
   Icon,
   IconButton,
-  Slide,
   useColorMode,
   useColorModeValue,
   useDisclosure,
-  Portal,
   Box,
 } from '@chakra-ui/react';
 import { CloseIcon, MoonIcon, SearchIcon, SunIcon } from '@chakra-ui/icons';
 import { FC, useState } from 'react';
-import { MobileMenu } from './MobileMenu';
 import { CgMenuGridO } from '../../icons';
 import { Search } from './Search';
+import { MobileMenu } from '../MobileMenu/MobileMenu';
 
 export const Header: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -110,12 +108,7 @@ export const Header: FC = () => {
           }
         />
       </Flex>
-
-      <Portal>
-        <Slide direction="bottom" in={isOpen} style={{ zIndex: 100 }}>
-          <MobileMenu toggleMenu={toggleMenu} />
-        </Slide>
-      </Portal>
+     <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
     </Flex>
   );
 };

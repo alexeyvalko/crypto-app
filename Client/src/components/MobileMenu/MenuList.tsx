@@ -7,7 +7,7 @@ type Props = {
   toggleMenu(): void;
 };
 
-export const MobileMenu: FC<Props> = ({ toggleMenu }) => {
+export const MenuList: FC<Props> = ({ toggleMenu }) => {
   const bg = useColorModeValue('gray.100', 'gray.900');
   const color = useColorModeValue('gray.800', 'whiteAlpha.900');
 
