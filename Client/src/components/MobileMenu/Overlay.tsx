@@ -14,7 +14,6 @@ export const Overlay: FC<Props> = ({ toggleMenu }) => {
     left: 0,
     zIndex: '100',
     background: "rgba(0,0,0,0.4)",
-    overflow:"",
   };
   return <Box sx={styles} onClick={toggleMenu} />;
 };
