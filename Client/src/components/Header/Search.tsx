@@ -7,9 +7,10 @@ import { SearchWindow } from './SearchWindow';
 
 type Props = {
   setDisplayItem(bool: boolean): void;
+  isFocused: 'none' | 'flex';
 };
 
-export const Search: FC<Props> = ({ setDisplayItem }) => {
+export const Search: FC<Props> = ({ setDisplayItem, isFocused }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchResult, setSearchResult] = useState<ISearch[]>([]);
   const [searchTimeId, setSearchTimeId] = useState<NodeJS.Timeout>();
@@ -50,6 +51,7 @@ export const Search: FC<Props> = ({ setDisplayItem }) => {
   return (
     <>
       <SearchInput
+        isFocused={isFocused}
         setDisplayItem={setDisplayItem}
         handleBlur={handleBlur}
         handleChange={handleChange}
