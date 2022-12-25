@@ -79,6 +79,7 @@ export const Header: FC = () => {
         width={{ base: '100%', lg: '320px' }}
       >
         <Search
+          isFocused={displaySearch}
           setDisplayItem={handleCloseSearch}
         />
       </Box>
