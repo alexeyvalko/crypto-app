@@ -27,8 +27,8 @@ export const TopCoins: FC = () => {
 
   return (
     <Fade in={isOpen}>
-      <Box>
-        <Box ml="5" mb="5">
+      <Box pb="2">
+        <Box ml="5" mb="5" >
           <Heading as="h1" size="lg">
             Top 100 coins on market
           </Heading>
