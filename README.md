@@ -5,7 +5,7 @@
 5. To install all dependencies use [`npm install`](https://docs.npmjs.com/cli/install)  
 6. Run `npm run build` or `npm run dev` in the command line for production mode or development.
 
-Also you can try online [DEMO](https://alexeyvalko-crypto.netlify.app/) 
+Also you can try online [DEMO](https://valko-crypto.netlify.app/) 
 
 ![image](https://user-images.githubusercontent.com/60567379/156615392-4b961d28-1a93-4d45-9683-cfdfed3c129b.png)
 
