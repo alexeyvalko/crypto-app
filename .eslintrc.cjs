@@ -49,5 +49,6 @@ module.exports = {
     'import/no-duplicates': 'error',
     'simple-import-sort/exports': 'warn',
     'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
   },
 };
