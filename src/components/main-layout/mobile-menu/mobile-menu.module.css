@@ -1,0 +1,4 @@
+.listMobileMenu {
+  flex-direction: column;
+  gap: var(--gap-s);
+}

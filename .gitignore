@@ -15,6 +15,7 @@ dist-ssr
 !.yarn/releases
 !.yarn/plugins
 .pnp.*
+.env
 
 # Editor directories and files
 .vscode/*

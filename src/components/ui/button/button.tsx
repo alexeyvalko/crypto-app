@@ -1,7 +1,7 @@
 import React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 
-import { cn } from '@/utils/utils';
+import { cn } from '@/utils';
 
 import { ButtonProps, buttonVariants } from './types';
 
