@@ -1,7 +1,13 @@
 import React from 'react';
 import { Link } from '@tanstack/react-router';
 
-import { NavigationMenu, NavigationMenuItem, NavigationMenuList, navigationMenuTriggerStyle } from '@/components/ui';
+import {
+  DrawerClose,
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from '@/components/ui';
 
 import { cn } from '@/utils';
 
@@ -10,6 +16,7 @@ type MainNavigation = {
   listClassName?: string;
   itemClassName?: string;
   linkClassName?: string;
+  isMobile?: boolean;
 };
 
 export const MainNavigation: React.FC<MainNavigation> = ({
@@ -17,23 +24,41 @@ export const MainNavigation: React.FC<MainNavigation> = ({
   listClassName,
   itemClassName,
   linkClassName,
+  isMobile = false,
 }) => {
   const navLinkClassName = navigationMenuTriggerStyle();
+
+  const menuItems = [
+    {
+      label: 'Home',
+      to: '/',
+    },
+    {
+      label: 'About',
+      to: '/about',
+    },
+  ];
 
   return (
     <NavigationMenu className={className}>
       <NavigationMenuList className={listClassName}>
-        <NavigationMenuItem className={itemClassName}>
-          <Link to="/" className={cn(navLinkClassName, linkClassName)}>
-            Home
-          </Link>
-        </NavigationMenuItem>
+        {menuItems.map(({ label, to }) => (
+          <NavigationMenuItem className={itemClassName} key={label}>
+            {!isMobile && (
+              <Link to={to} className={cn(navLinkClassName, linkClassName)}>
+                {label}
+              </Link>
+            )}
 
-        <NavigationMenuItem className={itemClassName}>
-          <Link to="/about" className={cn(navLinkClassName, linkClassName)}>
-            About
-          </Link>
-        </NavigationMenuItem>
+            {isMobile && (
+              <DrawerClose asChild>
+                <Link to={to} className={cn(navLinkClassName, linkClassName)}>
+                  {label}
+                </Link>
+              </DrawerClose>
+            )}
+          </NavigationMenuItem>
+        ))}
       </NavigationMenuList>
     </NavigationMenu>
   );

@@ -1,4 +1,5 @@
 .listMobileMenu {
+  padding: 20px 0 40px 0;
   flex-direction: column;
   gap: var(--gap-s);
 }

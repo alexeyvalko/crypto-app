@@ -1,4 +1,5 @@
 export { Avatar, AvatarFallback, AvatarImage } from './avatar';
+export { Badge, badgeVariants } from './badge';
 export { Button } from './button';
 export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card';
 export { Carousel, type CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './carousel';
@@ -54,6 +55,7 @@ export {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from './dropdown-menu';
+export { Loader } from './loader';
 export {
   NavigationMenu,
   NavigationMenuContent,
@@ -65,5 +67,8 @@ export {
   navigationMenuTriggerStyle,
   NavigationMenuViewport,
 } from './navigation-menu';
+export { ScrollArea, ScrollBar } from './scroll-area';
+export { Separator } from './separator';
 export { Skeleton } from './skeleton';
 export { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from './table';
+export { Toggle, ToggleGroup, ToggleGroupItem, toggleVariants } from './toggle-group';

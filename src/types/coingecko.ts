@@ -443,3 +443,12 @@ export type CoinGeckoResponse = {
   last_updated: string;
   tickers: Ticker[];
 };
+
+export type GetCoinOHLCType = {
+  id: string;
+  vs_currency: Currencies;
+  days: number;
+  precision?: 'full' | number;
+};
+
+export type GetOHLCResponse = Array<[number, number, number, number, number]>;

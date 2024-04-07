@@ -19,7 +19,7 @@ export const ThemeProvider = ({
 
     root.classList.remove(ThemeMode.DARK, ThemeMode.LIGHT);
 
-    if (theme === 'system') {
+    if (theme === ThemeMode.SYSTEM) {
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? ThemeMode.DARK : ThemeMode.LIGHT;
 
       root.classList.add(systemTheme);

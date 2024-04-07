@@ -18,14 +18,14 @@ export const TrendingCoins = () => {
   const skeletonCards = useMemo(() => new Array(4).fill(0).map((_, index) => index), []);
 
   return (
-    <Section className="mt-6" titleClassName="ml-2 md:ml-12 mb-5" title="🔥 Trending coins">
-      <Carousel className="px-2 md:px-12">
-        <CarouselPrevious className="hidden md:flex left-0" />
+    <Section title="🔥 Trending coins" isLoading={isLoading}>
+      <Carousel className="group px-2" opts={{ slidesToScroll: 2 }}>
+        <CarouselPrevious className="opacity-0 disabled:opacity-0 left-5 z-50 md:group-hover:flex md:group-hover:opacity-100 transition-opacity " />
 
         <CarouselContent>
           {isLoading &&
             skeletonCards.map((key) => (
-              <CarouselItem className="md:basis-1/2 lg:basis-1/4" key={key}>
+              <CarouselItem className="max-w-[380px] md:basis-1/2 lg:basis-1/4" key={key}>
                 <SkeletonCard />
               </CarouselItem>
             ))}
@@ -39,7 +39,7 @@ export const TrendingCoins = () => {
                   data: { price, price_change_percentage_24h, sparkline },
                 },
               }) => (
-                <CarouselItem className="md:basis-1/2 lg:basis-1/4" key={name}>
+                <CarouselItem className="max-w-[380px] md:max-w-[340px] md:basis-1/2 lg:basis-1/4" key={name}>
                   <CoinCard
                     coinId={id}
                     name={name}
@@ -53,7 +53,7 @@ export const TrendingCoins = () => {
             )}
         </CarouselContent>
 
-        <CarouselNext className="hidden md:flex right-0" />
+        <CarouselNext className="opacity-0 disabled:opacity-0 right-5 z-50 md:group-hover:flex md:group-hover:opacity-100 transition-opacity" />
       </Carousel>
     </Section>
   );

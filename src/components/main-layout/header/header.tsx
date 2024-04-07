@@ -1,4 +1,4 @@
-import { ThemeModeToggle } from '@/components/theme-mode-toggle';
+import { FC } from 'react';
 
 import { cn } from '@/utils';
 
@@ -8,9 +8,15 @@ import { Search } from '../search';
 
 import styles from './header.module.css';
 
-export const Header = () => {
+import { ThemeModeToggle } from '@/theme/theme-mode-toggle';
+
+type HeaderProps = {
+  className?: string;
+};
+
+export const Header: FC<HeaderProps> = ({ className }) => {
   return (
-    <header className={cn(styles.header, 'basePadding', 'md:px-14')}>
+    <header className={cn(styles.header, 'py-4', className)}>
       <div className={styles.container}>
         <MobileMenu />
         <MainNavigation className="hidden md:flex" />

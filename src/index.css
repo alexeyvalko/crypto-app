@@ -1,15 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
     --gap-s: 0.5rem;
-    --gap-m: 1rem; 
-    
-    --mobile-width: 768px
+    --gap-m: 1rem;
+    --trending-card-width: calc(100% - 40px);
 
-    --background: 0 0% 100%;
+    --mobile-width: 768px --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -53,7 +52,7 @@
     --ring: 142.1 76.2% 36.3%;
     --radius: 0.5rem;
   }
- 
+
   .dark {
     --background: 20 14.3% 4.1%;
     --foreground: 0 0% 95%;
@@ -75,22 +74,13 @@
     --input: 240 3.7% 15.9%;
     --ring: 142.4 71.8% 29.2%;
   }
-
-  .basePadding {
-    padding: var(--gap-m);
-  }
-
-  .basePaddingHorizontal {
-    padding: 0 var(--gap-m);
-  }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
-
   }
 }

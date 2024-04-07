@@ -1,6 +1,6 @@
 import { Menu } from 'lucide-react';
 
-import { Button, Drawer, DrawerContent, DrawerTrigger } from '@/components/ui';
+import { Button, Drawer, DrawerClose, DrawerContent, DrawerTrigger } from '@/components/ui';
 
 import { MainNavigation } from '../main-navigation';
 
@@ -15,12 +15,15 @@ export const MobileMenu = () => {
         </Button>
       </DrawerTrigger>
       <DrawerContent>
-        <MainNavigation
-          listClassName={styles.listMobileMenu}
-          className="max-w-full p-3 block"
-          itemClassName="w-full"
-          linkClassName="w-full"
-        />
+        <DrawerClose>
+          <MainNavigation
+            listClassName={styles.listMobileMenu}
+            className="max-w-full p-3 block"
+            itemClassName="w-full"
+            linkClassName="w-full"
+            isMobile={true}
+          />
+        </DrawerClose>
       </DrawerContent>
     </Drawer>
   );

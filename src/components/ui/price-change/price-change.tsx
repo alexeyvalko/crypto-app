@@ -1,12 +1,27 @@
 import { FC } from 'react';
 
+import { cn } from '@/utils';
+
+import { Price } from '../price/price';
+
 type PriceChangeProps = {
   percentage?: number;
+  priceChangeValue?: number;
+  className?: string;
 };
 
-export const PriceChange: FC<PriceChangeProps> = ({ percentage = 0 }) => {
+export const PriceChange: FC<PriceChangeProps> = ({ priceChangeValue, className, percentage = 0 }) => {
   const isDown = percentage < 0;
-  const color = isDown ? 'text-red-600' : 'text-lime-600';
+  const color = isDown ? 'text-red-500' : 'text-lime-500';
 
-  return <span className={color}>{`${percentage.toFixed(2)}%`}</span>;
+  if (priceChangeValue) {
+    return (
+      <span className={cn(color, className)}>
+        <Price price={priceChangeValue} currency="" />
+        {!!percentage && ` (${percentage.toFixed(2)}%)`}
+      </span>
+    );
+  }
+
+  return !!percentage && <span className={cn(color, className)}>{`${percentage.toFixed(2)}%`}</span>;
 };
