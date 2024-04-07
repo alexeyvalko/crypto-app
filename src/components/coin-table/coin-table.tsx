@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { Link } from '@tanstack/react-router';
 
 import { Section } from '../section';
 import { Table, TableBody, TableHead, TableHeader, TableRow } from '../ui';
@@ -13,8 +14,7 @@ import { getCoinList } from '@/api/coingecko-api';
 export const CoinTable = () => {
   const { isLoading, data } = useQuery({
     queryKey: ['topCoins'],
-    queryFn: () =>
-      getCoinList({ vs_currency: 'usd', per_page: 10, page: 1, price_change_percentage: '1h,24h,7d', sparkline: true }),
+    queryFn: () => getCoinList({ vs_currency: 'usd', per_page: 10, page: 1, price_change_percentage: '1h,24h,7d' }),
   });
 
   return (
@@ -36,6 +36,7 @@ export const CoinTable = () => {
             ({
               id,
               name,
+
               image,
               symbol,
               market_cap_rank,
@@ -48,12 +49,14 @@ export const CoinTable = () => {
             }) => (
               <TableRow key={id}>
                 <CustomTableCell className="font-medium" isLoading={isLoading}>
-                  <div className="flex gap-2 items-center">
-                    <span>{market_cap_rank}.</span>
-                    <CoinImage src={image} alt={name} className="w-5 h-5" />
-                    <span>{name}</span>
-                    <span className="uppercase text-gray-400">{symbol}</span>
-                  </div>
+                  <Link to={`/coins/$coinId`} params={{ coinId: id }}>
+                    <div className="flex gap-2 items-center">
+                      <span>{market_cap_rank}.</span>
+                      <CoinImage src={image} alt={name} className="w-5 h-5" />
+                      <span>{name}</span>
+                      <span className="uppercase text-gray-400">{symbol}</span>
+                    </div>
+                  </Link>
                 </CustomTableCell>
                 <CustomTableCell isLoading={isLoading}>
                   <Price price={current_price} />

@@ -1,12 +1,7 @@
 import React from 'react';
+import { Link } from '@tanstack/react-router';
 
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from '@/components/ui';
+import { NavigationMenu, NavigationMenuItem, NavigationMenuList, navigationMenuTriggerStyle } from '@/components/ui';
 
 import { cn } from '@/utils';
 
@@ -29,11 +24,15 @@ export const MainNavigation: React.FC<MainNavigation> = ({
     <NavigationMenu className={className}>
       <NavigationMenuList className={listClassName}>
         <NavigationMenuItem className={itemClassName}>
-          <NavigationMenuLink className={cn(navLinkClassName, linkClassName)}>Home</NavigationMenuLink>
+          <Link to="/" className={cn(navLinkClassName, linkClassName)}>
+            Home
+          </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem className={itemClassName}>
-          <NavigationMenuLink className={cn(navLinkClassName, linkClassName)}>About</NavigationMenuLink>
+          <Link to="/about" className={cn(navLinkClassName, linkClassName)}>
+            About
+          </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

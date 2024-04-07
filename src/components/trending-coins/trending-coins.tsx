@@ -33,6 +33,7 @@ export const TrendingCoins = () => {
             data?.coins.map(
               ({
                 item: {
+                  id,
                   name,
                   thumb,
                   data: { price, price_change_percentage_24h, sparkline },
@@ -40,6 +41,7 @@ export const TrendingCoins = () => {
               }) => (
                 <CarouselItem className="md:basis-1/2 lg:basis-1/4" key={name}>
                   <CoinCard
+                    coinId={id}
                     name={name}
                     percentage={price_change_percentage_24h.usd}
                     price={price}
