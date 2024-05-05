@@ -28,7 +28,7 @@ export const ListItem: FC<ListItemProps> = ({ label, value, links, type }) => {
     });
 
   return (
-    <Fragment>
+    <>
       <div className="col-span-1 font-medium text-card-foreground">{label}</div>
       <div className="col-span-2 text-card-foreground text-right break-all">
         {value?.map((item, index, array) => (
@@ -44,6 +44,6 @@ export const ListItem: FC<ListItemProps> = ({ label, value, links, type }) => {
           </div>
         )}
       </div>
-    </Fragment>
+    </>
   );
 };

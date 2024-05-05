@@ -13,7 +13,7 @@ import { getFixedPrice } from '@/utils/get-fixed-price';
 
 import { ThemeMode } from '@/theme/theme-provider/types';
 
-export const getChartOptions = (theme: ThemeMode, chartType: ChartType) => {
+export const getChartOptions = (theme: ThemeMode, chartType: ChartType, isDesktop = false) => {
   const chartOptions: DeepPartial<TimeChartOptions> = {
     autoSize: true,
     handleScale: false,
@@ -33,13 +33,13 @@ export const getChartOptions = (theme: ThemeMode, chartType: ChartType) => {
       fixRightEdge: true,
       lockVisibleTimeRangeOnResize: true,
       rightBarStaysOnScroll: true,
-      visible: true,
+      visible: isDesktop,
       borderVisible: chartType === ChartType.Candlestick,
-      rightOffset: 0,
+      rightOffset: 2,
       timeVisible: true,
     },
     rightPriceScale: {
-      visible: true,
+      visible: isDesktop,
       borderVisible: chartType === ChartType.Candlestick,
     },
     grid: {
@@ -55,7 +55,7 @@ export const getChartOptions = (theme: ThemeMode, chartType: ChartType) => {
   return chartOptions;
 };
 
-export const getBaseLineOptions = (basePrice: number) => {
+export const getBaseLineOptions = (basePrice: number, isDesktop = false) => {
   const baseLinOptions: DeepPartial<BaselineStyleOptions & SeriesOptionsCommon> = {
     baseValue: { type: 'price', price: basePrice },
     topLineColor: 'rgba( 38, 166, 154, 1)',
@@ -64,7 +64,8 @@ export const getBaseLineOptions = (basePrice: number) => {
     bottomLineColor: 'rgba( 239, 83, 80, 1)',
     bottomFillColor1: 'rgba( 239, 83, 80, 0.05)',
     bottomFillColor2: 'rgba( 239, 83, 80, 0.28)',
-    lastPriceAnimation: 1,
+    lastPriceAnimation: isDesktop ? 1 : 0,
+
     priceFormat: { type: 'price', minMove: getFixedPrice(basePrice).minMove },
   };
 

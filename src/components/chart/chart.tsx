@@ -10,6 +10,7 @@ import { cn } from '@/utils';
 import { ToggleGroup, ToggleGroupItem } from '../ui';
 
 import { getBaseLineOptions, getCandlestickOptions, getChartOptions } from './chart-utils';
+import { useMatchMedia } from './use-match-media';
 
 import { getCoinOHLC } from '@/api/coingecko-api';
 import { REFRESH_INFO_INTERVAL } from '@/config';
@@ -30,6 +31,8 @@ export const Chart: FC<ChartProps> = ({ className }) => {
   const [days, setDays] = useState(DEFAULT_OHLC_DAYS);
   const [chartType, setChartType] = useState<ChartType>(ChartType.Line);
 
+  const isDesktop = useMatchMedia('(min-width: 768px)');
+
   const { data, isFetching, isLoading } = useQuery({
     queryKey: ['ohlc', coinId, days],
     queryFn: () => getCoinOHLC({ vs_currency: 'usd', id: coinId, days }),
@@ -47,11 +50,11 @@ export const Chart: FC<ChartProps> = ({ className }) => {
 
   useEffect(() => {
     if (chartRef.current && !!data?.length) {
-      const chart = createChart(chartRef.current, getChartOptions(theme, chartType));
+      const chart = createChart(chartRef.current, getChartOptions(theme, chartType, isDesktop));
       const basePrice = data?.[0]?.[4] ?? 0;
 
       if (chartType === ChartType.Line) {
-        const baselineSeries = chart.addBaselineSeries(getBaseLineOptions(basePrice));
+        const baselineSeries = chart.addBaselineSeries(getBaseLineOptions(basePrice, isDesktop));
         baselineSeries.setData(
           data.map(([time, , , , close]) => ({
             time: (time / SEC_IN_MS) as UTCTimestamp,
@@ -77,7 +80,7 @@ export const Chart: FC<ChartProps> = ({ className }) => {
         chart.remove();
       };
     }
-  }, [data, theme, chartType]);
+  }, [data, theme, chartType, isDesktop]);
 
   if (!data?.length && !isFetching && !isLoading) {
     return null;
@@ -88,7 +91,7 @@ export const Chart: FC<ChartProps> = ({ className }) => {
       <div className="flex flex-wrap justify-start md:justify-end gap-2">
         <ToggleGroup
           type="single"
-          className="rounded-md bg-input p-1"
+          className="rounded-md bg-input p-1 hidden md:flex"
           value={chartType}
           onValueChange={handleChangeChartType}
         >

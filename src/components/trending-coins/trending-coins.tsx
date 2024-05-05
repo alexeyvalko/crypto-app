@@ -19,12 +19,20 @@ export const TrendingCoins = () => {
 
   return (
     <Section title="🔥 Trending coins" isLoading={isLoading}>
-      <Carousel className="group px-2" opts={{ slidesToScroll: 2 }}>
+      <Carousel
+        className="group px-2"
+        opts={{
+          slidesToScroll: 2,
+          breakpoints: {
+            '(max-width: 768px)': { dragThreshold: 220, slidesToScroll: 1 },
+          },
+        }}
+      >
         <CarouselPrevious className="opacity-0 disabled:opacity-0 left-5 z-50 md:group-hover:flex md:group-hover:opacity-100 transition-opacity " />
 
         <CarouselContent>
           {isLoading &&
-            skeletonCards.map((key) => (
+            skeletonCards?.map((key) => (
               <CarouselItem className="max-w-[380px] md:basis-1/2 lg:basis-1/4" key={key}>
                 <SkeletonCard />
               </CarouselItem>

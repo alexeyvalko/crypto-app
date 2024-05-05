@@ -9,9 +9,11 @@ import { getNews } from '@/api/news-api';
 const COL_SIZES = [1, 1, 1];
 
 export const News = () => {
-  const { isLoading, data, isFetching } = useQuery({
+  const { isLoading, data } = useQuery({
     queryKey: ['news'],
     queryFn: () => getNews(),
+    retry: false,
+    refetchOnWindowFocus: false,
   });
 
   const newsArray = data?.data ?? [];
@@ -22,7 +24,7 @@ export const News = () => {
     news: newsArray[index] ?? {},
   }));
 
-  if (!newsArray.length && !isFetching) {
+  if (!newsArray.length && !isLoading) {
     return null;
   }
 

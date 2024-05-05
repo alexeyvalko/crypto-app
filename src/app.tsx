@@ -10,8 +10,6 @@ import { ThemeProvider } from './theme/theme-provider';
 
 import { ThemeMode } from './theme/theme-provider/types';
 
-//test
-
 export const App: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
