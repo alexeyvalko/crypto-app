@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from 'react';
 
-import { cn } from '@/utils';
+import { Skeleton } from '..';
 
-import { Skeleton } from '../ui';
+import { cn } from '@/utils';
 
 type SectionProps = {
   title?: string;

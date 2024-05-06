@@ -1,5 +1,6 @@
 export { Avatar, AvatarFallback, AvatarImage } from './avatar';
 export { Badge, badgeVariants } from './badge';
+export { Blocker } from './blocker';
 export { Button } from './button';
 export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card';
 export { Carousel, type CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './carousel';
@@ -68,6 +69,7 @@ export {
   NavigationMenuViewport,
 } from './navigation-menu';
 export { ScrollArea, ScrollBar } from './scroll-area';
+export { Section } from './section';
 export { Separator } from './separator';
 export { Skeleton } from './skeleton';
 export { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from './table';

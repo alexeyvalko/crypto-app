@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { Section } from '../section';
+import { Section } from '../ui/section';
 
 import { NewsCard } from './news-card';
 

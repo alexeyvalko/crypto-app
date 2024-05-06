@@ -19,5 +19,5 @@ export const getNews = async (searchPrase = NEWS_SEARCH_PHRASE) => {
   };
   const searchQuery = new URLSearchParams(params).toString();
 
-  return await apiCall<NewsResponse>(`${NEWS_API_URL}/all?${searchQuery}`, FETCH_OPTIONS);
+  return await apiCall<NewsResponse>(`${NEWS_API_URL}/all?${searchQuery}`, FETCH_OPTIONS, true);
 };

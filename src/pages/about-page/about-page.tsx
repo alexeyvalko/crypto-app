@@ -1,5 +1,5 @@
-import { Section } from '@/components/section';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui';
+import { Section } from '@/components/ui/section';
 
 export const AboutPage = () => {
   return (

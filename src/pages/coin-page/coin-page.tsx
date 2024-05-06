@@ -2,18 +2,18 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import parse, { DOMNode } from 'html-react-parser';
 
 import { Chart } from '@/components/chart';
-import { Section } from '@/components/section';
 import { Badge, Card, CardContent, CardHeader, CardTitle } from '@/components/ui';
 import { CoinImage } from '@/components/ui/coin-image';
 import { Price } from '@/components/ui/price';
 import { PriceChange } from '@/components/ui/price-change';
+import { Section } from '@/components/ui/section';
 
 import { cn } from '@/utils';
 import { isDomElement } from '@/utils/is-dom-element';
 
 import { coinQueryOptions } from './coin-query-options';
-import { CoinInfoType } from './constat';
-import { ListItem } from './list-item';
+import { List } from './list';
+import { getCoinHistoryInfo, getCoinLinks, getMainCoinInfo } from './utils';
 
 import { Route } from '@/routes/coins.$coinId';
 
@@ -24,79 +24,10 @@ export const CoinPage = () => {
   if (!data) {
     return null;
   }
-  const mainCoinInfo = [
-    {
-      label: 'Market Cap',
-      value: [data.market_data.market_cap.usd ?? ''],
-      type: CoinInfoType.PRICE,
-    },
-    {
-      label: '24 Hour Trading Vol',
-      value: [data.market_data.total_volume?.usd ?? ''],
-      type: CoinInfoType.PRICE,
-    },
-    {
-      label: 'Circulating Supply',
-      value: [data.market_data.circulating_supply ?? ''],
-      type: CoinInfoType.NUMBER,
-    },
-    {
-      label: 'Total Supply',
-      value: [data.market_data.total_supply ?? ''],
-      type: CoinInfoType.NUMBER,
-    },
-    {
-      label: 'Max Supply',
-      value: [data.market_data.max_supply ?? ''],
-      type: CoinInfoType.NUMBER,
-    },
-  ];
 
-  const historyCoinInfo = [
-    {
-      label: '24h Range',
-      value: [data.market_data.low_24h?.usd ?? '', data.market_data.high_24h?.usd ?? ''],
-      type: CoinInfoType.PRICE,
-    },
-    {
-      label: 'All-Time High',
-      value: [data.market_data.ath?.usd ?? ''],
-      type: CoinInfoType.PRICE,
-    },
-    {
-      label: 'All-Time Low',
-      value: [data.market_data.atl?.usd ?? ''],
-      type: CoinInfoType.PRICE,
-    },
-  ];
-
-  const linksCoinInfo = [
-    {
-      label: 'Website',
-      links: data.links.homepage,
-      type: CoinInfoType.LINKS,
-    },
-    {
-      label: 'Source Code',
-      links: data.links.repos_url?.github,
-      type: CoinInfoType.LINKS,
-    },
-    {
-      label: 'Reddit',
-      links: [data.links.subreddit_url],
-      type: CoinInfoType.LINKS,
-    },
-    {
-      label: 'Whitepaper',
-      links: [data.links.whitepaper],
-      type: CoinInfoType.LINKS,
-    },
-    {
-      label: 'Telegram',
-      links: [data.links.telegram_channel_identifier && `https://t.me/${data.links.telegram_channel_identifier}`],
-      type: CoinInfoType.LINKS,
-    },
-  ];
+  const mainCoinInfo = getMainCoinInfo(data);
+  const historyCoinInfo = getCoinHistoryInfo(data);
+  const linksCoinInfo = getCoinLinks(data);
 
   return (
     <Section className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -122,35 +53,9 @@ export const CoinPage = () => {
           <Chart className="mt-4" />
         </CardContent>
       </Card>
-
-      <Card className="col-span-full md:col-span-1">
-        <CardContent>
-          <div className="grid grid-cols-3 justify-between gap-2 mt-8 width-full">
-            {mainCoinInfo.map(
-              (props) => props.value?.some((value) => value) && <ListItem key={props.label} {...props} />
-            )}
-          </div>
-        </CardContent>
-      </Card>
-      <Card className="col-span-full md:col-span-1">
-        <CardContent>
-          <div className="grid grid-cols-3 justify-between gap-2 mt-8 width-full">
-            {historyCoinInfo.map(
-              (props) => props.value?.some((value) => value) && <ListItem key={props.label} {...props} />
-            )}
-          </div>
-        </CardContent>
-      </Card>
-      <Card className="col-span-full lg:col-span-1">
-        <CardContent>
-          <div className="grid grid-cols-3 justify-between gap-2 mt-8 width-full">
-            {linksCoinInfo.map(
-              (props) => props?.links?.some((value) => value) && <ListItem key={props.label} {...props} />
-            )}
-          </div>
-        </CardContent>
-      </Card>
-
+      <List data={mainCoinInfo} type="value" className="col-span-full md:col-span-1" />
+      <List data={historyCoinInfo} type="value" className="col-span-full md:col-span-1" />
+      <List data={linksCoinInfo} type="links" className="col-span-full lg:col-span-1" />
       {data.description.en && (
         <Card className="col-span-full">
           <CardHeader className={cn('flex flex-row items-start gap-2 pb-2')}>

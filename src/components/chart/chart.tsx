@@ -7,7 +7,7 @@ import { ChartType, daysOptions } from './constants';
 
 import { cn } from '@/utils';
 
-import { ToggleGroup, ToggleGroupItem } from '../ui';
+import { Blocker, ToggleGroup, ToggleGroupItem } from '../ui';
 
 import { getBaseLineOptions, getCandlestickOptions, getChartOptions } from './chart-utils';
 import { useMatchMedia } from './use-match-media';
@@ -87,8 +87,9 @@ export const Chart: FC<ChartProps> = ({ className }) => {
   }
 
   return (
-    <div className={className}>
-      <div className="flex flex-wrap justify-start md:justify-end gap-2">
+    <div className={cn('relative', className)}>
+      <Blocker isLoading={isFetching || isLoading} />
+      <div className="flex flex-wrap justify-center md:justify-end gap-2">
         <ToggleGroup
           type="single"
           className="rounded-md bg-input p-1 hidden md:flex"

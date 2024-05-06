@@ -1,9 +1,9 @@
 import { FC, Fragment } from 'react';
 
-import { Badge } from '@/components/ui';
+import { Badge, Separator } from '@/components/ui';
 import { Price } from '@/components/ui/price';
 
-import { CoinInfoType } from '../constat';
+import { CoinInfoType } from '../constants';
 
 type ListItemProps = {
   label: string;
@@ -44,6 +44,7 @@ export const ListItem: FC<ListItemProps> = ({ label, value, links, type }) => {
           </div>
         )}
       </div>
+      <Separator className="col-span-3  last:hidden" />
     </>
   );
 };

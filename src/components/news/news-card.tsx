@@ -16,7 +16,7 @@ type NewsCardProps = {
 };
 
 export const NewsCard: FC<NewsCardProps> = ({ className, news, isLoading }) => {
-  const { image_url, title, published_at } = news;
+  const { image_url, title, published_at, url } = news;
 
   if (isLoading) {
     return (
@@ -34,9 +34,14 @@ export const NewsCard: FC<NewsCardProps> = ({ className, news, isLoading }) => {
       }}
     >
       <div className={cn(styles.cardContainer, 'p-4 flex flex-col justify-between')}>
-        {title && <CardTitle className="text-primary-foreground line-clamp-3 pb-1">{title}</CardTitle>}
-        <CardFooter className="p-0 text-primary-foreground flex justify-end">
-          {(published_at && dayjs(published_at).fromNow()) || ''}
+        {title && <CardTitle className="text-zinc-100 line-clamp-3 pb-1">{title}</CardTitle>}
+        <CardFooter className="p-0 text-zinc-100 flex justify-between">
+          {!!url && (
+            <a href={url} target="_blank" rel="noreferrer" className="underline">
+              Read more
+            </a>
+          )}
+          {!!published_at && dayjs(published_at).fromNow()}
         </CardFooter>
       </div>
     </Card>

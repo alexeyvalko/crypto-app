@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 
-import { Section } from '../section';
 import { Table, TableBody, TableHead, TableHeader, TableRow } from '../ui';
 import { CoinImage } from '../ui/coin-image';
 import { Price } from '../ui/price';
 import { PriceChange } from '../ui/price-change';
+import { Section } from '../ui/section';
 
 import { CustomTableCell } from './custom-table-cell';
 

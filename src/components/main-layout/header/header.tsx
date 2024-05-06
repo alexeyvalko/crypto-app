@@ -12,18 +12,21 @@ import { ThemeModeToggle } from '@/theme/theme-mode-toggle';
 
 type HeaderProps = {
   className?: string;
+  navContainerClassName?: string;
 };
 
-export const Header: FC<HeaderProps> = ({ className }) => {
+export const Header: FC<HeaderProps> = ({ className, navContainerClassName }) => {
   return (
-    <header className={cn(styles.header, 'py-4', className)}>
-      <div className={styles.container}>
-        <MobileMenu />
-        <MainNavigation className="hidden md:flex" />
-      </div>
-      <div className={styles.container}>
-        <Search />
-        <ThemeModeToggle />
+    <header className={cn(styles.header, className)}>
+      <div className={cn('flex justify-between', navContainerClassName)}>
+        <div className={styles.container}>
+          <MobileMenu />
+          <MainNavigation className="hidden md:flex" />
+        </div>
+        <div className={styles.container}>
+          <Search />
+          <ThemeModeToggle />
+        </div>
       </div>
     </header>
   );

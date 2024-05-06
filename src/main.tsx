@@ -16,7 +16,7 @@ dayjs.extend(relativeTime);
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 10000,
+      staleTime: 6000,
       refetchOnWindowFocus: false,
     },
   },

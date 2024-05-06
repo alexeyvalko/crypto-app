@@ -1,30 +1,18 @@
-# React + TypeScript + Vite
+## How to start
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. Install [Node.js](https://nodejs.org/en/download/).
+2. Clone this repo to your local machine
+3. Go to repo folder
+4. To install all dependencies use [`yarn install`](https://docs.npmjs.com/cli/install)
+5. Run `yarn build` or `yarn dev` in the command line for production mode or development.
 
-Currently, two official plugins are available:
+Also you can try online [DEMO](https://valko-crypto.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![image](https://user-images.githubusercontent.com/60567379/156615392-4b961d28-1a93-4d45-9683-cfdfed3c129b.png)
 
-## Expanding the ESLint configuration
+## Used resources
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. [Shadcn/ui](https://ui.shadcn.com/docs) - Open source ReactJS framework
+2. [ReactJS](https://react.dev/) - A popular JavaScript library for building user interfaces
+3. [Coingecko API](https://www.coingecko.com/en/api/documentation) - The largest source of cryptocurrency data.
+4. [TheNewsAPI](https://www.thenewsapi.com) - Worldwide news and top stories from over 40,000 sources in 50+ countries.

@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-import { Section } from '../section';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui';
+import { Section } from '../ui/section';
 
 import { CoinCard } from './coin-card';
 import { SkeletonCard } from './skeleton-card';
