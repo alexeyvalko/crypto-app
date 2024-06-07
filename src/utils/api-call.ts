@@ -21,4 +21,4 @@ export const createApiCaller = (delayMs: number) => {
   };
 };
 
-export const apiCall = createApiCaller(1500);
+export const apiCall = createApiCaller(2000);
