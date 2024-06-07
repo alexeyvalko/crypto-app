@@ -4,8 +4,10 @@ export const createApiCaller = (delayMs: number) => {
   let called = false;
 
   return async <ResponseData>(url: string, init?: RequestInit, skipDelay = false): Promise<ResponseData> => {
+    const watchTime = 100 * Math.random() * 2;
+
     while (called && !skipDelay) {
-      await delay(100);
+      await delay(watchTime);
     }
 
     try {
