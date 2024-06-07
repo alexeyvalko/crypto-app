@@ -7,7 +7,9 @@
 5. Run `yarn build` or `yarn dev` in the command line for production mode or development.
 
 Also you can try online [DEMO](https://valko-crypto.netlify.app/)
-![image](https://github.com/alexeyvalko/crypto-app/assets/60567379/bb9e2f83-137e-4b7f-9f34-94d6496e01f0)
+
+![image](https://github.com/alexeyvalko/crypto-app/assets/60567379/1bb6a34e-d8dd-4441-9757-f4f6b54a7c68)
+
 
 ## Used resources
 
