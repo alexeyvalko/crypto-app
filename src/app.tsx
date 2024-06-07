@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { DEFAULT_THEME_STORAGE_KEY } from './theme/theme-provider/constants';
 
 import { MainLayout } from './components/main-layout';
+import { Toaster } from './components/ui/toast';
 import { ErrorPage } from './pages/error-page';
 import { ThemeProvider } from './theme/theme-provider';
 
@@ -15,7 +16,10 @@ export const App: FC<PropsWithChildren> = ({ children }) => {
     <>
       <ThemeProvider defaultTheme={ThemeMode.DARK} storageKey={DEFAULT_THEME_STORAGE_KEY}>
         <MainLayout>
-          <ErrorBoundary fallback={<ErrorPage />}>{children}</ErrorBoundary>
+          <>
+            <ErrorBoundary fallback={<ErrorPage />}>{children}</ErrorBoundary>
+            <Toaster />
+          </>
         </MainLayout>
       </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />

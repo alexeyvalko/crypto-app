@@ -1,7 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui';
 import { Section } from '@/components/ui/section';
 
+import { usePageTitle } from '@/hooks/usePageTitile';
+
 export const AboutPage = () => {
+  usePageTitle('About');
   return (
     <Section>
       <Card className="w-full">

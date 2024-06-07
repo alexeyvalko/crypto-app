@@ -74,3 +74,4 @@ export { Separator } from './separator';
 export { Skeleton } from './skeleton';
 export { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from './table';
 export { Toggle, ToggleGroup, ToggleGroupItem, toggleVariants } from './toggle-group';
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './tooltip';
