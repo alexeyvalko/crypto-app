@@ -24,7 +24,7 @@ export const getSearchData = async (searchQuery: string) => {
 };
 export const getCoinList = async (queryObj: CoinListQueryType) => {
   const query = `?${createQueryString(queryObj)}`;
-  return await apiCall<CoinListResponse>(`${BASE_URL}/coins/markets${query}`, FETCH_OPTIONS, true);
+  return await apiCall<CoinListResponse>(`${BASE_URL}/coins/markets${query}`, FETCH_OPTIONS);
 };
 export const getCoinData = async (id: string, queryObj?: CoinQueryType) => {
   const query = queryObj ? `?${createQueryString(queryObj)}` : '';

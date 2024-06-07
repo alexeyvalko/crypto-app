@@ -13,18 +13,34 @@ import { getCoinList } from '@/api/coingecko-api';
 
 const PER_PAGE = 10;
 
-export const CoinTable = () => {
+export type CoinTableProps = {
+  tableTitle: string;
+  queryKey: string;
+  coinIds?: string[];
+};
+
+export const CoinTable: React.FC<CoinTableProps> = ({ coinIds, tableTitle, queryKey }) => {
   const { isLoading, data } = useQuery({
-    queryKey: ['topCoins'],
+    queryKey: [queryKey],
     queryFn: () =>
-      getCoinList({ vs_currency: 'usd', per_page: PER_PAGE, page: 1, price_change_percentage: '1h,24h,7d' }),
+      getCoinList({
+        vs_currency: 'usd',
+        per_page: coinIds?.length || PER_PAGE,
+        ids: coinIds?.join(','),
+        page: 1,
+        price_change_percentage: '1h,24h,7d',
+      }),
   });
 
   const dataToRender = isLoading ? new Array(PER_PAGE).fill({}) : data;
 
+  if (!data?.length && !isLoading) {
+    return null;
+  }
+
   return (
-    <Section title="💰 Top 10 coins" isLoading={isLoading}>
-      <Table>
+    <Section title={tableTitle} isLoading={isLoading}>
+      <Table className="mb-5">
         <TableHeader>
           <TableRow>
             <TableHead className="w-[280px]">Name</TableHead>
@@ -44,7 +60,6 @@ export const CoinTable = () => {
                 name,
                 image,
                 symbol,
-                market_cap_rank,
                 current_price,
                 total_volume,
                 market_cap,
@@ -58,7 +73,7 @@ export const CoinTable = () => {
                 <CustomTableCell isLoading={isLoading}>
                   <Link to={`/coins/$coinId`} params={{ coinId: id }} className="font-medium">
                     <div className="flex gap-2 items-center">
-                      <span>{market_cap_rank}.</span>
+                      <span>{index + 1}.</span>
                       <CoinImage src={image} alt={name} className="w-5 h-5" />
                       <span>{name}</span>
                       <span className="uppercase text-gray-400">{symbol}</span>

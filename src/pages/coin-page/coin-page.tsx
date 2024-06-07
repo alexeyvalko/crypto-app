@@ -55,7 +55,7 @@ export const CoinPage = () => {
         <CardHeader className={cn('flex flex-row items-start justify-between gap-2 pb-2')}>
           <div className={cn('flex flex-row items-start gap-2 flex-wrap')}>
             <CoinImage src={data.image.large} alt={data.name} className="w-10 h-10 md:w-14 md:h-14" />
-            <CardTitle className="text-lg md:text-3xl inline mt-0"> {data.name}</CardTitle>
+            <CardTitle className="text-lg md:text-3xl inline mt-2"> {data.name}</CardTitle>
             <span className="uppercase text-xs md:text-sm text-gray-400">{data.symbol}</span>
             {!!data.market_cap_rank && (
               <Badge variant="outline" className="text-xs md:text-sm ">
