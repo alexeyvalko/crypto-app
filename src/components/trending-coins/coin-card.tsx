@@ -20,7 +20,7 @@ type CardProps = {
 
 export const CoinCard: FC<CardProps> = ({ name, price, sparkline, thumb, percentage, coinId }) => {
   return (
-    <Card>
+    <Card className="noise">
       <Link to={`/coins/$coinId`} params={{ coinId }}>
         <CardHeader className={cn('flex flex-row items-start gap-2 pb-2')}>
           <CoinImage src={thumb} alt={name} className="w-10 h-10" width={40} height={40} />
