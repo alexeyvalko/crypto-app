@@ -24,7 +24,9 @@ export const CoinCard: FC<CardProps> = ({ name, price, sparkline, thumb, percent
       <Link to={`/coins/$coinId`} params={{ coinId }}>
         <CardHeader className={cn('flex flex-row items-start gap-2 pb-2')}>
           <CoinImage src={thumb} alt={name} className="w-10 h-10" width={40} height={40} />
-          <CardTitle className="text-lg inline mt-0">{name}</CardTitle>
+          <CardTitle className="text-lg inline mt-0 whitespace-nowrap overflow-hidden overflow-ellipsis">
+            {name}
+          </CardTitle>
         </CardHeader>
         <CardContent className={cn('flex justify-between gap-6')}>
           <div className={cn('flex flex-col')}>
